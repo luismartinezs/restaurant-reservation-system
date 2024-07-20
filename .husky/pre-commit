@@ -1,0 +1,3 @@
+# pnpm sanity
+pnpm lint
+pnpm test
