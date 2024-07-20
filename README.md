@@ -66,9 +66,10 @@
 
 - React / Next.js
 - Mantine
-- SQLite
+- Supabase
 - Clerk auth
 - Yup (validation)
+- Zustand
 
 ## DB structure
 
@@ -121,7 +122,7 @@
 ## Dev tasks
 
 - [ ] Project setup (scaffold project with all tech stack)
-  - [ ] mantine
+  - [x] mantine
   - [ ] supabase
   - [ ] commitlint
   - [ ] precommit hooks (husky)
