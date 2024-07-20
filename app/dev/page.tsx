@@ -1,5 +1,7 @@
 import { Box } from "@mantine/core";
 
+import { BearCounter, Controls } from "./bears";
+
 export default async function Dev() {
   return (
     <Box
@@ -8,7 +10,10 @@ export default async function Dev() {
         fontSize: "1.5rem",
       }}
     >
-      Mantine sanity
+      Mantine works
+      Zustand works
+      <BearCounter />
+      <Controls />
     </Box>
   );
 }
