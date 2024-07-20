@@ -196,14 +196,14 @@ Pages define what data needs to be shown together and thus fetched together (it 
 
 ## Dev tasks
 
-- [ ] Project setup (scaffold project with all tech stack)
+- [x] Project setup (scaffold project with all tech stack)
   - [x] mantine
   - [x] supabase
   - [x] commitlint
   - [x] precommit hooks (husky)
     - [-] check unused imports
     - [x] lint
-  - [ ] Scaffold readme sections
+  - [x] Scaffold readme sections
 - [ ] Init DB tables
 - [ ] User auth:
   - [ ] /register: Guest can register (create user)
