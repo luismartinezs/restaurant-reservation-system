@@ -122,7 +122,7 @@
 
 - [ ] Project setup (scaffold project with all tech stack)
   - [x] mantine
-  - [ ] supabase
+  - [x] supabase
   - [ ] commitlint
   - [ ] precommit hooks (husky)
     - [ ] check unused imports
