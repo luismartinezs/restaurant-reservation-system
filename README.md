@@ -1,6 +1,83 @@
 # Restaurant reservation system
 
+- [Restaurant reservation system](#restaurant-reservation-system)
+  - [Tech stack](#tech-stack)
+  - [Pre-requisites to run this project](#pre-requisites-to-run-this-project)
+  - [Deploy locally as a dev](#deploy-locally-as-a-dev)
+  - [Emulate database](#emulate-database)
+  - [Code generation](#code-generation)
+  - [Testing](#testing)
+  - [Pre-commit hooks](#pre-commit-hooks)
+  - [Project requirements](#project-requirements)
+  - [Questions about business logic](#questions-about-business-logic)
+  - [Database structure](#database-structure)
+  - [Pages](#pages)
+  - [Data groups](#data-groups)
+  - [App state](#app-state)
+  - [Dev tasks](#dev-tasks)
+  - [Known bugs](#known-bugs)
+  - [If I had more time I would](#if-i-had-more-time-i-would)
+  - [Troubleshooting](#troubleshooting)
+  - [Timings](#timings)
+  - [Notes](#notes)
+  - [Coding practices](#coding-practices)
+    - [Folder structure](#folder-structure)
+    - [Imports](#imports)
+
+## Tech stack
+
+- React / Next.js
+- Mantine
+- Supabase postgresql
+- Supabase auth
+- Zustand
+
+## Pre-requisites to run this project
+
+You need at least `node 21` and `npm` installed in your computer.
+
+I recommend installing and using `pnpm` too to run the project scripts
+
+I recommmend using `nvm` to manage node versions locally
+
+## Deploy locally as a dev
+
+```bash
+# Install the project dependencies
+npm install
+# Run development server
+npm dev
+# Build and deploy app locally
+npm build && npm preview
+# You can also run the above commands with pnpm or yarn, e.g.:
+pnpm install
+pnpm dev
+pnpm build && pnpm preview
+```
+
+## Emulate database
+
+To come
+
+## Code generation
+
+- Run `pnpm plop` to scaffold new components or pages (not yet set up)
+
+## Testing
+
+(no tests yet)
+
+- Run `pnpm test` to run all tests
+
+## Pre-commit hooks
+
+- `pnpm lint` without errors
+- All tests must pass
+- Commit message must follow `commitlint` specs
+
 ## Project requirements
+
+Write an application to manage restaurant reservations:
 
 - User roles
   - User
@@ -35,7 +112,7 @@
     - role
 - Optional: landing page
 
-## Questions
+## Questions about business logic
 
 - Should restaurants have opening hours? Or should we assume restaurant is always open to reservations?
   - No, assume restaurants are always open
@@ -61,16 +138,10 @@
   - Yes
 - Can users see deleted bookings?
   - No, deleted bookings no longer exist in DB
+- Can users select an end time for the reservation?
+  - No, only start time. Assume reservation lasts for 2 hours
 
-## Tech stack
-
-- React / Next.js
-- Mantine
-- Supabase postgresql
-- Supabase auth
-- Zustand
-
-## DB structure
+## Database structure
 
 - users
   - role: user | manager
@@ -86,7 +157,6 @@
 - reservations
   - uid: string
   - start: datetime
-  - end: datetime
   - user_uid: string
   - restaurant_uid: string
 - ratings
@@ -107,16 +177,22 @@
 - /users/:uid (manager)
 - /users/new (manager)
 - /login
-- /register
 - /account
 
-## Notes
+## Data groups
 
-- Calculating average rating in real time because we also have to fetch NxM times for reservations so the total number of queries is NxM + NxP which does not change complexity -- O(Nx2M)
+Pages define what data needs to be shown together and thus fetched together (it also defines the database structure)
 
-## If I had more time I would
+- /restaurants -> List of all restaurants, reservations and ratings
+- /restaurants/:uid -> One restaurant, with its reservations and ratings
+- /reservations -> List of all reservations for one specific user
+- /users -> List of all users, with all reservations for each user
+- /users/:uid -> One user, with reservations all for that user
 
-- It might be interesting to cache the number of reservations per restaurant (maybe), otherwise for the listing, we're looking at N*M queries, alternatively, use pagination and fetch only for 10 restaurants at a time (same can be done for calculation of average rating), once this is done it would make sense to compute average ratings in advance and store them in the DB in the restaurants table
+## App state
+
+- Active filters for restaurants listing
+- Selected reservation start time (only future time)
 
 ## Dev tasks
 
@@ -126,7 +202,7 @@
   - [x] commitlint
   - [x] precommit hooks (husky)
     - [-] check unused imports
-    - [-] lint
+    - [x] lint
   - [ ] Scaffold readme sections
 - [ ] Init DB tables
 - [ ] User auth:
@@ -188,6 +264,26 @@
 - [ ] Manual testing
 - [ ] README cleanup
 - [ ] Marketing landing page
+
+## Known bugs
+
+None yet
+
+## If I had more time I would
+
+- It might be interesting to cache the number of reservations per restaurant (maybe), otherwise for the listing, we're looking at N*M queries, alternatively, use pagination and fetch only for 10 restaurants at a time (same can be done for calculation of average rating), once this is done it would make sense to compute average ratings in advance and store them in the DB in the restaurants table
+
+## Troubleshooting
+
+Nothing so far
+
+## Timings
+
+| Item                                                   | Minutes | Hours |
+
+## Notes
+
+- Calculating average rating in real time because we also have to fetch NxM times for reservations so the total number of queries is NxM + NxP which does not change complexity -- O(Nx2M)
 
 ## Coding practices
 
