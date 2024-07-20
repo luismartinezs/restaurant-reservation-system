@@ -123,10 +123,10 @@
 - [ ] Project setup (scaffold project with all tech stack)
   - [x] mantine
   - [x] supabase
-  - [ ] commitlint
-  - [ ] precommit hooks (husky)
-    - [ ] check unused imports
-    - [ ] lint
+  - [x] commitlint
+  - [x] precommit hooks (husky)
+    - [-] check unused imports
+    - [-] lint
   - [ ] Scaffold readme sections
 - [ ] Init DB tables
 - [ ] User auth:
