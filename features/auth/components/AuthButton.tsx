@@ -1,13 +1,12 @@
-import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export default async function AuthButton() {
-  const supabase = createClient();
+import { createClient } from "@/lib/supabase/server";
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+import { getUser } from "../utils";
+
+export async function AuthButton() {
+  const { user } = await getUser();
 
   const signOut = async () => {
     "use server";
