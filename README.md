@@ -206,10 +206,9 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] Scaffold readme sections
 - [x] Init DB tables
 - [ ] User auth:
-  - [ ] /register: Guest can register (create user)
-  - [ ] /login: User can login
-  - [ ] /account: User can see account page
-  - [ ] User can logout
+  - [x] /login: User can login
+  - [x] /account: User can see account page
+  - [x] User can logout
 - [ ] Scaffold minimal CRUD pages for:
   - [ ] Restaurant (as feature)
     - [ ] types
