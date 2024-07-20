@@ -1,19 +1,22 @@
-import { Box } from "@mantine/core";
+import { Box, Pill } from "@mantine/core";
 
-import { BearCounter, Controls } from "./bears";
+import { Counter, Controls } from "./count";
 
 export default async function Dev() {
   return (
-    <Box
-      style={{
-        color: "white",
-        fontSize: "1.5rem",
-      }}
-    >
-      Mantine works
-      Zustand works
-      <BearCounter />
-      <Controls />
-    </Box>
+    <>
+      <Box
+        // style={{
+        //   color: "yellow",
+        //   fontSize: "1.5rem",
+        // }}
+      >
+        Mantine works Zustand works
+        <Counter />
+        <Controls />
+        <Pill color="teal">Hello, Mantine!</Pill>
+      </Box>
+      <Pill color="teal">Hello, Mantine!</Pill>
+    </>
   );
 }
