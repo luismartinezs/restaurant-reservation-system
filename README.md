@@ -204,7 +204,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [-] check unused imports
     - [x] lint
   - [x] Scaffold readme sections
-- [ ] Init DB tables
+- [x] Init DB tables
 - [ ] User auth:
   - [ ] /register: Guest can register (create user)
   - [ ] /login: User can login
