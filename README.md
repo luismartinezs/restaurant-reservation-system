@@ -216,7 +216,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [ ] hooks
     - [ ] pages
       - [x] List
-      - [ ] View
+      - [x] View
       - [ ] Create
       - [ ] Edit
       - [ ] Delete

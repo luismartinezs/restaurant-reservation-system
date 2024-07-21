@@ -3,11 +3,12 @@ import {
   Text,
   Group,
   Badge,
-  CardProps,
-  PolymorphicComponentProps,
+  Button,
+  Flex,
 } from "@mantine/core";
 
 import { RestaurantRead } from "../types";
+import Link from "next/link";
 
 export const RestaurantCard = ({
   restaurant,
@@ -24,8 +25,6 @@ export const RestaurantCard = ({
       padding="lg"
       radius="md"
       withBorder
-      component={asLink ? "a" : "div"}
-      {...(asLink ? { href: `/scaffold/restaurants/${id}` } : {})}
     >
       <Group mt="md" mb="xs">
         <Text fw={500}>{name}</Text>
@@ -38,8 +37,29 @@ export const RestaurantCard = ({
         Location: {location}
       </Text>
       <Text size="sm" c="dimmed">
+        Cuisine Type: {cuisine_type}
+      </Text>
+      <Text size="sm" c="dimmed">
         Seating Capacity: {seating_capacity}
       </Text>
+     <Flex>
+       {asLink && (
+         <Button
+           component={Link}
+           href={`/scaffold/restaurants/${id}`}
+           variant="subtle"
+         >
+           View
+         </Button>
+       )}
+       <Button
+         component={Link}
+         href={`/scaffold/restaurants/${id}/edit`}
+         variant="subtle"
+       >
+         Edit
+       </Button>
+     </Flex>
     </Card>
   );
 };

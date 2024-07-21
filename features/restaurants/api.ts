@@ -44,6 +44,7 @@ export function api() {
       .from(KEY)
       .insert([restaurant])
       .select()
+      .single()
     if (error) throw error
     return data
   }
@@ -52,7 +53,7 @@ export function api() {
     id: Id,
     updatedFields: RestaurantUpdate
   ) => {
-    const { data, error } = await supabase.from(KEY).update(updatedFields).eq('id', id).select()
+    const { data, error } = await supabase.from(KEY).update(updatedFields).eq('id', id).select().single()
     if (error) throw error
     return data
   }
@@ -116,6 +117,19 @@ export function api() {
     return channel
   }
 
-  return { getAllRestaurants, getSpecificColumns, getWithPagination, getFilteredRestaurants, getRestaurantById, insertRestaurant, updateRestaurant, deleteRestaurant, subscribeToAllEvents, subscribeToInserts, subscribeToUpdates, subscribeToDeletes, subscribeToSpecificRow }
-
+  return {
+    getAllRestaurants,
+    getSpecificColumns,
+    getWithPagination,
+    getFilteredRestaurants,
+    getRestaurantById,
+    insertRestaurant,
+    updateRestaurant,
+    deleteRestaurant,
+    subscribeToAllEvents,
+    subscribeToInserts,
+    subscribeToUpdates,
+    subscribeToDeletes,
+    subscribeToSpecificRow
+  }
 }
