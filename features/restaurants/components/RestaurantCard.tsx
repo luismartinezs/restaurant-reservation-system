@@ -13,9 +13,11 @@ import Link from "next/link";
 export const RestaurantCard = ({
   restaurant,
   asLink = false,
+  deleteButton,
 }: {
   restaurant: RestaurantRead;
   asLink?: boolean;
+  deleteButton?: React.ReactNode;
 }) => {
   const { id, name, cuisine_type, location, seating_capacity } = restaurant;
 
@@ -59,6 +61,7 @@ export const RestaurantCard = ({
        >
          Edit
        </Button>
+       {deleteButton}
      </Flex>
     </Card>
   );
