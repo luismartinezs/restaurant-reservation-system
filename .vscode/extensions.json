@@ -1,7 +1,5 @@
 {
   "recommendations": [
-    "vunguyentuan.vscode-postcss",
-    "vunguyentuan.vscode-css-variables",
-    "adpyke.vscode-sql-formatter"
+    "denoland.vscode-deno"
   ]
 }
