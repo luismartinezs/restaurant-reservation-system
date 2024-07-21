@@ -211,7 +211,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] User can logout
 - [ ] Scaffold minimal CRUD pages for:
   - [ ] Restaurant (as feature)
-    - [ ] types
+    - [x] types
     - [ ] API
     - [ ] hooks
     - [ ] pages
