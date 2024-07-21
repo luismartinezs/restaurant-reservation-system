@@ -1,118 +1,121 @@
 import { createClient } from "@/lib/supabase/server";
+import { KEY, SCHEMA } from "./constants";
+import { RestaurantInsert, RestaurantRead, RestaurantUpdate, Id } from "./types";
 
-const supabase = createClient()
+export function api() {
 
-const SCHEMA = 'public'
-const RESTAURANTS = 'restaurants'
 
-// Utility functions for the restaurants table
-export const getAllRestaurants = async () => {
-  const { data, error } = await supabase.from(RESTAURANTS).select('*')
-  if (error) throw error
-  return data
-}
+  const supabase = createClient()
 
-export const getSpecificColumns = async (columns: string) => {
-  const { data, error } = await supabase.from(RESTAURANTS).select(columns)
-  if (error) throw error
-  return data
-}
 
-export const getWithPagination = async (from: number, to: number) => {
-  const { data, error } = await supabase.from(RESTAURANTS).select('*').range(from, to)
-  if (error) throw error
-  return data
-}
+  // Utility functions for the restaurants table
+  const getAllRestaurants = async () => {
+    const { data, error } = await supabase.from(KEY).select('*')
+    if (error) throw error
+    return data
+  }
 
-export const getFilteredRestaurants = async (column: string, value: string) => {
-  const { data, error } = await supabase.from(RESTAURANTS).select('*').eq(column, value)
-  if (error) throw error
-  return data
-}
+  const getSpecificColumns = async (columns: keyof RestaurantRead) => {
+    const { data, error } = await supabase.from(KEY).select(columns)
+    if (error) throw error
+    return data
+  }
 
-export const insertRestaurant = async (restaurant: {
-  name: string
-  location: string
-  cuisine_type: string
-  seating_capacity: number
-}) => {
-  const { data, error } = await supabase
-    .from(RESTAURANTS)
-    .insert([restaurant])
-    .select()
-  if (error) throw error
-  return data
-}
+  const getWithPagination = async (from: number, to: number) => {
+    const { data, error } = await supabase.from(KEY).select('*').range(from, to)
+    if (error) throw error
+    return data
+  }
 
-export const updateRestaurant = async (
-  id: bigint,
-  updatedFields: Partial<{
-    name: string
-    location: string
-    cuisine_type: string
-    seating_capacity: number
-  }>
-) => {
-  const { data, error } = await supabase.from(RESTAURANTS).update(updatedFields).eq('id', id).select()
-  if (error) throw error
-  return data
-}
+  const getFilteredRestaurants = async <K extends keyof RestaurantRead>(column: K, value: RestaurantRead[K]) => {
+    const { data, error } = await supabase.from(KEY).select('*').eq(column, value)
+    if (error) throw error
+    return data
+  }
 
-export const deleteRestaurant = async (id: bigint) => {
-  const { error } = await supabase.from(RESTAURANTS).delete().eq('id', id)
-  if (error) throw error
-}
+  const getRestaurantById = async (id: Id) => {
+    const { data, error } = await supabase.from(KEY).select('*').eq('id', id).single()
+    if (error) throw error
+    return data
+  }
 
-export const subscribeToAllEvents = () => {
-  const channel = supabase
-    .channel('custom-all-channel')
-    .on('postgres_changes', { event: '*', schema: SCHEMA, table: RESTAURANTS }, (payload) => {
-      console.log('Change received!', payload)
-    })
-    .subscribe()
-  return channel
-}
+  const insertRestaurant = async (restaurant: RestaurantInsert) => {
+    const { data, error } = await supabase
+      .from(KEY)
+      .insert([restaurant])
+      .select()
+    if (error) throw error
+    return data
+  }
 
-export const subscribeToInserts = () => {
-  const channel = supabase
-    .channel('custom-insert-channel')
-    .on('postgres_changes', { event: 'INSERT', schema: SCHEMA, table: RESTAURANTS }, (payload) => {
-      console.log('Change received!', payload)
-    })
-    .subscribe()
-  return channel
-}
+  const updateRestaurant = async (
+    id: Id,
+    updatedFields: RestaurantUpdate
+  ) => {
+    const { data, error } = await supabase.from(KEY).update(updatedFields).eq('id', id).select()
+    if (error) throw error
+    return data
+  }
 
-export const subscribeToUpdates = () => {
-  const channel = supabase
-    .channel('custom-update-channel')
-    .on('postgres_changes', { event: 'UPDATE', schema: SCHEMA, table: RESTAURANTS }, (payload) => {
-      console.log('Change received!', payload)
-    })
-    .subscribe()
-  return channel
-}
+  const deleteRestaurant = async (id: Id) => {
+    const { error } = await supabase.from(KEY).delete().eq('id', id)
+    if (error) throw error
+  }
 
-export const subscribeToDeletes = () => {
-  const channel = supabase
-    .channel('custom-delete-channel')
-    .on('postgres_changes', { event: 'DELETE', schema: SCHEMA, table: RESTAURANTS }, (payload) => {
-      console.log('Change received!', payload)
-    })
-    .subscribe()
-  return channel
-}
-
-export const subscribeToSpecificRow = (column: string, value: string) => {
-  const channel = supabase
-    .channel('custom-filter-channel')
-    .on(
-      'postgres_changes',
-      { event: '*', schema: SCHEMA, table: RESTAURANTS, filter: `${column}=eq.${value}` },
-      (payload) => {
+  const subscribeToAllEvents = () => {
+    const channel = supabase
+      .channel('custom-all-channel')
+      .on('postgres_changes', { event: '*', schema: SCHEMA, table: KEY }, (payload) => {
         console.log('Change received!', payload)
-      }
-    )
-    .subscribe()
-  return channel
+      })
+      .subscribe()
+    return channel
+  }
+
+  const subscribeToInserts = () => {
+    const channel = supabase
+      .channel('custom-insert-channel')
+      .on('postgres_changes', { event: 'INSERT', schema: SCHEMA, table: KEY }, (payload) => {
+        console.log('Change received!', payload)
+      })
+      .subscribe()
+    return channel
+  }
+
+  const subscribeToUpdates = () => {
+    const channel = supabase
+      .channel('custom-update-channel')
+      .on('postgres_changes', { event: 'UPDATE', schema: SCHEMA, table: KEY }, (payload) => {
+        console.log('Change received!', payload)
+      })
+      .subscribe()
+    return channel
+  }
+
+  const subscribeToDeletes = () => {
+    const channel = supabase
+      .channel('custom-delete-channel')
+      .on('postgres_changes', { event: 'DELETE', schema: SCHEMA, table: KEY }, (payload) => {
+        console.log('Change received!', payload)
+      })
+      .subscribe()
+    return channel
+  }
+
+  const subscribeToSpecificRow = <K extends keyof RestaurantRead>(column: K, value: RestaurantRead[K]) => {
+    const channel = supabase
+      .channel('custom-filter-channel')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: SCHEMA, table: KEY, filter: `${column}=eq.${value}` },
+        (payload) => {
+          console.log('Change received!', payload)
+        }
+      )
+      .subscribe()
+    return channel
+  }
+
+  return { getAllRestaurants, getSpecificColumns, getWithPagination, getFilteredRestaurants, getRestaurantById, insertRestaurant, updateRestaurant, deleteRestaurant, subscribeToAllEvents, subscribeToInserts, subscribeToUpdates, subscribeToDeletes, subscribeToSpecificRow }
+
 }

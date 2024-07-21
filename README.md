@@ -212,10 +212,10 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [ ] Scaffold minimal CRUD pages for:
   - [ ] Restaurant (as feature)
     - [x] types
-    - [ ] API
+    - [x] API
     - [ ] hooks
     - [ ] pages
-      - [ ] List
+      - [x] List
       - [ ] View
       - [ ] Create
       - [ ] Edit
