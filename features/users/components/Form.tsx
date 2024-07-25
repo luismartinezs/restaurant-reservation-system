@@ -1,136 +1,76 @@
 import { redirect } from "next/navigation";
 
-import { Box, Title, Stack, Button, Select, SelectProps, NumberInput } from "@mantine/core";
-import { DateTimePicker } from "@mantine/dates";
-import dayjs from "dayjs";
+import { Box, Title, Stack, Button, TextInput } from "@mantine/core";
+// import { z } from 'zod'
 
-import { api as restaurantsApi } from "@/features/restaurants";
-import { api as authApi } from "@/features/auth";
-
-import { Read } from "../types";
 import { KEY } from "../constants";
 import { api } from "../api";
+import { User } from "@supabase/supabase-js";
+
+// const schema = z.object({
+//   email: z.string().email(),
+// })
 
 function getFormData(formData: FormData) {
   return {
-    rating: Number(formData.get("rating") as string),
-    restaurant_id: Number(formData.get("restaurant_id") as string),
-    user_id: formData.get("user_id") as string,
+    email: formData.get("email") as string,
   };
 }
 
 function validate(formData: FormData) {
-  const { rating, restaurant_id, user_id } = getFormData(formData);
+  // try {
+  //   schema.parse(getFormData(formData))
+  //   return true
+  // } catch (err) {
+  //   return err
+  // }
+  const { email } = getFormData(formData);
 
-  if (isNaN(rating)) {
-    return "Rating must be a number";
-  }
-
-  if (!restaurant_id || !user_id || typeof rating !== "number") {
+  if (!email) {
     return "Missing required fields";
   }
 
   return true;
 }
 
-async function SelectRestaurant(props: SelectProps) {
-  const { defaultValue } = props;
-  const restaurants = await restaurantsApi().getAllRestaurants();
-
-  const options = restaurants.map((restaurant) => ({
-    value: String(restaurant.id),
-    label: restaurant.name,
-  }));
-
-  return (
-    <Select
-      label="Restaurant"
-      placeholder="Select restaurant"
-      name="restaurant_id"
-      data={options}
-      defaultValue={defaultValue}
-      {...props}
-    />
-  );
-}
-
-async function SelectUser(props: SelectProps) {
-  const { defaultValue } = props;
-  const users = await authApi().getAll();
-
-  const options = users.map((user) => String(user.id));
-
-  return (
-    <Select
-      label="User"
-      placeholder="Select user"
-      name="user_id"
-      data={options}
-      defaultValue={defaultValue}
-      {...props}
-    />
-  );
-}
-
-const Form = ({ initialData }: { initialData?: Read }) => {
-  const isEdit = typeof initialData !== "undefined";
-  const { rating, restaurant_id, user_id, id } = initialData || {};
+const Form = ({ initialData }: { initialData?: User }) => {
+  const { id, email } = initialData || {};
+  const isEdit = typeof id !== "undefined";
 
   async function submit(formData: FormData) {
     "use server";
 
     const validated = validate(formData);
 
+    console.log(validated);
+
     if (validated !== true) {
       return validated;
     }
 
-    const { insert, update } = api();
+    const { create, update } = api();
 
-    const submitHandler =
-      typeof id === "undefined"
-        ? insert.bind(null, getFormData(formData))
-        : update.bind(null, id, getFormData(formData));
+    const submitHandler = isEdit
+      ? update.bind(null, id, getFormData(formData))
+      : create.bind(null, getFormData(formData));
 
-    const item = await submitHandler();
+    const {
+      data: { user },
+      error,
+    } = await submitHandler();
 
-    if (item) {
-      redirect(`/scaffold/${KEY}/${item.id}`);
+    if (user) {
+      redirect(`/scaffold/${KEY}/${user.id}`);
     }
   }
   return (
     <Box mx="auto">
       <Title order={2} mb="md">
-        Create New Rating
+        Create New User
       </Title>
       <form>
         <Stack>
-          <SelectRestaurant
-            defaultValue={
-              typeof restaurant_id !== "undefined"
-                ? String(restaurant_id)
-                : undefined
-            }
-            required
-          />
-          <SelectUser
-            defaultValue={
-              typeof user_id !== "undefined" ? String(user_id) : undefined
-            }
-            required
-          />
-          <NumberInput
-            label="Rating"
-            name="rating"
-            required
-            defaultValue={rating ? rating : undefined}
-            min={1}
-            max={5}
-            allowDecimal={false}
-            allowNegative={false}
-            clampBehavior="strict"
-            description="Rating must be between 1 and 5"
-          />
+          <TextInput label="Email" defaultValue={email} name="email" />
           <Button type="submit" formAction={submit}>
             {isEdit ? "Update" : "Create"}
           </Button>
