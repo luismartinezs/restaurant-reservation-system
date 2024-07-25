@@ -240,16 +240,16 @@ Pages define what data needs to be shown together and thus fetched together (it 
       - [x] Create
       - [x] Edit
       - [x] Delete
-  - [ ] User (as feature)
-    - [ ] types
-    - [ ] API
-    - [ ] hooks
-    - [ ] pages
-      - [ ] List
-      - [ ] View
-      - [ ] Create
-      - [ ] Edit
-      - [ ] Delete
+  - [x] User (as feature)
+    - [x] types
+    - [x] API
+    - [-] hooks
+    - [x] pages
+      - [x] List
+      - [x] View
+      - [x] Create
+      - [x] Edit
+      - [x] Delete
 - [ ] Create actual app pages
   - [ ] /restaurants
   - [ ] /restaurants/:uid
