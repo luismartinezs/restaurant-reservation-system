@@ -1,5 +1,5 @@
-import { RestaurantForm } from "./Form";
+import { Form } from "./Form";
 
 export function Create() {
-  return <RestaurantForm />;
+  return <Form />;
 }

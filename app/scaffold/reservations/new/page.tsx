@@ -1,4 +1,4 @@
-import { Create } from "@/features/restaurants";
+import { Create } from "@/features/reservations";
 
 export default function New() {
   return (
