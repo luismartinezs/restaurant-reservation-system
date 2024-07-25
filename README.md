@@ -213,13 +213,13 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [ ] Restaurant (as feature)
     - [x] types
     - [x] API
-    - [ ] hooks
-    - [ ] pages
+    - [-] hooks
+    - [x] pages
       - [x] List
       - [x] View
-      - [ ] Create
-      - [ ] Edit
-      - [ ] Delete
+      - [x] Create
+      - [x] Edit
+      - [x] Delete
   - [ ] Reservation (as feature)
     - [ ] types
     - [ ] API

@@ -9,6 +9,7 @@ import {
 
 import { RestaurantRead } from "../types";
 import Link from "next/link";
+import { KEY } from "../constants";
 
 export const RestaurantCard = ({
   restaurant,
@@ -48,7 +49,7 @@ export const RestaurantCard = ({
        {asLink && (
          <Button
            component={Link}
-           href={`/scaffold/restaurants/${id}`}
+           href={`/scaffold/${KEY}/${id}`}
            variant="subtle"
          >
            View
@@ -56,7 +57,7 @@ export const RestaurantCard = ({
        )}
        <Button
          component={Link}
-         href={`/scaffold/restaurants/${id}/edit`}
+         href={`/scaffold/${KEY}/${id}/edit`}
          variant="subtle"
        >
          Edit

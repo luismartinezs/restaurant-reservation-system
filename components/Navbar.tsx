@@ -4,8 +4,12 @@ const links = [
     href: '/'
   },
   {
-    name: 'Restaurants List',
+    name: 'Restaurants',
     href: '/scaffold/restaurants/list'
+  },
+  {
+    name: 'Reservations',
+    href: '/scaffold/reservations/list'
   }
 ]
 
