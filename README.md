@@ -220,26 +220,26 @@ Pages define what data needs to be shown together and thus fetched together (it 
       - [x] Create
       - [x] Edit
       - [x] Delete
-  - [ ] Reservation (as feature)
-    - [ ] types
-    - [ ] API
-    - [ ] hooks
-    - [ ] pages
-      - [ ] List
-      - [ ] View
-      - [ ] Create
-      - [ ] Edit
-      - [ ] Delete
-  - [ ] Rating (as feature)
-    - [ ] types
-    - [ ] API
-    - [ ] hooks
-    - [ ] pages
-      - [ ] List
-      - [ ] View
-      - [ ] Create
-      - [ ] Edit
-      - [ ] Delete
+  - [x] Reservation (as feature)
+    - [x] types
+    - [x] API
+    - [-] hooks
+    - [x] pages
+      - [x] List
+      - [x] View
+      - [x] Create
+      - [x] Edit
+      - [x] Delete
+  - [x] Rating (as feature)
+    - [x] types
+    - [x] API
+    - [-] hooks
+    - [x] pages
+      - [x] List
+      - [x] View
+      - [x] Create
+      - [x] Edit
+      - [x] Delete
   - [ ] User (as feature)
     - [ ] types
     - [ ] API

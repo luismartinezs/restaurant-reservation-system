@@ -10,6 +10,10 @@ const links = [
   {
     name: 'Reservations',
     href: '/scaffold/reservations/list'
+  },
+  {
+    name: 'Ratings',
+    href: '/scaffold/ratings/list'
   }
 ]
 
