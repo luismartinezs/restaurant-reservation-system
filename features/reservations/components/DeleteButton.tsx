@@ -3,6 +3,7 @@ import { api } from "../api";
 import { Id } from "../types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { KEY } from "../constants";
 
 export function DeleteButton({
   id,
@@ -12,11 +13,11 @@ export function DeleteButton({
   async function handleDelete() {
     "use server";
 
-    const { deleteRestaurant } = api();
+    const { remove } = api();
 
-    await deleteRestaurant(id);
+    await remove(id);
 
-    revalidatePath("/scaffold/restaurants/list");
+    revalidatePath(`/scaffold/${KEY}/list`);
 
     if (redirectPath) {
       redirect(redirectPath);

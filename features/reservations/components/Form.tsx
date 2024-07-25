@@ -84,6 +84,7 @@ async function SelectUser(props: SelectProps) {
 }
 
 const Form = ({ initialData }: { initialData?: Read }) => {
+  const isEdit = typeof initialData !== "undefined";
   const { start, restaurant_id, user_id, id } = initialData || {};
 
   async function submit(formData: FormData) {
@@ -97,12 +98,12 @@ const Form = ({ initialData }: { initialData?: Read }) => {
 
     const { insert, update } = api();
 
-    const handler =
+    const submitHandler =
       typeof id === "undefined"
         ? insert.bind(null, getFormData(formData))
         : update.bind(null, id, getFormData(formData));
 
-    const item = await handler();
+    const item = await submitHandler();
 
     if (item) {
       redirect(`/scaffold/${KEY}/${item.id}`);
@@ -118,13 +119,14 @@ const Form = ({ initialData }: { initialData?: Read }) => {
           <SelectRestaurant defaultValue={typeof restaurant_id !== 'undefined' ? String(restaurant_id) : undefined} required />
           <SelectUser defaultValue={typeof user_id !== 'undefined' ? String(user_id) : undefined} required />
           <DateTimePicker
-            label="Reservation Start Time"
+            label="Start Time"
             placeholder="Select date and time"
             name="start"
             required
+            defaultValue={start ? new Date(start) : undefined}
           />
           <Button type="submit" formAction={submit}>
-            Create Reservation
+            {isEdit ? "Update" : "Create"}
           </Button>
         </Stack>
       </form>

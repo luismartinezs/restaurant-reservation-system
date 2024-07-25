@@ -1,9 +1,14 @@
+import { notFound } from "next/navigation";
 import { api } from "../api";
-import { RestaurantForm } from "./Form";
+import { Form } from "./Form";
 
 export async function Edit({ id }: { id: number }) {
-  const { getRestaurantById } = api();
-  const restaurant = await getRestaurantById(id);
+  const { getById } = api();
+  try {
+    const item = await getById(id);
 
-  return <RestaurantForm initialData={restaurant} />;
+    return <Form initialData={item} />;
+  } catch (err) {
+    notFound();
+  }
 }
