@@ -23,10 +23,10 @@ export async function List() {
             />
           ))}
         </SimpleGrid>
+        <Button component={Link} mt={16} href="/scaffold/reservations/new">
+          Create
+        </Button>
       </Container>
-      <Button component={Link} href="/scaffold/reservations/new">
-        Create
-      </Button>
     </>
   );
 }
