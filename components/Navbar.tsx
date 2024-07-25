@@ -14,6 +14,10 @@ const links = [
   {
     name: 'Ratings',
     href: '/scaffold/ratings/list'
+  },
+  {
+    name: 'Users',
+    href: '/scaffold/users/list'
   }
 ]
 
