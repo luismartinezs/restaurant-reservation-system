@@ -1,8 +1,10 @@
-import { Button, ButtonProps } from "@mantine/core";
-import { api } from "../api";
-import { Id } from "../types";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+
+import { Button, ButtonProps } from "@mantine/core";
+
+import { api } from "../api";
+import { Id } from "../types";
 import { KEY } from "../constants";
 
 export function DeleteButton({

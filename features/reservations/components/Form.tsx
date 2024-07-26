@@ -34,9 +34,6 @@ function getFormData(formData: FormData) {
 function validate(formData: FormData) {
   const { start, restaurant_id, user_id } = getFormData(formData);
 
-  console.log(start);
-
-
   if (!restaurant_id || !user_id || !start) {
     return "Missing required fields";
   }

@@ -7,3 +7,5 @@ export const cuisineOptions = [
   'Vietnamese', 'Thai', 'Mediterranean', 'Hungarian', 'Australian', 'Seafood',
   'Korean', 'Taiwanese', 'Sri Lankan', 'Portuguese'
 ];
+
+export const MIN_SEATS_DISPLAY = 8

@@ -12,19 +12,23 @@ import {
 
 import { RestaurantRead } from "../types";
 import Link from "next/link";
-import { KEY } from "../constants";
+import { KEY, MIN_SEATS_DISPLAY } from "../constants";
 
 export const RestaurantCard = ({
   restaurant,
   rating,
   ratingCount,
+  availableSeats,
+  alwaysShowAvailableSeats,
 }: {
   restaurant: RestaurantRead;
   rating?: number;
   ratingCount?: number;
+  availableSeats?: number;
+  alwaysShowAvailableSeats?: boolean;
 }) => {
   const { id, name, cuisine_type, location, seating_capacity } = restaurant;
-  const noRatings = typeof rating === 'undefined' || ratingCount === 0;
+  const noRatings = typeof rating === "undefined" || ratingCount === 0;
 
   // const bookings: number = 5;
   // const availableTimes: string[] = ["12:00 PM", "12:30 PM", "13:00 PM", "13:30 PM"];
@@ -59,11 +63,12 @@ export const RestaurantCard = ({
       </Group> */}
 
       <Group gap={5}>
-        {!noRatings && [...Array(5)].map((_, i) => (
-          <Text key={i} c={i < rating ? "yellow" : "gray"}>
-            ★
-          </Text>
-        ))}
+        {!noRatings &&
+          [...Array(5)].map((_, i) => (
+            <Text key={i} c={i < rating ? "yellow" : "gray"}>
+              ★
+            </Text>
+          ))}
         <Text size="sm" c="dimmed">
           {noRatings
             ? "No ratings yet"
@@ -78,6 +83,14 @@ export const RestaurantCard = ({
       {/* <Text size="sm" mt="sm">
         Booked {bookings} {bookings === 1 ? "time" : "times"} today
       </Text> */}
+
+      {(availableSeats && availableSeats <= MIN_SEATS_DISPLAY) ||
+        (alwaysShowAvailableSeats && (
+          <Text size="sm" mt="sm" c="red">
+            Only {availableSeats} {availableSeats === 1 ? "seat" : "seats"}{" "}
+            available
+          </Text>
+        ))}
 
       {/* <Group mt="md" gap="xs">
         {availableTimes.map((time) => (
