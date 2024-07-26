@@ -7,6 +7,8 @@ import { DatePickerInput, TimeInput } from "@mantine/dates";
 import dayjs, { Dayjs } from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 
+import { useSearchQuery } from "../hooks/useSearchQuery";
+
 function toTimeFormat(date: string | Dayjs) {
   return dayjs(date).format("HH:mm");
 }
@@ -16,12 +18,8 @@ function toDateFormat(date: string | Dayjs) {
 }
 
 export function Search() {
-  const searchParams = useSearchParams();
+  const search = useSearchQuery();
   const router = useRouter();
-
-  const defaultDate = searchParams.get("date");
-  const defaultTime = decodeURIComponent(searchParams.get("time") ?? "");
-  const defaultPeople = searchParams.get("people");
 
   function submit(formData: FormData) {
     const date = formData.get("date") as string;
@@ -34,14 +32,6 @@ export function Search() {
       `/restaurants?date=${formattedDate}&time=${time}&people=${people}`
     );
   }
-
-  const now = dayjs();
-  const targetHour = 19;
-
-  const nextDefaultHours =
-    now.hour() < targetHour
-      ? now.hour(targetHour).minute(0).second(0).millisecond(0)
-      : now.add(1, "day").hour(targetHour).minute(0).second(0).millisecond(0);
 
   return (
     <Box>
@@ -72,11 +62,7 @@ export function Search() {
             leftSection={<CiCalendar size="1.1rem" />}
             leftSectionPointerEvents="none"
             required
-            defaultValue={
-              defaultDate
-                ? toDateFormat(defaultDate)
-                : toDateFormat(nextDefaultHours)
-            }
+            defaultValue={toDateFormat(search.date)}
             name="date"
           />
           <TimeInput
@@ -90,9 +76,7 @@ export function Search() {
             leftSection={<CiClock1 size="1.1rem" />}
             leftSectionPointerEvents="none"
             required
-            defaultValue={
-              defaultTime ? defaultTime : toTimeFormat(nextDefaultHours)
-            }
+            defaultValue={search.time}
             name="time"
           />
           <NumberInput
@@ -109,7 +93,7 @@ export function Search() {
             max={8}
             required
             name="people"
-            defaultValue={defaultPeople ?? "2"}
+            defaultValue={search.people}
           />
           <Button
             className="min-w-[150px]"
