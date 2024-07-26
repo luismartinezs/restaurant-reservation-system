@@ -1,7 +1,53 @@
 import { RestaurantRead } from "./types";
 import { Read as RatingRead } from "@/features/ratings"
+import { Read as ReservationRead } from "@/features/reservations"
+import { SearchQuery } from "@/features/search"
+import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
 
-export function getRestaurantsWithAvgRating(restaurants: RestaurantRead[], ratings: RatingRead[]) {
+const RESERVATION_DURATION = 2 // hours;
+
+function getDates(
+  date: string, // YYYY-MM-DD
+  time?: string, // HH:mm
+  separator = ' '
+): {
+  start: Date;
+  end: Date;
+} {
+  const datetime = time ? `${date}${separator}${time}` : date;
+  const start = dayjs(datetime)
+
+  return {
+    start: start.toDate(),
+    end: start.add(RESERVATION_DURATION, "hour").toDate()
+  }
+}
+
+export function getAvailableRestaurants<T extends RestaurantRead>(restaurants: T[], reservations: ReservationRead[], searchQuery: SearchQuery) {
+  const { date, time, people } = searchQuery;
+  const { start } = getDates(date, time);
+
+  const overlappingResevationsMap = new Map<number, number>()
+
+  dayjs.extend(isBetween)
+
+  reservations.forEach(res => {
+    const _resDates = getDates(res.start)
+    if (
+      dayjs(start).isBetween(_resDates.start, _resDates.end)
+    ) {
+      overlappingResevationsMap.set(res.restaurant_id, res.people)
+    }
+  })
+
+  return restaurants.filter(r => r.seating_capacity > people + (overlappingResevationsMap.get(r.id) || 0)).map(r => ({
+    ...r,
+    availableSeats: r.seating_capacity - (overlappingResevationsMap.get(r.id) || 0)
+  }))
+}
+
+export function getRestaurantsWithAvgRating<T extends RestaurantRead>(restaurants: T[], ratings: RatingRead[]) {
   const ratingMap = new Map<number, { sum: number; count: number }>();
 
   for (const rating of ratings) {

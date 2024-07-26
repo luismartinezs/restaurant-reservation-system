@@ -1,11 +1,12 @@
-import { RestaurantList } from "@/features/restaurants";
-import { Search } from "@/features/search";
 import { Container } from "@mantine/core";
 
+import { RestaurantList } from "@/features/restaurants";
+import { Search } from "@/features/search";
+
 export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export default function Page() {
-
   return (
     <Container>
       <Search />

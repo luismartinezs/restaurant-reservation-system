@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { Box, Button, Flex, NumberInput, Title } from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
@@ -8,10 +8,6 @@ import dayjs, { Dayjs } from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 
 import { useSearchQuery } from "../hooks/useSearchQuery";
-
-function toTimeFormat(date: string | Dayjs) {
-  return dayjs(date).format("HH:mm");
-}
 
 function toDateFormat(date: string | Dayjs) {
   return dayjs(date).toDate();
@@ -31,6 +27,7 @@ export function Search() {
     router.push(
       `/restaurants?date=${formattedDate}&time=${time}&people=${people}`
     );
+    router.refresh()
   }
 
   return (

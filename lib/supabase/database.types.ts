@@ -48,20 +48,23 @@ export type Database = {
       reservations: {
         Row: {
           id: number
+          people: number
           restaurant_id: number
-          start: string | null
+          start: string
           user_id: string
         }
         Insert: {
           id?: never
+          people: number
           restaurant_id: number
-          start?: string | null
+          start: string
           user_id: string
         }
         Update: {
           id?: never
+          people?: number
           restaurant_id?: number
-          start?: string | null
+          start?: string
           user_id?: string
         }
         Relationships: [
