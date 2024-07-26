@@ -251,8 +251,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
       - [x] Edit
       - [x] Delete
 - [ ] Create actual app pages
-  - [ ] /restaurants
-    - [ ] reaturant item
+  - [x] /restaurants
+    - [x] reaturant item
     - [ ] filters / search
   - [ ] /restaurants/:uid
   - [ ] /restaurants/:uid/edit (manager)
