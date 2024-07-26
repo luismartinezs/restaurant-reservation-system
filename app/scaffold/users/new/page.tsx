@@ -1,4 +1,4 @@
-import { Create } from "@/features/users";
+import { Create } from "@/app/features/users";
 
 export default function New() {
   return (

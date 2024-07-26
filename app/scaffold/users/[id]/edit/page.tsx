@@ -1,4 +1,4 @@
-import { Edit } from "@/features/users";
+import { Edit } from "@/app/features/users";
 import invariant from "tiny-invariant";
 
 export default function EditPage({ params }: { params: { id: string } }) {

@@ -1,4 +1,4 @@
-import { Create } from "@/features/ratings";
+import { Create } from "@/app/features/ratings";
 
 export default function New() {
   return (

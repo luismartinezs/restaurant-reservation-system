@@ -1,4 +1,4 @@
-import { LoginForm } from "@/features/auth";
+import { LoginForm } from "@/app/features/auth";
 
 export default function Login({
   searchParams,
