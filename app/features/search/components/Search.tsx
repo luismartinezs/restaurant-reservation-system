@@ -8,7 +8,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 
 import { useSearchQuery } from "../hooks/useSearchQuery";
-import { Filters } from "./Filters";
+// import { Filters } from "./Filters";
 
 function toDateFormat(date: string | Dayjs) {
   return dayjs(date).toDate();
@@ -105,7 +105,7 @@ export function Search() {
             Let&apos;s go
           </Button>
         </Flex>
-        <Filters />
+        {/* <Filters /> */}
       </form>
     </Box>
   );
