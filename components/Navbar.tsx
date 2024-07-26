@@ -5,7 +5,7 @@ const links = [
   },
   {
     name: 'Restaurants',
-    href: '/scaffold/restaurants/list'
+    href: '/restaurants'
   },
   {
     name: 'Reservations',
