@@ -12,19 +12,19 @@ export type Database = {
       ratings: {
         Row: {
           id: number
-          rating: number | null
+          rating: number
           restaurant_id: number
           user_id: string
         }
         Insert: {
           id?: never
-          rating?: number | null
+          rating: number
           restaurant_id: number
           user_id: string
         }
         Update: {
           id?: never
-          rating?: number | null
+          rating?: number
           restaurant_id?: number
           user_id?: string
         }

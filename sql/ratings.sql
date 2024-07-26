@@ -2,17 +2,17 @@ insert into
   public.ratings (restaurant_id, user_id, rating)
 values
   (
-    4,
+    9,
     '78fc80aa-a914-41ba-a794-8b62fb706e0e',
-    2
+    4
   ),
   (
-    8,
+    10,
     '78fc80aa-a914-41ba-a794-8b62fb706e0e',
-    1
+    3
   ),
   (
-    6,
+    11,
     '78fc80aa-a914-41ba-a794-8b62fb706e0e',
     5
   );
