@@ -8,6 +8,7 @@ import dayjs, { Dayjs } from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 
 import { useSearchQuery } from "../hooks/useSearchQuery";
+import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
 
 function toDateFormat(date: string | Dayjs) {
   return dayjs(date).toDate();
@@ -16,6 +17,7 @@ function toDateFormat(date: string | Dayjs) {
 export function Search() {
   const search = useSearchQuery();
   const router = useRouter();
+  const { update } = useChangeSearchParams();
 
   function submit(formData: FormData) {
     const date = formData.get("date") as string;
@@ -25,9 +27,13 @@ export function Search() {
     const formattedDate = dayjs(date).format("YYYY-MM-DD");
 
     router.push(
-      `/restaurants?date=${formattedDate}&time=${time}&people=${people}`
+      `/restaurants?${update({
+        date: formattedDate,
+        time,
+        people,
+      })}`
     );
-    router.refresh()
+    router.refresh();
   }
 
   return (

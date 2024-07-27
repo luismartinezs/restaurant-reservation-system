@@ -24,6 +24,13 @@ function getDates(
   }
 }
 
+export function getRestaurantsByCuisine<T extends RestaurantRead>(restaurants: T[], cuisines: string[]) {
+  if (cuisines.length === 0) {
+    return restaurants
+  }
+  return restaurants.filter(r => cuisines.includes(r.cuisine_type))
+}
+
 export function getAvailableRestaurants<T extends RestaurantRead>(restaurants: T[], reservations: ReservationRead[], searchQuery: SearchQuery) {
   const { date, time, people } = searchQuery;
   const { start } = getDates(date, time);

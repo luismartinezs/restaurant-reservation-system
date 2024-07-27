@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { SubmitButton } from "@/components/submit-button";
+import { SubmitButton } from "@/common/components/submit-button";
 import { signIn, signUp } from "../actions";
 
 export function LoginForm({

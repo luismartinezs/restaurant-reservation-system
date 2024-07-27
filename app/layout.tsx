@@ -7,8 +7,8 @@ import '@mantine/dates/styles.css';
 
 import { theme } from "./theme";
 import "./globals.css";
-import { CollapseDesktop } from "@/components/CollapseDesktop";
-import { Navbar } from "@/components/Navbar";
+import { CollapseDesktop } from "@/common/components/CollapseDesktop";
+import { Navbar } from "@/common/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
