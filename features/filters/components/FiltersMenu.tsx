@@ -1,28 +1,31 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
-import { Box } from "@mantine/core";
+import { Box, Checkbox, Fieldset, Stack } from "@mantine/core";
 import { useForm } from "@mantine/form";
-
 import { cuisineOptions } from "@/features/restaurants";
-
 import { CuisineFormValues } from "../types";
 import { useFilterQuery } from "../hooks/useFilterQuery";
-import { CuisineFieldset } from "./Cuisinefieldset";
+import { useEffect } from "react";
 
 export function FiltersMenu() {
   const router = useRouter();
   const filters = useFilterQuery();
 
   const form = useForm<CuisineFormValues>({
-    // mode: "uncontrolled",
-    initialValues: cuisineOptions.reduce((acc, el) => {
-      return { ...acc, [el]: filters.cuisine.includes(el) };
-    }, {}),
+    initialValues: cuisineOptions.reduce((acc, cuisine) => ({
+      ...acc,
+      [cuisine]: false
+    }), {}),
   });
 
-  const submit = (values: CuisineFormValues) => {
+  useEffect(() => {
+    cuisineOptions.forEach((cuisine) => {
+      form.setFieldValue(cuisine, filters.cuisine.includes(cuisine));
+    });
+  }, [filters.cuisine]);
+
+  const handleSubmit = (values: CuisineFormValues) => {
     const selected = Object.entries(values)
       .filter(([, value]) => value)
       .map(([key]) => key);
@@ -31,14 +34,27 @@ export function FiltersMenu() {
     router.refresh();
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = event.currentTarget;
+    form.setFieldValue(name, checked);
+    form.onSubmit(handleSubmit)();
+  };
+
   return (
-    <Box component="form" onSubmit={form.onSubmit(submit)} w={200}>
-      <CuisineFieldset initialValues={cuisineOptions.reduce((acc, el) => {
-      return { ...acc, [el]: filters.cuisine.includes(el) };
-    }, {})}
-      onSubmit={submit}
-      form={form}
-    />
+    <Box component="form" onSubmit={form.onSubmit(handleSubmit)} w={200}>
+      <Fieldset legend="Cuisines" variant="unstyled">
+        <Stack>
+          {cuisineOptions.map((cuisine) => (
+            <Checkbox
+              key={cuisine}
+              label={cuisine}
+              name={cuisine}
+              checked={form.values[cuisine]}
+              onChange={handleChange}
+            />
+          ))}
+        </Stack>
+      </Fieldset>
     </Box>
   );
 }
