@@ -1,4 +1,4 @@
-import { Detail } from "@/app/features/users";
+import { Detail } from "@/features/users";
 import invariant from "tiny-invariant";
 
 export default function Page({ params }: { params: { id: string } }) {

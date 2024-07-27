@@ -1,8 +1,8 @@
 "use client";
 
-import { Read as RatingRead } from "@/app/features/ratings";
-import { Read as ReservationRead } from "@/app/features/reservations";
-import { useSearchQuery } from "@/app/features/search";
+import { Read as RatingRead } from "@/features/ratings";
+import { Read as ReservationRead } from "@/features/reservations";
+import { useSearchQuery } from "@/features/search";
 
 import { getAvailableRestaurants, getRestaurantsWithAvgRating } from "../utils";
 import { RestaurantCard } from "./RestaurantCard";

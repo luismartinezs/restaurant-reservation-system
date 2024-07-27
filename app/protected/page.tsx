@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { AuthButton, checkAuth } from "@/app/features/auth";
+import { AuthButton, checkAuth } from "@/features/auth";
 
 export default async function ProtectedPage() {
   const supabase = createClient();

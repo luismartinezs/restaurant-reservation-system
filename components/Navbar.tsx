@@ -1,35 +1,36 @@
+import Link from "next/link";
+
 const links = [
   {
-    name: 'Home',
-    href: '/'
+    name: "Home",
+    href: "/",
   },
   {
-    name: 'Restaurants',
-    href: '/restaurants'
+    name: "Restaurants",
+    href: "/restaurants",
   },
-  {
-    name: 'Reservations',
-    href: '/scaffold/reservations/list'
-  },
-  {
-    name: 'Ratings',
-    href: '/scaffold/ratings/list'
-  },
-  {
-    name: 'Users',
-    href: '/scaffold/users/list'
-  }
-]
+  // {
+  //   name: "Reservations",
+  //   href: "/scaffold/reservations/list",
+  // },
+  // {
+  //   name: "Ratings",
+  //   href: "/scaffold/ratings/list",
+  // },
+  // {
+  //   name: "Users",
+  //   href: "/scaffold/users/list",
+  // },
+];
 
 export function Navbar() {
   return (
-    <ul>
+    <>
       {links.map(({ name, href }) => (
         <li key={name}>
-          <a href
-          ={href}>{name}</a>
+          <Link href={href}>{name}</Link>
         </li>
       ))}
-    </ul>
-  )
+    </>
+  );
 }

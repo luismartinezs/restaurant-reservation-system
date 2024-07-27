@@ -1,4 +1,4 @@
-import { List } from "@/app/features/ratings";
+import { List } from "@/features/ratings";
 
 export const revalidate = 0
 

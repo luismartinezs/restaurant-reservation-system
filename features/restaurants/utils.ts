@@ -1,7 +1,7 @@
 import { RestaurantRead } from "./types";
-import { Read as RatingRead } from "@/app/features/ratings"
-import { Read as ReservationRead } from "@/app/features/reservations"
-import { SearchQuery } from "@/app/features/search"
+import { Read as RatingRead } from "@/features/ratings"
+import { Read as ReservationRead } from "@/features/reservations"
+import { SearchQuery } from "@/features/search"
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 

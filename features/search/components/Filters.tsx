@@ -1,6 +1,6 @@
 "use client";
 
-import { cuisineOptions, CuisinePill } from "@/app/features/restaurants";
+import { cuisineOptions, CuisinePill } from "@/features/restaurants";
 
 export function Filters() {
   return cuisineOptions.map((cuisine) => (

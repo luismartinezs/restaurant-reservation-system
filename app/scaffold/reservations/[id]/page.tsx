@@ -1,4 +1,4 @@
-import { Detail } from "@/app/features/reservations";
+import { Detail } from "@/features/reservations";
 import invariant from "tiny-invariant";
 
 export default function Page({ params }: { params: { id: string } }) {

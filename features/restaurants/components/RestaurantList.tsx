@@ -1,6 +1,6 @@
 import { SimpleGrid } from "@mantine/core";
-import { api as ratingsApi } from "@/app/features/ratings";
-import { api as reservationsApi } from "@/app/features/reservations";
+import { api as ratingsApi } from "@/features/ratings";
+import { api as reservationsApi } from "@/features/reservations";
 import { api } from "../api";
 import { FilteredRestaurants } from "./FilteredRestaurants";
 

@@ -1,4 +1,4 @@
-import { Account } from "@/app/features/auth";
+import { Account } from "@/features/auth";
 
 export default function AccountPage() {
   return (
