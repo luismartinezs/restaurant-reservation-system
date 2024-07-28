@@ -1,9 +1,11 @@
+import "server-only"
 import { createClient } from "@/lib/supabase/server";
+
 import { KEY, SCHEMA } from "./constants";
 import { RestaurantInsert, RestaurantRead, RestaurantUpdate, Id } from "./types";
 
-export async function api() {
-  const supabase = await createClient()
+export function api() {
+  const supabase = createClient()
 
   // Utility functions for the restaurants table
   const getAllRestaurants = async () => {

@@ -1,3 +1,5 @@
+import "server-only"
+
 import { AdminUserAttributes, AuthMFAAdminDeleteFactorParams, GenerateLinkParams } from "@supabase/supabase-js"
 
 import { createClient } from "@/lib/supabase/admin";

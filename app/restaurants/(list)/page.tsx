@@ -1,6 +1,6 @@
 import { Container } from "@mantine/core";
 
-import { RestaurantList } from "@/features/restaurants";
+import { RestaurantList } from "@/features/restaurants/server";
 import { Search } from "@/features/search";
 
 export const revalidate = 0;

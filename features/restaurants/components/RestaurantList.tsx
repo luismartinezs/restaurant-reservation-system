@@ -1,14 +1,16 @@
 import { SimpleGrid } from "@mantine/core";
-import { api as ratingsApi } from "@/features/ratings";
-import { api as reservationsApi } from "@/features/reservations";
+
+import { api as ratingsApi } from "@/features/ratings/server";
+import { api as reservationsApi } from "@/features/reservations/server";
+
 import { api } from "../api";
 import { FilteredRestaurants } from "./FilteredRestaurants";
 
 export async function RestaurantList() {
-  const { getAllRestaurants } = await api();
+  const { getAllRestaurants } = api();
   const restaurants = await getAllRestaurants();
-  const ratings = await (await ratingsApi()).getAll();
-  const reservations = await (await reservationsApi()).getAll();
+  const ratings = await ratingsApi().getAll();
+  const reservations = await reservationsApi().getAll();
 
   return (
     <SimpleGrid cols={{ base: 1, sm: 3, lg: 4 }}>

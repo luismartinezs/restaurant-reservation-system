@@ -1,3 +1,5 @@
+import "server-only"
+
 import { createClient } from "@/lib/supabase/server";
 import { KEY, SCHEMA } from "./constants";
 import { Insert, Read, Update, Id } from "./types";

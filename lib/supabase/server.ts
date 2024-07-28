@@ -1,11 +1,11 @@
-"use server"
+import "server-only"
 
 import { cookies } from 'next/headers'
 
 import { createServerClient } from '@supabase/ssr'
 import { Database } from './database.types'
 
-export async function createClient() {
+export function createClient() {
   const cookieStore = cookies()
 
   return createServerClient<Database>(

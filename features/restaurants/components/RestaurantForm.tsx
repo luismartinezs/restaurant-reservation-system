@@ -8,8 +8,6 @@ import {
   Button,
 } from "@mantine/core";
 import { cuisineOptions } from "../constants";
-import { api } from "../api";
-import { redirect } from "next/navigation";
 import { RestaurantRead } from "../types";
 import { submit } from "../actions";
 

@@ -1,12 +1,15 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { Box, Checkbox, Fieldset, Stack } from "@mantine/core";
-import { cuisineOptions } from "@/features/restaurants";
-import { useFilterQuery } from "../hooks/useFilterQuery";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import { Box, Checkbox, Fieldset, Stack } from "@mantine/core";
 import { useDebouncedCallback } from "@mantine/hooks";
+
 import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
+import { cuisineOptions } from "@/features/restaurants";
+
+import { useFilterQuery } from "../hooks/useFilterQuery";
 
 export function FiltersMenu() {
   const router = useRouter();
