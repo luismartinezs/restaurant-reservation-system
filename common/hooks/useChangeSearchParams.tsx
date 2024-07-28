@@ -39,18 +39,18 @@ export function useChangeSearchParams() {
     return newSearchParams.toString();
   };
 
-  const remove = (key: string) => {
+  const remove = (keys: string[]) => {
     const newSearchParams = new URLSearchParams(searchParams.toString());
-    newSearchParams.delete(key);
+    keys.forEach((key) => newSearchParams.delete(key));
 
     return newSearchParams.toString();
-  }
+  };
 
   return {
     getAsString,
     get,
     update,
     set,
-    remove
+    remove,
   };
 }

@@ -13,7 +13,7 @@ export async function RestaurantList() {
   const reservations = await reservationsApi().getAll();
 
   return (
-    <SimpleGrid cols={{ base: 1, sm: 3, lg: 4 }}>
+    <SimpleGrid cols={{ base: 2, sm: 2, lg: 4 }}>
       <FilteredRestaurants
         restaurants={restaurants}
         reservations={reservations}

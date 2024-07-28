@@ -1,57 +1,55 @@
 "use client";
 
+import { ActionIcon, Box, Container, Drawer } from "@mantine/core";
+import { CuisineFilters } from "./CuisineFilters";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-
-import { Box, Checkbox, Fieldset, Stack } from "@mantine/core";
-import { useDebouncedCallback } from "@mantine/hooks";
-
-import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
-import { cuisineOptions } from "@/features/restaurants";
-
-import { useFilterQuery } from "../hooks/useFilterQuery";
+import { useMediaQuery } from "@mantine/hooks";
+import { CiFilter } from "react-icons/ci";
 
 export function FiltersMenu() {
-  const router = useRouter();
-  const filters = useFilterQuery();
-  const { update, remove } = useChangeSearchParams();
-  const [value, setValue] = useState(filters.cuisine);
+  const [opened, setOpened] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
-  const handleSubmit = useDebouncedCallback(() => {
-    if (value.length === 0) {
-      const params = remove("cuisine")
-      router.push(`/restaurants?${params}`);
-      router.refresh(); // would be better to handle filtering client side
-      return;
-    }
-    const params = update({ cuisine: value.join(",") });
-    router.push(`/restaurants?${params}`);
-    router.refresh(); // would be better to handle filtering client side
-  }, 500);
+  const toggleDrawer = () => setOpened((o) => !o);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = event.currentTarget;
-    setValue((prev) =>
-      checked ? [...prev, name] : prev.filter((c) => c !== name)
+  const content = (
+    <Box component="form" w="100%" py={8}>
+      <CuisineFilters />
+    </Box>
+  );
+
+  if (isMobile) {
+    return (
+      <div>
+        <ActionIcon
+          variant="subtle"
+          onClick={toggleDrawer}
+          aria-label="Toggle filters"
+        >
+          <CiFilter />
+        </ActionIcon>
+        <Drawer
+          opened={opened}
+          onClose={toggleDrawer}
+          title="Filters"
+          padding="xl"
+          size="100%"
+        >
+          {content}
+        </Drawer>
+      </div>
     );
-    handleSubmit();
-  };
+  }
 
   return (
-    <Box component="form" w={200}>
-      <Fieldset legend="Cuisine" variant="unstyled">
-        <Stack>
-          {cuisineOptions.map((cuisine) => (
-            <Checkbox
-              key={cuisine}
-              label={cuisine}
-              name={cuisine}
-              checked={value.includes(cuisine)}
-              onChange={handleChange}
-            />
-          ))}
-        </Stack>
-      </Fieldset>
-    </Box>
+    <Container
+      size="50rem"
+      mx={0}
+      className="min-w-[200px]"
+      bd="1px solid gray.8"
+      h="fit-content"
+    >
+      {content}
+    </Container>
   );
 }
