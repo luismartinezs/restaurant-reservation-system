@@ -9,7 +9,9 @@ export function api() {
 
   // Utility functions for the restaurants table
   const getAllRestaurants = async () => {
-    const { data, error } = await supabase.from(KEY).select('*')
+    const { data, error } = await supabase.from(KEY)
+    .select('*')
+    .order('id', { ascending: true })
     if (error) throw error
     return data
   }

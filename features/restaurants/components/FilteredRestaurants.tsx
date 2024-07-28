@@ -53,7 +53,6 @@ export function FilteredRestaurants({
             rating={avgRating}
             ratingCount={ratingCount}
             availableSeats={availableSeats}
-            alwaysShowAvailableSeats
           />
         )
       )}

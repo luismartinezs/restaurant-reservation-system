@@ -84,13 +84,13 @@ export const RestaurantCard = ({
         Booked {bookings} {bookings === 1 ? "time" : "times"} today
       </Text> */}
 
-      {(availableSeats && availableSeats <= MIN_SEATS_DISPLAY) ||
-        (alwaysShowAvailableSeats && (
-          <Text size="sm" mt="sm" c="red">
-            Only {availableSeats} {availableSeats === 1 ? "seat" : "seats"}{" "}
-            available
-          </Text>
-        ))}
+      {((availableSeats && availableSeats <= MIN_SEATS_DISPLAY) ||
+        alwaysShowAvailableSeats) && (
+        <Text size="sm" mt="sm" c="red">
+          Only {availableSeats} {availableSeats === 1 ? "seat" : "seats"}{" "}
+          available
+        </Text>
+      )}
 
       {/* <Group mt="md" gap="xs">
         {availableTimes.map((time) => (

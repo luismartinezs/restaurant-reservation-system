@@ -14,18 +14,19 @@ import { useFilterQuery } from "../hooks/useFilterQuery";
 export function FiltersMenu() {
   const router = useRouter();
   const filters = useFilterQuery();
-  const { getAsString, update } = useChangeSearchParams();
+  const { update, remove } = useChangeSearchParams();
   const [value, setValue] = useState(filters.cuisine);
 
   const handleSubmit = useDebouncedCallback(() => {
     if (value.length === 0) {
-      router.push(`/restaurants?${getAsString()}`);
-      router.refresh();
+      const params = remove("cuisine")
+      router.push(`/restaurants?${params}`);
+      router.refresh(); // would be better to handle filtering client side
       return;
     }
     const params = update({ cuisine: value.join(",") });
     router.push(`/restaurants?${params}`);
-    router.refresh();
+    router.refresh(); // would be better to handle filtering client side
   }, 500);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
