@@ -209,8 +209,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] /login: User can login
   - [x] /account: User can see account page
   - [x] User can logout
-- [ ] Scaffold minimal CRUD pages for:
-  - [ ] Restaurant (as feature)
+- [x] Scaffold minimal CRUD pages for:
+  - [x] Restaurant (as feature)
     - [x] types
     - [x] API
     - [-] hooks
@@ -251,9 +251,14 @@ Pages define what data needs to be shown together and thus fetched together (it 
       - [x] Edit
       - [x] Delete
 - [ ] Create actual app pages
-  - [ ] /restaurants
+  - [x] /restaurants
+    - [x] reaturant item
+    - [ ] filters / search
   - [ ] /restaurants/:uid
   - [ ] /restaurants/:uid/edit (manager)
+    - [ ] form loading state
+    - [ ] form server error state
+    - [ ] validation with zod
   - [ ] /restaurants/new (manager)
   - [ ] /reservations
   - [ ] /reservations/:uid
@@ -283,6 +288,17 @@ Nothing so far
 ## Notes
 
 - Calculating average rating in real time because we also have to fetch NxM times for reservations so the total number of queries is NxM + NxP which does not change complexity -- O(Nx2M)
+- booking system:
+  - restaurant has X tables
+  - A reservation sets number of people.
+  - give guests 2 hours to eat
+  - a restaurant is "full" for a given timeslot if all seats are booked for that given timeslot
+  - "full" is function of: total number of seats, number of seats booked, booking time, number of people in booking
+  - user must enter: booking time, number of guests, restaurant. System returns availabiltiy
+  - user must always select restaurant
+  - for booking time and number of guests, there are some defaults
+    - booking time: 19h same day if it's before 19h, 19h next day if it's after 19h. So the closest 19h in the future
+    - number of guests: 2 (can select up to 8)
 
 ## Coding practices
 

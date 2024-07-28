@@ -42,8 +42,6 @@ const Form = ({ initialData }: { initialData?: User }) => {
 
     const validated = validate(formData);
 
-    console.log(validated);
-
     if (validated !== true) {
       return validated;
     }

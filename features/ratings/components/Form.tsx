@@ -1,8 +1,6 @@
 import { redirect } from "next/navigation";
 
 import { Box, Title, Stack, Button, Select, SelectProps, NumberInput } from "@mantine/core";
-import { DateTimePicker } from "@mantine/dates";
-import dayjs from "dayjs";
 
 import { api as restaurantsApi } from "@/features/restaurants";
 import { api as authApi } from "@/features/auth";
@@ -10,6 +8,7 @@ import { api as authApi } from "@/features/auth";
 import { Read } from "../types";
 import { KEY } from "../constants";
 import { api } from "../api";
+import { handleSubmit } from "../actions";
 
 function getFormData(formData: FormData) {
   return {
@@ -77,26 +76,13 @@ const Form = ({ initialData }: { initialData?: Read }) => {
   const { rating, restaurant_id, user_id, id } = initialData || {};
 
   async function submit(formData: FormData) {
-    "use server";
-
     const validated = validate(formData);
 
     if (validated !== true) {
       return validated;
     }
 
-    const { insert, update } = api();
-
-    const submitHandler =
-      typeof id === "undefined"
-        ? insert.bind(null, getFormData(formData))
-        : update.bind(null, id, getFormData(formData));
-
-    const item = await submitHandler();
-
-    if (item) {
-      redirect(`/scaffold/${KEY}/${item.id}`);
-    }
+    handleSubmit(formData, id);
   }
   return (
     <Box mx="auto">

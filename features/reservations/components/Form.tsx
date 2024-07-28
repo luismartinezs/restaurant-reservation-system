@@ -1,5 +1,3 @@
-import { redirect } from "next/navigation";
-
 import {
   Box,
   Title,
@@ -15,8 +13,7 @@ import { api as restaurantsApi } from "@/features/restaurants";
 import { api as authApi } from "@/features/auth";
 
 import { Read } from "../types";
-import { KEY } from "../constants";
-import { api } from "../api";
+import { submit } from "../actions";
 
 // needs to return format compatible with supabase, e.g. `2024-07-17 21:09:50+00`
 function parseDate(date:string) {
@@ -28,14 +25,12 @@ function getFormData(formData: FormData) {
     start: parseDate(formData.get("start") as string),
     restaurant_id: Number(formData.get("restaurant_id") as string),
     user_id: formData.get("user_id") as string,
+    people: 2 // "people" added ad hoc to match DB schema
   };
 }
 
 function validate(formData: FormData) {
   const { start, restaurant_id, user_id } = getFormData(formData);
-
-  console.log(start);
-
 
   if (!restaurant_id || !user_id || !start) {
     return "Missing required fields";
@@ -84,31 +79,20 @@ async function SelectUser(props: SelectProps) {
 }
 
 const Form = ({ initialData }: { initialData?: Read }) => {
-  const isEdit = typeof initialData !== "undefined";
   const { start, restaurant_id, user_id, id } = initialData || {};
+  const isEdit = typeof id !== "undefined";
 
-  async function submit(formData: FormData) {
-    "use server";
-
+  function handleSubmit(formData: FormData) {
     const validated = validate(formData);
 
     if (validated !== true) {
       return validated;
     }
 
-    const { insert, update } = api();
-
-    const submitHandler =
-      typeof id === "undefined"
-        ? insert.bind(null, getFormData(formData))
-        : update.bind(null, id, getFormData(formData));
-
-    const item = await submitHandler();
-
-    if (item) {
-      redirect(`/scaffold/${KEY}/${item.id}`);
-    }
+    submit(getFormData(formData))
   }
+
+
   return (
     <Box mx="auto">
       <Title order={2} mb="md">
@@ -125,7 +109,7 @@ const Form = ({ initialData }: { initialData?: Read }) => {
             required
             defaultValue={start ? new Date(start) : undefined}
           />
-          <Button type="submit" formAction={submit}>
+          <Button type="submit" formAction={handleSubmit}>
             {isEdit ? "Update" : "Create"}
           </Button>
         </Stack>

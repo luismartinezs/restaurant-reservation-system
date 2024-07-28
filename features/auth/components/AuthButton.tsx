@@ -1,21 +1,12 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
-import { createClient } from "@/lib/supabase/server";
+import { Button } from "@mantine/core";
 
 import { getUser } from "../utils";
-import { Button } from "@mantine/core";
+import { signOut } from "../actions";
 
 export async function AuthButton() {
   const { user } = await getUser();
-
-  const signOut = async () => {
-    "use server";
-
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    return redirect("/login");
-  };
 
   return user ? (
     <div className="flex items-center gap-4">

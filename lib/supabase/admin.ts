@@ -1,3 +1,5 @@
+import "server-only"
+
 // https://supabase.com/docs/reference/javascript/admin-api
 import { cookies } from 'next/headers'
 

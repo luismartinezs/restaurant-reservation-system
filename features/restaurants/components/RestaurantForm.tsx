@@ -8,9 +8,8 @@ import {
   Button,
 } from "@mantine/core";
 import { cuisineOptions } from "../constants";
-import { api } from "../api";
-import { redirect } from "next/navigation";
 import { RestaurantRead } from "../types";
+import { submit } from "../actions";
 
 function getFormData(formData: FormData) {
   return {
@@ -32,31 +31,18 @@ function validate(formData: FormData) {
   return true;
 }
 
-const RestaurantForm = ({
-  initialData,
-}: {
-  initialData?: RestaurantRead;
-}) => {
-  const { name, location, cuisine_type, seating_capacity, id } = initialData || {};
+const RestaurantForm = ({ initialData }: { initialData?: RestaurantRead }) => {
+  const { name, location, cuisine_type, seating_capacity, id } =
+    initialData || {};
 
-  async function submit(formData: FormData) {
-    "use server";
-
+  async function handleSubmit(formData: FormData) {
     const validated = validate(formData);
 
     if (validated !== true) {
       return validated;
     }
 
-    const { insertRestaurant, updateRestaurant } = api();
-
-    const handler = typeof id === "undefined" ? insertRestaurant.bind(null, getFormData(formData)) : updateRestaurant.bind(null, id, getFormData(formData));
-
-    const restaurant = await handler();
-
-    if (restaurant) {
-      redirect(`/scaffold/restaurants/${restaurant.id}`);
-    }
+    submit(getFormData(formData), id);
   }
   return (
     <Box mx="auto">
@@ -95,7 +81,7 @@ const RestaurantForm = ({
             defaultValue={seating_capacity}
             min={1}
           />
-          <Button type="submit" formAction={submit}>
+          <Button type="submit" formAction={handleSubmit}>
             Create Restaurant
           </Button>
         </Stack>
