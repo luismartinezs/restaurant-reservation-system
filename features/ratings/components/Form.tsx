@@ -1,13 +1,9 @@
-import { redirect } from "next/navigation";
-
 import { Box, Title, Stack, Button, Select, SelectProps, NumberInput } from "@mantine/core";
 
-import { api as restaurantsApi } from "@/features/restaurants";
-import { api as authApi } from "@/features/auth";
+import { api as restaurantsApi } from "@/features/restaurants/server";
+import { api as authApi } from "@/features/auth/server";
 
 import { Read } from "../types";
-import { KEY } from "../constants";
-import { api } from "../api";
 import { handleSubmit } from "../actions";
 
 function getFormData(formData: FormData) {

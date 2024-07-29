@@ -13,6 +13,7 @@ import {
 import { RestaurantRead } from "../types";
 import Link from "next/link";
 import { KEY, MIN_SEATS_DISPLAY } from "../constants";
+import { Display } from "@/features/ratings";
 
 export const RestaurantCard = ({
   restaurant,
@@ -62,19 +63,7 @@ export const RestaurantCard = ({
         </Badge>
       </Group> */}
 
-      <Group gap={5}>
-        {!noRatings &&
-          [...Array(5)].map((_, i) => (
-            <Text key={i} c={i < rating ? "yellow" : "gray"}>
-              ★
-            </Text>
-          ))}
-        <Text size="sm" c="dimmed">
-          {noRatings
-            ? "No ratings yet"
-            : `${ratingCount} ${ratingCount === 1 ? "rating" : "ratings"}`}
-        </Text>
-      </Group>
+      <Display rating={rating} ratingCount={ratingCount} />
 
       <Text size="sm" c="dimmed" mt="sm">
         {[cuisine_type, location].join(" • ")}

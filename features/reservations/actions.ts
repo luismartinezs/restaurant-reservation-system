@@ -41,3 +41,26 @@ export async function submit(data: {
     redirect(`/scaffold/${KEY}/${item.id}`);
   }
 }
+
+export async function book(data: {
+  people: number;
+  restaurant_id: number;
+  start: string;
+  user_id: string;
+}) {
+  const { book: doBook } = api();
+
+  try {
+    const item = await doBook(data);
+    return item
+  } catch (err) {
+    if (err instanceof Error) {
+      return {
+        error: err.message
+      }
+    }
+    return {
+      error: "An error occurred"
+    }
+  }
+}

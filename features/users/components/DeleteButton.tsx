@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from "@mantine/core";
-import { api } from "../api";
+import { adminApi } from "../api";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { KEY } from "../constants";
@@ -12,7 +12,7 @@ export function DeleteButton({
   async function handleDelete() {
     "use server";
 
-    const { remove } = api();
+    const { remove } = adminApi();
 
     await remove(id);
 

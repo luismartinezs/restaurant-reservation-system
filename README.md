@@ -253,7 +253,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [ ] Create actual app pages
   - [x] /restaurants
     - [x] reaturant item
-    - [ ] filters / search
+    - [x] filters / search
   - [ ] /restaurants/:uid
   - [ ] /restaurants/:uid/edit (manager)
     - [ ] form loading state

@@ -1,12 +1,12 @@
 import { Button, Container, SimpleGrid } from "@mantine/core";
-import { api } from "../api";
+import { adminApi } from "../api";
 import Link from "next/link";
 import Card from "./Card";
 import { DeleteButton } from "./DeleteButton";
 import { KEY } from "../constants";
 
 export async function List() {
-  const { getAll } = api();
+  const { getAll } = adminApi();
   const {data: {users}, error} = await getAll();
 
   return (

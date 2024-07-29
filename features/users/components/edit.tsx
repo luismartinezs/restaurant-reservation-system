@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import { api } from "../api";
+import { adminApi } from "../api";
 import { Form } from "./Form";
 import invariant from "tiny-invariant";
 
 export async function Edit({ id }: { id: string }) {
-  const { getById } = api();
+  const { getById } = adminApi();
   try {
     const {
       data: { user },

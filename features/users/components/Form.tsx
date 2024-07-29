@@ -4,7 +4,7 @@ import { Box, Title, Stack, Button, TextInput } from "@mantine/core";
 // import { z } from 'zod'
 
 import { KEY } from "../constants";
-import { api } from "../api";
+import { adminApi } from "../api";
 import { User } from "@supabase/supabase-js";
 
 // const schema = z.object({
@@ -46,7 +46,7 @@ const Form = ({ initialData }: { initialData?: User }) => {
       return validated;
     }
 
-    const { create, update } = api();
+    const { create, update } = adminApi();
 
     const submitHandler = isEdit
       ? update.bind(null, id, getFormData(formData))

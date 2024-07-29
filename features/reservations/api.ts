@@ -3,6 +3,8 @@ import "server-only"
 import { createClient } from "@/lib/supabase/server";
 import { KEY, SCHEMA } from "./constants";
 import { Insert, Read, Update, Id } from "./types";
+import { api as restaurantApi } from "@/features/restaurants/server"
+import { canReserve } from "./utils";
 
 export function api() {
   const supabase = createClient()
@@ -39,6 +41,7 @@ export function api() {
     return data
   }
 
+  // does not take into consideration the restaurant availability
   const insert = async (reservation: Insert) => {
     const { data, error } = await supabase
       .from(KEY)
@@ -47,6 +50,19 @@ export function api() {
       .single()
     if (error) throw error
     return data
+  }
+
+  const book = async (reservation: Insert) => {
+    // get restaurant availability
+    const { seating_capacity } = await restaurantApi().getRestaurantById(reservation.restaurant_id)
+
+    const restaurantReservations = await getFilteredReservations('restaurant_id', reservation.restaurant_id)
+
+    if (canReserve(reservation, restaurantReservations, seating_capacity)) {
+      return insert(reservation)
+    }
+
+    throw new Error('Restaurant is fully booked')
   }
 
   const update = async (
@@ -131,5 +147,6 @@ export function api() {
     subscribeToUpdates,
     subscribeToDeletes,
     subscribeToSpecificRow,
+    book
   }
 }
