@@ -254,7 +254,11 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] /restaurants
     - [x] reaturant item
     - [x] filters / search
-  - [ ] /restaurants/:uid
+  - [x] /restaurants/:uid
+    - [ ] reservation widget
+      - [ ] if reservation successful, show success
+      - [ ] if there is no enough space, show error
+      - [ ] show a list of available reservation times in detail page which are near the currently selected date time for selected ppl, in intervals of 30 min
   - [ ] /restaurants/:uid/edit (manager)
     - [ ] form loading state
     - [ ] form server error state

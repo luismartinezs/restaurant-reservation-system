@@ -1,9 +1,4 @@
-import {
-  Title,
-  Stack,
-  Button,
-  NumberInput,
-} from "@mantine/core";
+import { Title, Stack, Button, NumberInput, Flex } from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
 import dayjs from "dayjs";
 
@@ -13,6 +8,7 @@ import { book } from "../actions";
 import { Id } from "@/features/restaurants";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 import invariant from "tiny-invariant";
+import { getSearchQuery } from "@/features/search";
 
 // needs to return format compatible with supabase, e.g. `2024-07-17 21:09:50+00`
 function parseDate(date: string) {
@@ -21,9 +17,9 @@ function parseDate(date: string) {
 
 function getFormData(formData: FormData) {
   return {
-    date: formData.get("date"),
-    time: formData.get("time"),
-    people: formData.get("people"),
+    date: formData.get("date") as string,
+    time: formData.get("time") as string,
+    people: formData.get("people") as string,
   };
 }
 
@@ -41,6 +37,7 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
   const {
     data: { user },
   } = await userApi().getUser();
+  const query = getSearchQuery();
 
   async function handleSubmit(formData: FormData) {
     "use server";
@@ -52,16 +49,12 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
 
     const { date, time, people } = getFormData(formData);
 
-    console.log("date", date);
-
-
     invariant(user, "You are not logged in");
 
-    console.log("logedin");
-
-
     book({
-      start: parseDate(`${date as string} ${time as string}`),
+      start: parseDate(
+        `${dayjs(date).format("YYYY-MM-DD") as string} ${time as string}`
+      ),
       people: Number(people),
       restaurant_id: restaurantId,
       user_id: user.id,
@@ -74,7 +67,7 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
         Make a reservation
       </Title>
       <form>
-        <Stack>
+        <div className="flex flex-col md:flex-row gap-4">
           <DatePickerInput
             flex={1}
             w={{
@@ -87,6 +80,7 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
             leftSectionPointerEvents="none"
             required
             name="date"
+            defaultValue={dayjs(query.date).toDate()}
           />
           <TimeInput
             w={{
@@ -100,6 +94,7 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
             leftSectionPointerEvents="none"
             required
             name="time"
+            defaultValue={query.time}
           />
           <NumberInput
             w={{
@@ -115,11 +110,12 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
             max={8}
             required
             name="people"
+            defaultValue={query.people}
           />
           <Button type="submit" formAction={handleSubmit}>
-            Create
+            Book now
           </Button>
-        </Stack>
+        </div>
       </form>
     </div>
   );

@@ -50,6 +50,9 @@ export async function book(data: {
 }) {
   const { book: doBook } = api();
 
+  console.log(data.start);
+
+
   try {
     const item = await doBook(data);
     return item

@@ -1,25 +1,26 @@
-
 import dayjs from "dayjs"
 import { Insert, Read } from "./types"
 import { getDates } from "@/features/restaurants"
 import isBetween from "dayjs/plugin/isBetween";
 
+dayjs.extend(isBetween)
+
 export function canReserve(reservationAttempt: Insert, existingReservations: Read[], seatingCapacity: number): boolean {
-  const { start, end } = getDates(reservationAttempt.start)
+  const { people } = reservationAttempt
+  const { start: attemptStart, end: attemptEnd } = getDates(reservationAttempt.start)
 
-  dayjs.extend(isBetween)
+  const peopleCountAtDate: { start: number, end: number } = { start: 0, end: 0 };
 
-  const peopleCountAtDate: { start: number, end: number } = existingReservations.reduce((acc, r) => {
+  for (const r of existingReservations) {
     const { start: _start, end: _end } = getDates(r.start)
 
-    if (dayjs(start).isBetween(_start, _end)) {
-      acc.start += r.people
+    if (dayjs(attemptStart).isBetween(_start, _end, 'minute', '[)')) {
+      peopleCountAtDate.start += r.people
     }
-    if (dayjs(end).isBetween(_start, _end)) {
-      acc.end += r.people
+    if (dayjs(attemptEnd).isBetween(_start, _end, 'minute', '[)')) {
+      peopleCountAtDate.end += r.people
     }
-    return acc
-  }, { start: 0, end: 0 })
+  }
 
-  return Object.values(peopleCountAtDate).every(count => count + reservationAttempt.people <= seatingCapacity)
+  return (peopleCountAtDate.start + people <= seatingCapacity) && (peopleCountAtDate.end + people <= seatingCapacity)
 }
