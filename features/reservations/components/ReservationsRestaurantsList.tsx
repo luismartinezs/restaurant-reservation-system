@@ -21,7 +21,7 @@ export const ReservationsRestaurantsList = async ({
     <Stack gap="md">
       {reservationsRestaurants.map((reservation) => (
         <ReservationsRestaurantsItem
-          reservationsRestaurant={reservation}
+          reservationRestaurant={reservation}
           key={reservation.reservation_id}
         />
       ))}

@@ -1,7 +1,7 @@
 import "server-only"
 
 import { createClient } from "@/lib/supabase/server";
-import { KEY, SCHEMA } from "./constants";
+import { KEY, SCHEMA, VIEW } from "./constants";
 import { Insert, Read, Update, Id } from "./types";
 import { api as restaurantApi } from "@/features/restaurants/server"
 import { canReserve } from "./utils";
@@ -36,11 +36,16 @@ export function api() {
   }
 
   const getFilteredReservationsRestaurants = async <K extends keyof Read>(column: K, value: NonNullable<Read[K]>) => {
-    const { data, error } = await supabase.from('reservations_restaurants').select('*').eq(column, value)
+    const { data, error } = await supabase.from(VIEW.reservationsRestaurants).select('*').eq(column, value)
     if (error) throw error
     return data
   }
 
+  const getReservationRestaurantByReservationId = async (reservation_id: Id) => {
+    const { data, error } = await supabase.from(VIEW.reservationsRestaurants).select('*').eq('reservation_id', reservation_id).single()
+    if (error) throw error
+    return data
+  }
 
   const getById = async (id: Id) => {
     const { data, error } = await supabase.from(KEY).select('*').eq('id', id).single()
@@ -155,6 +160,7 @@ export function api() {
     subscribeToDeletes,
     subscribeToSpecificRow,
     book,
-    getFilteredReservationsRestaurants
+    getFilteredReservationsRestaurants,
+    getReservationRestaurantByReservationId
   }
 }

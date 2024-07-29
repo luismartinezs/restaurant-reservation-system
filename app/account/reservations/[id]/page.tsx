@@ -5,6 +5,8 @@ import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { notFound } from "next/navigation";
 import { checkAuth } from "@/features/auth/utils";
+import { api } from "@/features/reservations/server";
+import { ReservationsRestaurantsItem } from "@/features/reservations";
 
 dayjs.extend(utc);
 
@@ -19,11 +21,11 @@ export default async function ReservationPage({ params }: { params: { id: string
 
     invariant(!isNaN(numId), "id must be a number");
 
-    // const reservationRestaurant = await api().getReservationRestaurant
+    const reservationRestaurant = await api().getReservationRestaurantByReservationId(numId)
 
     return (<>
-    lroem</>
-      // <ReservationsRestaurantsItem reservationRestaurant={} />
+      <ReservationsRestaurantsItem reservationRestaurant={reservationRestaurant} />
+    </>
     );
   } catch (err) {
     return notFound();

@@ -21,12 +21,12 @@ import invariant from "tiny-invariant";
 dayjs.extend(utc);
 
 export const ReservationsRestaurantsItem = ({
-  reservationsRestaurant,
+  reservationRestaurant,
 }: {
-  reservationsRestaurant: ReservationRestaurant;
+  reservationRestaurant: ReservationRestaurant;
 }) => {
   const { reservation_id, restaurant_name, start, people, location } =
-    reservationsRestaurant;
+    reservationRestaurant;
   const [pending, setPending] = useState(false);
 
   invariant(reservation_id, "Reservation ID not defined");
