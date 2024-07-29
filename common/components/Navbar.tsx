@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const links = [
+const defaultLinks = [
   {
     name: "Home",
     href: "/",
@@ -23,7 +23,11 @@ const links = [
   // },
 ];
 
-export function Navbar() {
+export function Navbar({
+  links = defaultLinks,
+}: {
+  links?: Array<{ name: string; href: string }>;
+}) {
   return (
     <>
       {links.map(({ name, href }) => (

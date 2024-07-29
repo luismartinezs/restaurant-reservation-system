@@ -35,6 +35,13 @@ export function api() {
     return data
   }
 
+  const getFilteredReservationsRestaurants = async <K extends keyof Read>(column: K, value: NonNullable<Read[K]>) => {
+    const { data, error } = await supabase.from('reservations_restaurants').select('*').eq(column, value)
+    if (error) throw error
+    return data
+  }
+
+
   const getById = async (id: Id) => {
     const { data, error } = await supabase.from(KEY).select('*').eq('id', id).single()
     if (error) throw error
@@ -147,6 +154,7 @@ export function api() {
     subscribeToUpdates,
     subscribeToDeletes,
     subscribeToSpecificRow,
-    book
+    book,
+    getFilteredReservationsRestaurants
   }
 }

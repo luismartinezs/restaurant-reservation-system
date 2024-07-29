@@ -33,6 +33,13 @@ export type Database = {
             foreignKeyName: "ratings_restaurant_id_fkey"
             columns: ["restaurant_id"]
             isOneToOne: false
+            referencedRelation: "reservations_restaurants"
+            referencedColumns: ["restaurant_id"]
+          },
+          {
+            foreignKeyName: "ratings_restaurant_id_fkey"
+            columns: ["restaurant_id"]
+            isOneToOne: false
             referencedRelation: "restaurants"
             referencedColumns: ["id"]
           },
@@ -68,6 +75,13 @@ export type Database = {
           user_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "reservations_restaurant_id_fkey"
+            columns: ["restaurant_id"]
+            isOneToOne: false
+            referencedRelation: "reservations_restaurants"
+            referencedColumns: ["restaurant_id"]
+          },
           {
             foreignKeyName: "reservations_restaurant_id_fkey"
             columns: ["restaurant_id"]
@@ -136,7 +150,27 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      reservations_restaurants: {
+        Row: {
+          cuisine_type: string | null
+          location: string | null
+          people: number | null
+          reservation_id: number | null
+          restaurant_id: number | null
+          restaurant_name: string | null
+          start: string | null
+          user_id: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reservations_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
       [_ in never]: never
