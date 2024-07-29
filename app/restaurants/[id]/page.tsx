@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import invariant from "tiny-invariant";
 import { Detail } from "./components/detail";
 import { BookForm } from "@/features/reservations";
-import { Container, Stack } from "@mantine/core";
+import { Container } from "@mantine/core";
 
 // issue where is that this page will not be cached
 export default async function Page({ params }: { params: { id: string } }) {

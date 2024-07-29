@@ -11,9 +11,12 @@ import { Id } from "./types";
 export async function handleDelete(id: Id, redirectPath?: string) {
   const { remove } = api();
 
+  console.log("deleting", id);
+
+
   await remove(id);
 
-  revalidatePath(`/scaffold/${KEY}/list`);
+  revalidatePath(`/account/reservations`);
 
   if (redirectPath) {
     redirect(redirectPath);

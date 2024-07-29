@@ -280,6 +280,7 @@ None yet
 ## If I had more time I would
 
 - It might be interesting to cache the number of reservations per restaurant (maybe), otherwise for the listing, we're looking at N*M queries, alternatively, use pagination and fetch only for 10 restaurants at a time (same can be done for calculation of average rating), once this is done it would make sense to compute average ratings in advance and store them in the DB in the restaurants table
+- add confirmation modal to delete actions
 
 ## Troubleshooting
 
