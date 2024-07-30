@@ -3,6 +3,7 @@ import { Container } from "@mantine/core";
 import { RestaurantList } from "@/features/restaurants/server";
 import { Search } from "@/features/search";
 import { FiltersMenu } from "@/features/filters";
+import { Suspense } from "react";
 
 export default function Page() {
   return (
@@ -11,7 +12,9 @@ export default function Page() {
         <FiltersMenu />
         <div>
           <Container px={0}>
-            <Search />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Search />
+            </Suspense>
             <RestaurantList />
           </Container>
         </div>

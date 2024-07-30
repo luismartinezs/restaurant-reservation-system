@@ -1,10 +1,11 @@
 import { Account } from "@/features/auth";
+import { Container } from "@mantine/core";
 
 export default function AccountPage() {
   return (
-    <div>
-      <h1>Account</h1>
+    <Container>
+      <h1>Your account</h1>
       <Account />
-    </div>
+    </Container>
   );
 }

@@ -16,7 +16,7 @@ export function CollapseDesktop({
     <AppShell
       header={{ height: 60 }}
       navbar={{
-        width: 300,
+        width: 500,
         breakpoint: "sm",
         collapsed: { desktop: true, mobile: !opened },
       }}

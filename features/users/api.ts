@@ -2,10 +2,23 @@ import "server-only"
 
 import { AdminUserAttributes, AuthMFAAdminDeleteFactorParams, GenerateLinkParams } from "@supabase/supabase-js"
 
-import { createClient } from "@/lib/supabase/admin";
+import { createClient as createAdminClient } from "@/lib/supabase/admin";
+import { createClient } from "@/lib/supabase/server";
 
-export function api() {
+export function userApi() {
   const supabase = createClient()
+
+  const getUser = async () => {
+    const { data, error } = await supabase.auth.getUser();
+
+    return { data, error }
+  }
+
+  return { getUser }
+}
+
+export function adminApi() {
+  const supabase = createAdminClient()
   const { admin } = supabase.auth
 
   const getAll = async (page = 1, perPage = 50) => {

@@ -5,6 +5,7 @@ import { api as reservationsApi } from "@/features/reservations/server";
 
 import { api } from "../api";
 import { FilteredRestaurants } from "./FilteredRestaurants";
+import { Suspense } from "react";
 
 export async function RestaurantList() {
   const { getAllRestaurants } = api();
@@ -14,11 +15,13 @@ export async function RestaurantList() {
 
   return (
     <SimpleGrid cols={{ base: 2, sm: 2, lg: 4 }}>
-      <FilteredRestaurants
-        restaurants={restaurants}
-        reservations={reservations}
-        ratings={ratings}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <FilteredRestaurants
+          restaurants={restaurants}
+          reservations={reservations}
+          ratings={ratings}
+        />
+      </Suspense>
     </SimpleGrid>
   );
 }

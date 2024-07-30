@@ -4,15 +4,11 @@ import { useRouter } from "next/navigation";
 
 import { Box, Button, Flex, NumberInput, Title } from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 
 import { useSearchQuery } from "../hooks/useSearchQuery";
 import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
-
-function toDateFormat(date: string | Dayjs) {
-  return dayjs(date).toDate();
-}
 
 export function Search() {
   const search = useSearchQuery();
@@ -65,7 +61,7 @@ export function Search() {
             leftSection={<CiCalendar size="1.1rem" />}
             leftSectionPointerEvents="none"
             required
-            defaultValue={toDateFormat(search.date)}
+            defaultValue={dayjs(search.date).toDate()}
             name="date"
           />
           <TimeInput

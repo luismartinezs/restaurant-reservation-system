@@ -5,17 +5,17 @@ import { SearchQuery } from "@/features/search"
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
 
-const RESERVATION_DURATION = 2 // hours;
+export const RESERVATION_DURATION = (59 * 2) / 60 // hours. slightly less than one hour to avoid overlap between start time and end time (?)
 
-function getDates(
+export function getDates(
   date: string, // YYYY-MM-DD
   time?: string, // HH:mm
-  separator = ' '
+  separator?: string
 ): {
   start: Date;
   end: Date;
 } {
-  const datetime = time ? `${date}${separator}${time}` : date;
+  const datetime = time ? `${date}${separator ?? ' '}${time}` : date;
   const start = dayjs(datetime)
 
   return {

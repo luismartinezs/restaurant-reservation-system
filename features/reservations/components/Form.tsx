@@ -9,8 +9,8 @@ import {
 import { DateTimePicker } from "@mantine/dates";
 import dayjs from "dayjs";
 
-import { api as restaurantsApi } from "@/features/restaurants";
-import { api as authApi } from "@/features/auth";
+import { api as restaurantsApi } from "@/features/restaurants/server";
+import { api as authApi } from "@/features/auth/server";
 
 import { Read } from "../types";
 import { submit } from "../actions";

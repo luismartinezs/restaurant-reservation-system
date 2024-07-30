@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
-import { api } from "../api";
+import { adminApi } from "../api";
 import { Card } from "./Card";
 import { DeleteButton } from "./DeleteButton";
 import { KEY } from "../constants";
 import invariant from "tiny-invariant";
 
 export async function Detail({ id }: { id: string }) {
-  const { getById } = api();
+  const { getById } = adminApi();
   try {
     const {
       data: { user },

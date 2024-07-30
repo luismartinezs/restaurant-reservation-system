@@ -253,15 +253,19 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [ ] Create actual app pages
   - [x] /restaurants
     - [x] reaturant item
-    - [ ] filters / search
-  - [ ] /restaurants/:uid
+    - [x] filters / search
+  - [x] /restaurants/:uid
+    - [x] reservation widget
+      - [-] if reservation successful, show success
+      - [-] if there is no enough space, show error
+      - [-] show a list of available reservation times in detail page which are near the currently selected date time for selected ppl, in intervals of 30 min
   - [ ] /restaurants/:uid/edit (manager)
     - [ ] form loading state
     - [ ] form server error state
     - [ ] validation with zod
   - [ ] /restaurants/new (manager)
-  - [ ] /reservations
-  - [ ] /reservations/:uid
+  - [x] /reservations
+  - [x] /reservations/:uid
   - [ ] /users (manager)
   - [ ] /users/:uid (manager)
   - [ ] /users/new (manager)
@@ -276,6 +280,9 @@ None yet
 ## If I had more time I would
 
 - It might be interesting to cache the number of reservations per restaurant (maybe), otherwise for the listing, we're looking at N*M queries, alternatively, use pagination and fetch only for 10 restaurants at a time (same can be done for calculation of average rating), once this is done it would make sense to compute average ratings in advance and store them in the DB in the restaurants table
+- add confirmation modal to delete actions
+- clean up booking flow by adding loading state and display booking response (either error, or full restaurant, or success)
+- show list of available reservation times for each restaurant in listing and detail pages
 
 ## Troubleshooting
 

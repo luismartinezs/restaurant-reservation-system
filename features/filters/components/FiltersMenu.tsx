@@ -2,7 +2,7 @@
 
 import { ActionIcon, Box, Container, Drawer } from "@mantine/core";
 import { CuisineFilters } from "./CuisineFilters";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
 import { CiFilter } from "react-icons/ci";
 
@@ -13,9 +13,11 @@ export function FiltersMenu() {
   const toggleDrawer = () => setOpened((o) => !o);
 
   const content = (
-    <Box component="form" w="100%" py={8}>
-      <CuisineFilters />
-    </Box>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Box component="form" w="100%" py={8}>
+        <CuisineFilters />
+      </Box>
+    </Suspense>
   );
 
   if (isMobile) {

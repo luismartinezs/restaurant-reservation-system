@@ -27,7 +27,7 @@ export function api() {
   }
 
   // Using NonNullable because even if some values can be null in the DB, filtering by `null` doesn't make any sense (or does it?)
-  const getFilteredReservations = async <K extends keyof Read>(column: K, value: NonNullable<Read[K]>) => {
+  const getFilteredRatings = async <K extends keyof Read>(column: K, value: NonNullable<Read[K]>) => {
     const { data, error } = await supabase.from(KEY).select('*').eq(column, value)
     if (error) throw error
     return data
@@ -121,7 +121,7 @@ export function api() {
     getAll,
     getSpecificColumns,
     getWithPagination,
-    getFilteredReservations,
+    getFilteredRatings,
     getById,
     insert,
     update,
