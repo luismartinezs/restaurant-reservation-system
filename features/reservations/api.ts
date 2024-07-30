@@ -5,6 +5,7 @@ import { KEY, SCHEMA, VIEW } from "./constants";
 import { Insert, Read, Update, Id } from "./types";
 import { api as restaurantApi } from "@/features/restaurants/server"
 import { canReserve } from "./utils";
+import invariant from "tiny-invariant";
 
 export function api() {
   const supabase = createClient()
@@ -77,12 +78,46 @@ export function api() {
     throw new Error('Restaurant is fully booked')
   }
 
+  const editBooking = async (reservation: Insert) => {
+    invariant(reservation.id, 'Reservation ID is required')
+    // get restaurant availability
+    const { seating_capacity } = await restaurantApi().getRestaurantById(reservation.restaurant_id)
+
+    const restaurantReservations = await getFilteredReservations('restaurant_id', reservation.restaurant_id)
+
+    const _canReserve = canReserve(reservation,
+      // exclude current reservation as it will be overriden
+      restaurantReservations.filter(({ id }) => id !== reservation.id),
+      seating_capacity)
+
+    console.log('canReserve', _canReserve);
+
+
+    if (canReserve(reservation,
+      // exclude current reservation as it will be overriden
+      restaurantReservations.filter(({ id }) => id !== reservation.id),
+      seating_capacity)) {
+      return update(reservation.id, reservation)
+    }
+
+    throw new Error('Restaurant is fully booked')
+  }
+
   const update = async (
     id: Id,
     updatedFields: Update
   ) => {
-    const { data, error } = await supabase.from(KEY).update(updatedFields).eq('id', id).select().single()
-    if (error) throw error
+    console.log("update reservation");
+    // make sure to exclude id
+    const { id: _id, ...fields } = updatedFields
+
+    const { data, error } = await supabase.from(KEY).update(fields).eq('id', id).select().single()
+    if (error) {
+      console.log(error.message)
+      throw error
+    }
+    console.log("updated reservation");
+
     return data
   }
 
@@ -160,6 +195,7 @@ export function api() {
     subscribeToDeletes,
     subscribeToSpecificRow,
     book,
+    editBooking,
     getFilteredReservationsRestaurants,
     getReservationRestaurantByReservationId
   }

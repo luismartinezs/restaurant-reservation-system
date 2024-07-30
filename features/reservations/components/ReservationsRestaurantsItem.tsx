@@ -22,8 +22,10 @@ dayjs.extend(utc);
 
 export const ReservationsRestaurantsItem = ({
   reservationRestaurant,
+  showEdit
 }: {
   reservationRestaurant: ReservationRestaurant;
+  showEdit?: boolean;
 }) => {
   const { reservation_id, restaurant_name, start, people, location } =
     reservationRestaurant;
@@ -72,12 +74,12 @@ export const ReservationsRestaurantsItem = ({
           </Group>
         </Group>
         <Group align="baseline">
-          <Anchor
+          {showEdit && <Anchor
             component={Link}
             href={`/account/reservations/${reservation_id}`}
           >
             Edit
-          </Anchor>
+          </Anchor>}
           <Button
             variant="transparent"
             c="red"

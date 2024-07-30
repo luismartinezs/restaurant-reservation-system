@@ -9,6 +9,9 @@ import { Id } from "@/features/restaurants";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 import invariant from "tiny-invariant";
 import { getSearchQuery } from "@/features/search";
+import { Insert, Update } from "../types";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 // needs to return format compatible with supabase, e.g. `2024-07-17 21:09:50+00`
 function parseDate(date: string) {
@@ -33,7 +36,16 @@ function validate(formData: FormData) {
   return true;
 }
 
-export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
+export const BookForm = async ({
+  restaurantId,
+  reservationId,
+  initialData,
+}: {
+  restaurantId: Id;
+  reservationId?: Id;
+  initialData?: Update;
+}) => {
+  const isEdit = !!reservationId;
   const {
     data: { user },
   } = await userApi().getUser();
@@ -51,20 +63,41 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
 
     invariant(user, "You are not logged in");
 
-    book({
+    const payload = {
       start: parseDate(
         `${dayjs(date).format("YYYY-MM-DD") as string} ${time as string}`
       ),
       people: Number(people),
       restaurant_id: restaurantId,
       user_id: user.id,
-    });
+    };
+
+    console.log(isEdit, reservationId);
+
+    if (isEdit) {
+      // @ts-ignore ts is dumb sometimes
+      payload.id = reservationId;
+    }
+
+    const booking = await book(payload);
+
+    // TODO this should likely go to the reusable server action
+    revalidatePath(`/account/reservations`);
+    revalidatePath(`/restaurants`);
+
+    if (isEdit) {
+      revalidatePath(`/account/reservations/${reservationId}`);
+    } else {
+      if ("id" in booking) {
+        redirect(`/account/reservations/${booking.id}`);
+      }
+    }
   }
 
   return (
     <div>
       <Title order={2} mb="md">
-        Make a reservation
+        {isEdit ? "Change your reservation" : "Make a reservation"}
       </Title>
       <form>
         <div className="flex flex-col md:flex-row gap-4">
@@ -80,7 +113,11 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
             leftSectionPointerEvents="none"
             required
             name="date"
-            defaultValue={dayjs(query.date).toDate()}
+            defaultValue={
+              isEdit
+                ? dayjs(initialData?.start).toDate()
+                : dayjs(query.date).toDate()
+            }
           />
           <TimeInput
             w={{
@@ -94,7 +131,9 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
             leftSectionPointerEvents="none"
             required
             name="time"
-            defaultValue={query.time}
+            defaultValue={
+              isEdit ? dayjs(initialData?.start).format("HH:mm") : query.time
+            }
           />
           <NumberInput
             w={{
@@ -110,7 +149,7 @@ export const BookForm = async ({ restaurantId }: { restaurantId: Id }) => {
             max={8}
             required
             name="people"
-            defaultValue={query.people}
+            defaultValue={isEdit ? initialData?.people : query.people}
           />
           <Button type="submit" formAction={handleSubmit}>
             Book now
