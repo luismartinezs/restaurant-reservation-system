@@ -57,6 +57,8 @@ export const BookForm = ({
             leftSectionPointerEvents="none"
             required
             name="date"
+            minDate={dayjs().toDate()}
+            maxDate={dayjs().add(2, "month").toDate()}
             defaultValue={
               isEdit
                 ? dayjs(initialData?.start).toDate()
@@ -78,6 +80,8 @@ export const BookForm = ({
             defaultValue={
               isEdit ? dayjs(initialData?.start).format("HH:mm") : query.time
             }
+            minTime="13:00"
+            maxTime="22:00"
           />
           <NumberInput
             w={{

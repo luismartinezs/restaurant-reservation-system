@@ -263,10 +263,10 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [ ] /restaurants/new (manager)
   - [x] /reservations
   - [x] /reservations/:uid
-    - [ ] form loading state
-    - [ ] form server error state
-    - [ ] validation with zod
-    - [ ] limit selectable dates (no past, up to 2 months in future)
+    - [x] form loading state
+    - [x] form server error state
+    - [x] validation with zod
+    - [x] limit selectable dates (no past, up to 2 months in future)
   - [ ] /users (manager)
   - [ ] /users/:uid (manager)
   - [ ] /users/new (manager)
