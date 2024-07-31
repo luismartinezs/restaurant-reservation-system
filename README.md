@@ -20,6 +20,7 @@
   - [Troubleshooting](#troubleshooting)
   - [Timings](#timings)
   - [Notes](#notes)
+  - [References](#references)
   - [Coding practices](#coding-practices)
     - [Folder structure](#folder-structure)
     - [Imports](#imports)
@@ -205,7 +206,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [x] lint
   - [x] Scaffold readme sections
 - [x] Init DB tables
-- [ ] User auth:
+- [x] User auth:
   - [x] /login: User can login
   - [x] /account: User can see account page
   - [x] User can logout
@@ -250,7 +251,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
       - [x] Create
       - [x] Edit
       - [x] Delete
-- [ ] Create actual app pages
+- [x] Create actual app pages
   - [x] /restaurants
     - [x] reaturant item
     - [x] filters / search
@@ -259,20 +260,36 @@ Pages define what data needs to be shown together and thus fetched together (it 
       - [-] if reservation successful, show success
       - [-] if there is no enough space, show error
       - [-] show a list of available reservation times in detail page which are near the currently selected date time for selected ppl, in intervals of 30 min
-  - [ ] /restaurants/:uid/edit (manager)
-  - [ ] /restaurants/new (manager)
+  - [-] /restaurants/:uid/edit (manager)
+  - [-] /restaurants/new (manager)
   - [x] /reservations
   - [x] /reservations/:uid
     - [x] form loading state
     - [x] form server error state
     - [x] validation with zod
     - [x] limit selectable dates (no past, up to 2 months in future)
-  - [ ] /users (manager)
-  - [ ] /users/:uid (manager)
-  - [ ] /users/new (manager)
-- [ ] Manual testing
-- [ ] README cleanup
-- [ ] Marketing landing page
+  - [-] /users (manager)
+  - [-] /users/:uid (manager)
+  - [-] /users/new (manager)
+- [ ] page transitions
+  - [ ] speed up page transition to /restaurants (preload data or use suspense boundary)
+  - [ ] init DB with plenty data for reservations + ratings so more realistic use case can be visualized
+  - [ ] same with restaurants/:uid
+  - [ ] same with reservations and reservations/:uid
+- [ ] add landing page similar to https://www.chope.co/phuket-restaurants
+- [ ] images
+  - [ ] add ai generated images for restaurants
+    - [ ] create images with ai
+    - [ ] add images to DB and display in UI
+- [ ] Cleanup login page
+  - [ ] Add signin with google
+- [ ] icing cake
+  - [ ] add simple logo
+  - [ ] add preselected reservation times in restaurant listing and detail, and do not show unavaiable times
+  - [ ] README cleanup
+  - [ ] fix theme popup
+- [ ] Manual testing / search for bugs (do not fix em though)
+- [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
 
 ## Known bugs
 
@@ -284,6 +301,7 @@ None yet
 - add confirmation modal to delete actions
 - clean up booking flow by adding loading state and display booking response (either error, or full restaurant, or success)
 - show list of available reservation times for each restaurant in listing and detail pages
+- add pages to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
 
 ## Troubleshooting
 
@@ -307,6 +325,13 @@ Nothing so far
   - for booking time and number of guests, there are some defaults
     - booking time: 19h same day if it's before 19h, 19h next day if it's after 19h. So the closest 19h in the future
     - number of guests: 2 (can select up to 8)
+
+## References
+
+- https://eatigo.com
+- https://www.opentable.co.th/
+- https://www.chope.co/
+- https://www.tripadvisor.com/Restaurants-g1215781-Phuket_Town_Phuket.html
 
 ## Coding practices
 
