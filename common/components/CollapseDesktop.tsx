@@ -1,6 +1,6 @@
 "use client";
 
-import { AppShell, Burger, Flex, Group } from "@mantine/core";
+import { AppShell, Burger, Flex, Group, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
 export function CollapseDesktop({
@@ -34,9 +34,16 @@ export function CollapseDesktop({
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        <Flex component="ul" direction="column" gap={12}>{navbar}</Flex>
+        <Flex component="ul" direction="column" gap={12}>
+          {navbar}
+        </Flex>
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
+      <AppShell.Footer h={60} p="md" style={{ marginTop: "2rem" }}>
+        <Text size="sm" className="text-center">
+          © 2024 RicoRico. All rights reserved.
+        </Text>
+      </AppShell.Footer>
     </AppShell>
   );
 }
