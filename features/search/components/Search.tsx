@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { Box, Button, Flex, NumberInput, Title } from "@mantine/core";
+import { Box, Button, Flex, NumberInput, Skeleton, Title } from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
 import dayjs from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
@@ -35,9 +35,6 @@ export function Search() {
   return (
     <Box>
       <Box mb="xl">
-        <Title order={1} mb="xs">
-          RESTAURANTS
-        </Title>
         <Title order={2} fw={400}>
           Make a free reservation
         </Title>
@@ -108,5 +105,12 @@ export function Search() {
         </Flex>
       </form>
     </Box>
+  );
+}
+
+
+export function SearchSkeleton() {
+  return (
+    <Skeleton mb="xl" w="100%" h={36} />
   );
 }

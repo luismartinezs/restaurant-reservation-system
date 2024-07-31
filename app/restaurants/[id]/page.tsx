@@ -1,10 +1,11 @@
 import { api } from "@/features/restaurants/api";
 import { notFound } from "next/navigation";
 import invariant from "tiny-invariant";
-import { Detail } from "./components/detail";
-import { BookForm } from "@/features/reservations";
+import { Detail, DetailSkeleton } from "./components/detail";
+import { BookForm, BookFormSkeleton } from "@/features/reservations";
 import { Container } from "@mantine/core";
 import { getUser } from "@/features/auth/utils";
+import { Suspense } from "react";
 
 // issue where is that this page will not be cached
 export default async function Page({ params }: { params: { id: string } }) {
@@ -23,12 +24,16 @@ export default async function Page({ params }: { params: { id: string } }) {
     return (
       <Container>
         <div className="flex flex-col gap-8">
-          <Detail restaurant={restaurant} />
-          {user?.id ? (
-            <BookForm restaurantId={restaurant.id} userId={user?.id} />
-          ) : (
-            <div>Login / register to make a reservation</div>
-          )}
+          <Suspense fallback={<DetailSkeleton />}>
+            <Detail restaurant={restaurant} />
+          </Suspense>
+          <Suspense fallback={<BookFormSkeleton />}>
+            {user?.id ? (
+              <BookForm restaurantId={restaurant.id} userId={user?.id} />
+            ) : (
+              <div>Login / register to make a reservation</div>
+            )}
+          </Suspense>
         </div>
       </Container>
     );

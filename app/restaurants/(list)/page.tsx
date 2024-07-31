@@ -1,7 +1,10 @@
-import { Container } from "@mantine/core";
+import { Container, Title } from "@mantine/core";
 
-import { RestaurantList } from "@/features/restaurants/server";
-import { Search } from "@/features/search";
+import {
+  RestaurantList,
+  RestaurantListSkeleton,
+} from "@/features/restaurants/server";
+import { Search, SearchSkeleton } from "@/features/search";
 import { FiltersMenu } from "@/features/filters";
 import { Suspense } from "react";
 
@@ -12,10 +15,15 @@ export default function Page() {
         <FiltersMenu />
         <div>
           <Container px={0}>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Title order={1} mb="xs">
+              RESTAURANTS
+            </Title>
+            <Suspense fallback={<SearchSkeleton />}>
               <Search />
             </Suspense>
-            <RestaurantList />
+            <Suspense fallback={<RestaurantListSkeleton />}>
+              <RestaurantList />
+            </Suspense>
           </Container>
         </div>
       </div>
