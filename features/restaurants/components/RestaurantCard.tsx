@@ -8,6 +8,7 @@ import {
   // Image,
   Text,
   Group,
+  Skeleton,
 } from "@mantine/core";
 
 import { RestaurantRead } from "../types";
@@ -90,4 +91,8 @@ export const RestaurantCard = ({
       </Group> */}
     </Card>
   );
+};
+
+export const RestaurantCardSkeleton = () => {
+  return <Skeleton p="lg" radius="md" h={160} w={215} />;
 };

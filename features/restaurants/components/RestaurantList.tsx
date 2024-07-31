@@ -6,6 +6,7 @@ import { api as reservationsApi } from "@/features/reservations/server";
 import { api } from "../api";
 import { FilteredRestaurants } from "./FilteredRestaurants";
 import { Suspense } from "react";
+import { RestaurantCardSkeleton } from "./RestaurantCard";
 
 export async function RestaurantList() {
   const { getAllRestaurants } = api();
@@ -22,6 +23,18 @@ export async function RestaurantList() {
           ratings={ratings}
         />
       </Suspense>
+    </SimpleGrid>
+  );
+}
+
+export function RestaurantListSkeleton() {
+  return (
+    <SimpleGrid cols={{ base: 2, sm: 2, lg: 4 }}>
+      {
+        Array.from({ length: 12 }).map((_, i) => (
+          <RestaurantCardSkeleton key={i} />
+        ))
+      }
     </SimpleGrid>
   );
 }
