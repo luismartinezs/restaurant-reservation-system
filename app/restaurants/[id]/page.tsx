@@ -4,10 +4,12 @@ import invariant from "tiny-invariant";
 import { Detail } from "./components/detail";
 import { BookForm } from "@/features/reservations";
 import { Container } from "@mantine/core";
+import { getUser } from "@/features/auth/utils";
 
 // issue where is that this page will not be cached
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
+  const { user } = await getUser();
 
   try {
     invariant(id, "id is required");
@@ -22,7 +24,11 @@ export default async function Page({ params }: { params: { id: string } }) {
       <Container>
         <div className="flex flex-col gap-8">
           <Detail restaurant={restaurant} />
-          <BookForm restaurantId={restaurant.id} />
+          {user?.id ? (
+            <BookForm restaurantId={restaurant.id} userId={user?.id} />
+          ) : (
+            <div>Login / register to make a reservation</div>
+          )}
         </div>
       </Container>
     );
