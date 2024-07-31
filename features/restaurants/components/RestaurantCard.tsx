@@ -64,7 +64,7 @@ export const RestaurantCard = ({
         </Badge>
       </Group> */}
 
-      <Display rating={rating} ratingCount={ratingCount} />
+      <Display rating={rating} ratingCount={ratingCount} showCount />
 
       <Text size="sm" c="dimmed" mt="sm">
         {[cuisine_type, location].join(" • ")}

@@ -8,48 +8,15 @@ import {
   Image,
   Badge,
   Group,
-  Button,
   SimpleGrid,
   CardSection,
   GridCol,
   Title,
 } from "@mantine/core";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
-import { FaStar } from "react-icons/fa";
-
-const RestaurantCard = ({
-  image,
-  title,
-  rating,
-}: {
-  image: string;
-  title: string;
-  rating: string;
-}) => (
-  <Card shadow="sm" padding="lg" radius="md" withBorder>
-    <CardSection>
-      <Image
-        component={NextImage}
-        src={image}
-        height={160}
-        width={160}
-        alt={title}
-      />
-    </CardSection>
-
-    <Group justify="space-between" mt="md">
-      <Text fw={500}>{title}</Text>
-      <Badge color="pink" variant="light">
-        <div className="flex gap-1 items-center">
-          <Text c="pink" className="!mb-[1px]">
-            <FaStar size={12} />
-          </Text>
-          <div className="text-xs">{rating}</div>
-        </div>
-      </Badge>
-    </Group>
-  </Card>
-);
+import { RestaurantCard } from "@/features/restaurants/components/landing/RestaurantCard";
+import { TopRecommendations } from "@/features/restaurants/components/landing/TopRecommendations";
+import { NewThisWeek } from "@/features/restaurants/components/landing/NewThisWeek";
 
 const RestaurantListingPage = () => {
   return (
@@ -69,41 +36,9 @@ const RestaurantListingPage = () => {
       />
       <Container size="xl">
         <div className="flex flex-col gap-14">
-          <div>
-            <Text size="xl" fw={600}>
-              Top Recommendations
-            </Text>
-            <Text mb="lg">Recommended as the best restaurants</Text>
-            <Grid>
-              {[...Array(5)].map((_, i) => (
-                <GridCol key={i} span={{ base: 6, sm: 4, md: 3, lg: 2.4 }}>
-                  <RestaurantCard
-                    image={`https://res.cloudinary.com/dicyllvry/image/upload/v1722433325/restaurant-reservation-system/phuket_nwegsz.jpg`}
-                    title={`Top Pick ${i}`}
-                    rating={`${4.5 + i * 0.1}/5`}
-                  />
-                </GridCol>
-              ))}
-            </Grid>
-          </div>
+          <TopRecommendations />
 
-          <div>
-            <Text size="lg" fw={600}>
-              New This Week
-            </Text>
-            <Text mb="lg">Bringing you new spots every week</Text>
-            <Grid>
-              {[...Array(5)].map((_, i) => (
-                <GridCol key={i} span={{ base: 6, sm: 4, md: 3, lg: 2.4 }}>
-                  <RestaurantCard
-                    image={`https://res.cloudinary.com/dicyllvry/image/upload/v1722433325/restaurant-reservation-system/phuket_nwegsz.jpg`}
-                    title={`Top Pick ${i}`}
-                    rating={`${4.5 + i * 0.1}/5`}
-                  />
-                </GridCol>
-              ))}
-            </Grid>
-          </div>
+          <NewThisWeek />
 
           {/* Add more sections here: New This Week, Discovery Made Easy, etc. */}
 

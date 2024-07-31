@@ -54,6 +54,11 @@ export function getAvailableRestaurants<T extends RestaurantRead>(restaurants: T
   }))
 }
 
+function roundTo(n: number, digits: number) {
+  const factor = 10 ** digits;
+  return Math.round(n * factor) / factor;
+}
+
 export function getRestaurantsWithAvgRating<T extends RestaurantRead>(restaurants: T[], ratings: RatingRead[]) {
   const ratingMap = new Map<number, { sum: number; count: number }>();
 
@@ -69,9 +74,9 @@ export function getRestaurantsWithAvgRating<T extends RestaurantRead>(restaurant
 
   return restaurants.map(restaurant => {
     const restaurantRating = ratingMap.get(restaurant.id);
-    const avgRating = restaurantRating
+    const avgRating = roundTo(restaurantRating
       ? restaurantRating.sum / restaurantRating.count
-      : 0;
+      : 0, 1);
     const ratingCount = restaurantRating?.count || 0;
     return { ...restaurant, avgRating, ratingCount };
   });
