@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
-import '@mantine/dates/styles.css';
+import "@mantine/dates/styles.css";
 
 import { theme } from "./theme";
 import "./globals.css";
@@ -35,7 +35,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <MantineProvider defaultColorScheme="dark" theme={theme}>
           <CollapseDesktop navbar={<Navbar showAuthButton />}>
-            {children}
+            <div className="relative isolate">
+              {children}
+            </div>
           </CollapseDesktop>
         </MantineProvider>
       </body>
