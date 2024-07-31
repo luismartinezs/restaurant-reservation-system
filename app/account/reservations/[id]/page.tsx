@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, Container } from "@mantine/core";
+import { Container } from "@mantine/core";
 import invariant from "tiny-invariant";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -44,6 +44,7 @@ export default async function ReservationPage({
         <BookForm
           restaurantId={restaurant_id}
           reservationId={numId}
+          userId={user_id}
           initialData={{
             start,
             people,

@@ -1,105 +1,49 @@
-import { Title, Stack, Button, NumberInput, Flex } from "@mantine/core";
+"use client";
+
+import { User } from "@supabase/supabase-js";
+import { useFormState } from "react-dom";
+import { Title, NumberInput } from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
 import dayjs from "dayjs";
+import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 
-import { userApi } from "@/features/users/server";
+import { Id } from "@/features/restaurants";
+import { getSearchQuery } from "@/features/search";
+import { SubmitButton } from "@/common/components/SubmitButton";
 
 import { book } from "../actions";
-import { Id } from "@/features/restaurants";
-import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
-import invariant from "tiny-invariant";
-import { getSearchQuery } from "@/features/search";
-import { Insert, Update } from "../types";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import { Update } from "../types";
+import { FormStateDisplay } from "@/common/components/FormStateDisplay";
 
-// needs to return format compatible with supabase, e.g. `2024-07-17 21:09:50+00`
-function parseDate(date: string) {
-  return dayjs(date).format("YYYY-MM-DD HH:mm:ssZZ");
-}
+const initialState = {
+  message: "",
+  type: "",
+  errors: undefined,
+  key: 1
+};
 
-function getFormData(formData: FormData) {
-  return {
-    date: formData.get("date") as string,
-    time: formData.get("time") as string,
-    people: formData.get("people") as string,
-  };
-}
-
-function validate(formData: FormData) {
-  const { date, time, people } = getFormData(formData);
-
-  if (!date || !time || !people) {
-    return "Missing required fields";
-  }
-
-  return true;
-}
-
-export const BookForm = async ({
+export const BookForm = ({
   restaurantId,
   reservationId,
+  userId,
   initialData,
 }: {
   restaurantId: Id;
   reservationId?: Id;
+  userId: User["id"];
   initialData?: Update;
 }) => {
   const isEdit = !!reservationId;
-  const {
-    data: { user },
-  } = await userApi().getUser();
   const query = getSearchQuery();
-
-  async function handleSubmit(formData: FormData) {
-    "use server";
-    const validated = validate(formData);
-
-    if (validated !== true) {
-      return validated;
-    }
-
-    const { date, time, people } = getFormData(formData);
-
-    invariant(user, "You are not logged in");
-
-    const payload = {
-      start: parseDate(
-        `${dayjs(date).format("YYYY-MM-DD") as string} ${time as string}`
-      ),
-      people: Number(people),
-      restaurant_id: restaurantId,
-      user_id: user.id,
-    };
-
-    console.log(isEdit, reservationId);
-
-    if (isEdit) {
-      // @ts-ignore ts is dumb sometimes
-      payload.id = reservationId;
-    }
-
-    const booking = await book(payload);
-
-    // TODO this should likely go to the reusable server action
-    revalidatePath(`/account/reservations`);
-    revalidatePath(`/restaurants`);
-
-    if (isEdit) {
-      revalidatePath(`/account/reservations/${reservationId}`);
-    } else {
-      if ("id" in booking) {
-        redirect(`/account/reservations/${booking.id}`);
-      }
-    }
-  }
+  const bookWithIds = book.bind(null, { restaurantId, userId, reservationId });
+  const [state, formAction] = useFormState(bookWithIds, initialState);
 
   return (
     <div>
       <Title order={2} mb="md">
         {isEdit ? "Change your reservation" : "Make a reservation"}
       </Title>
-      <form>
+      <form action={formAction} className="flex flex-col gap-4">
         <div className="flex flex-col md:flex-row gap-4">
           <DatePickerInput
             flex={1}
@@ -151,10 +95,15 @@ export const BookForm = async ({
             name="people"
             defaultValue={isEdit ? initialData?.people : query.people}
           />
-          <Button type="submit" formAction={handleSubmit}>
+          <SubmitButton
+            onClick={(e) => {
+              e.currentTarget.form?.requestSubmit();
+            }}
+          >
             Book now
-          </Button>
+          </SubmitButton>
         </div>
+        <FormStateDisplay state={state} key={state.key} />
       </form>
     </div>
   );
