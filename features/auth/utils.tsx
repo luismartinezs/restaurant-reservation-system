@@ -1,4 +1,6 @@
-import "server-only"
+import "server-only";
+
+// note: some of thsse will not work because they need admin client
 
 import { redirect } from "next/navigation";
 
