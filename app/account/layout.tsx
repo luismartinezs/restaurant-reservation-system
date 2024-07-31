@@ -7,7 +7,7 @@ export default async function AccountLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { user } = await checkAuth();
+  await checkAuth();
 
   return (
     <div>

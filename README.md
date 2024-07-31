@@ -271,10 +271,10 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [-] /users (manager)
   - [-] /users/:uid (manager)
   - [-] /users/new (manager)
-- [ ] page transitions
+- [x] page transitions
   - [x] speed up page transition to /restaurants (preload data or use suspense boundary)
   - [x] same with restaurants/:uid
-  - [ ] same with reservations and reservations/:uid
+  - [x] same with reservations and reservations/:uid
 - [ ] init DB with plenty data for reservations + ratings so more realistic use case can be visualized
 - [ ] add landing page similar to https://www.chope.co/phuket-restaurants
 - [ ] images
