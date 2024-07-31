@@ -260,12 +260,13 @@ Pages define what data needs to be shown together and thus fetched together (it 
       - [-] if there is no enough space, show error
       - [-] show a list of available reservation times in detail page which are near the currently selected date time for selected ppl, in intervals of 30 min
   - [ ] /restaurants/:uid/edit (manager)
-    - [ ] form loading state
-    - [ ] form server error state
-    - [ ] validation with zod
   - [ ] /restaurants/new (manager)
   - [x] /reservations
   - [x] /reservations/:uid
+    - [x] form loading state
+    - [x] form server error state
+    - [x] validation with zod
+    - [x] limit selectable dates (no past, up to 2 months in future)
   - [ ] /users (manager)
   - [ ] /users/:uid (manager)
   - [ ] /users/new (manager)

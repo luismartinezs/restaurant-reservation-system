@@ -5,8 +5,49 @@ import { redirect } from "next/navigation";
 
 import { api } from "./api";
 import { KEY } from "./constants";
-import { Id, Read } from "./types";
+import { Id } from "./types";
+import { z } from "zod";
+import { User } from "@supabase/supabase-js";
+import dayjs from "dayjs";
+import { getRandInt } from "@/common/utils";
 
+// needs to return format compatible with supabase, e.g. `2024-07-17 21:09:50+00`
+function parseDate(date: string) {
+  return dayjs(date).format("YYYY-MM-DD HH:mm:ssZZ");
+}
+
+function getFormData(formData: FormData) {
+  return {
+    date: formData.get("date") as string,
+    time: formData.get("time") as string,
+    people: formData.get("people") as string,
+  };
+}
+
+function parseFormData(
+  formData: FormData,
+  ids: {
+    restaurantId: Id;
+    userId: User["id"];
+    reservationId?: Id;
+  }
+) {
+  const { date, time, people } = getFormData(formData);
+  const { restaurantId, userId, reservationId } = ids;
+  const isEdit = !!reservationId;
+
+  const payload = {
+    start: parseDate(
+      `${dayjs(date).format("YYYY-MM-DD") as string} ${time as string}`
+    ),
+    people: Number(people),
+    restaurant_id: restaurantId,
+    user_id: userId,
+    id: isEdit ? reservationId : undefined,
+  }
+
+  return payload;
+}
 
 export async function handleDelete(id: Id, redirectPath?: string) {
   const { remove } = api();
@@ -44,27 +85,66 @@ export async function submit(data: {
   }
 }
 
-export async function book(data: {
-  id?: Id;
-  people: number;
-  restaurant_id: number;
-  start: string;
-  user_id: string;
-}) {
+const schema = z.object({
+  id: z.number().optional(),
+  people: z.number(),
+  restaurant_id: z.number(),
+  start: z.string(),
+  user_id: z.string(),
+});
+
+export async function book(
+  ids: {
+    restaurantId: Id;
+    userId: User["id"];
+    reservationId?: Id;
+  },
+  prevState: any, formData: FormData
+) {
+  const data = parseFormData(formData, ids);
+
   const { book: doBook, editBooking } = api();
+  const isEdit = !!data.id;
+
+  const validatedFields = schema.safeParse(data);
+
+  if (!validatedFields.success) {
+    return {
+      key: getRandInt(6),
+      errors: validatedFields.error.flatten().fieldErrors,
+    }
+  }
 
   try {
     // @ts-ignore - prevent useless ts error
-    const item = data.id ? await editBooking(data) : await doBook(data)
-    return item
+    const reservation = isEdit ? await editBooking(data) : await doBook(data)
+    revalidatePath(`/account/reservations`);
+    revalidatePath(`/restaurants`);
+    if (isEdit) {
+      revalidatePath(`/account/reservations/${reservation.id}`);
+    } else {
+      redirect(`/account/reservations/${reservation.id}`);
+    }
+    return {
+      key: getRandInt(6),
+      message: "Booking successful",
+      type: "success"
+    }
   } catch (err) {
     if (err instanceof Error) {
       return {
-        error: err.message
+        key: getRandInt(6),
+        errors: {
+          server: [err.message]
+        }
       }
     }
     return {
-      error: "An error occurred"
+      key: getRandInt(6),
+      errors: {
+        server:
+          ["An error occurred"]
+      }
     }
   }
 }
