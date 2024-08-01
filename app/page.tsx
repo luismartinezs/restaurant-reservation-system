@@ -6,7 +6,6 @@ import { TopRecommendations } from "@/features/restaurants/components/landing/To
 import { NewThisWeek } from "@/features/restaurants/components/landing/NewThisWeek";
 import { SectionByLocation } from "@/features/restaurants/components/landing/SectionByLocation";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
-import { FOLDER_PATH } from "@/lib/cloudinary/constants";
 
 const RestaurantListingPage = () => {
   return (
@@ -16,7 +15,8 @@ const RestaurantListingPage = () => {
         subtitle="Discover delicious spots and save with deals"
         image={
           <CloudinaryImage
-            src="phuket_nwegsz"
+            folderPath="assets"
+            imgId="phuket_nwegsz"
             alt="test"
             className="object-cover max-w-fit"
             width={1920}

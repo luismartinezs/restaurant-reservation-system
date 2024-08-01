@@ -1,10 +1,8 @@
-import NextImage from "next/image";
 import {
   Card,
   CardSection,
   SimpleGrid,
   Text,
-  Image,
   Group,
   Overlay,
 } from "@mantine/core";
@@ -43,7 +41,8 @@ export const SectionByLocation = async () => {
                 className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
               />
               <CloudinaryImage
-                src="phuket_nwegsz"
+                folderPath="assets"
+                imgId="phuket_nwegsz"
                 height={160}
                 width={160}
                 alt={location}

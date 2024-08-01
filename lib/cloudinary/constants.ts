@@ -1,1 +1,1 @@
-export const FOLDER_PATH = "restaurant-reservation-system";
+export const BASE_PATH = "restaurant-reservation-system";

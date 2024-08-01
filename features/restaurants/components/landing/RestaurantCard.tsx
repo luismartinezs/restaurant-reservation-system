@@ -1,8 +1,6 @@
-import NextImage from "next/image";
 import {
   Text,
   Card,
-  Image,
   Badge,
   CardSection,
   Stack,
@@ -45,7 +43,8 @@ export const RestaurantCard = ({
           className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
         />
         <CloudinaryImage
-          src={image}
+          folderPath="assets"
+          imgId="phuket_nwegsz"
           height={160}
           width={160}
           alt={name}

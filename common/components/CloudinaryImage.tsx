@@ -1,19 +1,21 @@
 "use client";
 
-import { FOLDER_PATH } from "@/lib/cloudinary/constants";
+import { BASE_PATH } from "@/lib/cloudinary/constants";
 import { CldImage, CldImageProps } from "next-cloudinary";
 
 export function CloudinaryImage({
-  src,
+  folderPath = '',
+  imgId,
   alt = "",
   className = "",
   ...transformations
 }: {
-  src: string;
+  folderPath?: string;
+  imgId: string;
   alt?: string;
   className?: string;
 } & Omit<CldImageProps, "alt" | "src">) {
   return (
-    <CldImage src={`${FOLDER_PATH}/${src}`} alt={alt} className={className} {...transformations} />
+    <CldImage src={`${BASE_PATH}/${folderPath}/${imgId}`} alt={alt} className={className} {...transformations} />
   );
 }

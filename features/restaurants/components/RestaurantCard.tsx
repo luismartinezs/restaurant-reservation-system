@@ -54,7 +54,8 @@ export const RestaurantCard = ({
       />
       <CardSection pb="md">
         <CloudinaryImage
-          src="phuket_nwegsz"
+          folderPath="assets"
+          imgId="phuket_nwegsz"
           height={160}
           width={160}
           alt={name}
