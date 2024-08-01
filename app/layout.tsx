@@ -9,6 +9,7 @@ import { theme } from "./theme";
 import "./globals.css";
 import { CollapseDesktop } from "@/common/components/CollapseDesktop";
 import { Navbar } from "@/common/components/Navbar";
+import { ScrollToTop } from "@/common/components/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,6 +40,7 @@ export default function RootLayout({
               {children}
             </div>
           </CollapseDesktop>
+          <ScrollToTop />
         </MantineProvider>
       </body>
     </html>
