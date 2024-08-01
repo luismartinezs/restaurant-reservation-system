@@ -44,7 +44,7 @@ export function FiltersMenu({ filters }: { filters: ReactNode }) {
     <Container
       size="50rem"
       mx={0}
-      className="min-w-[200px]"
+      className="min-w-[200px] mb-16"
       bd="1px solid gray.8"
       h="fit-content"
     >

@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { useFilterQuery } from "../hooks/useFilterQuery";
 import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
 import { useState } from "react";
-import { useDebouncedCallback } from "@mantine/hooks";
+import { useDebouncedCallback, useDisclosure } from "@mantine/hooks";
+import { FilterSlicer } from "./FilterSlicer";
 
 export function LocationFilters({
   locationOptions,
@@ -43,8 +44,9 @@ export function LocationFilters({
         legend: { fontWeight: "bold" },
       }}
     >
-      <div className="flex flex-wrap gap-5 md:flex-col">
-        {locationOptions.map((location) => (
+      <FilterSlicer
+        items={locationOptions}
+        renderItem={(location) => (
           <Checkbox
             key={location}
             label={location}
@@ -55,8 +57,8 @@ export function LocationFilters({
               label: { paddingLeft: "7px" },
             }}
           />
-        ))}
-      </div>
+        )}
+      />
     </Fieldset>
   );
 }

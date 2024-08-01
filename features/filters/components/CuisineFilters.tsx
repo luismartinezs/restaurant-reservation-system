@@ -7,6 +7,7 @@ import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
 import { useState } from "react";
 import { useDebouncedCallback } from "@mantine/hooks";
 import { cuisineOptions } from "@/features/restaurants";
+import { FilterSlicer } from "./FilterSlicer";
 
 export function CuisineFilters() {
   const router = useRouter();
@@ -40,8 +41,9 @@ export function CuisineFilters() {
         legend: { fontWeight: "bold" },
       }}
     >
-      <div className="flex flex-wrap gap-5 md:flex-col">
-        {cuisineOptions.map((cuisine) => (
+      <FilterSlicer
+        items={cuisineOptions}
+        renderItem={(cuisine) => (
           <Checkbox
             key={cuisine}
             label={cuisine}
@@ -52,8 +54,8 @@ export function CuisineFilters() {
               label: { paddingLeft: "7px" },
             }}
           />
-        ))}
-      </div>
+        )}
+      />
     </Fieldset>
   );
 }
