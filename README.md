@@ -276,7 +276,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] same with restaurants/:uid
   - [x] same with reservations and reservations/:uid
 - [x] init DB with plenty data for reservations + ratings so more realistic use case can be visualized
-- [ ] add landing page similar to https://www.chope.co/phuket-restaurants
+- [x] add landing page similar to https://www.chope.co/phuket-restaurants
 - [ ] images
   - [ ] add ai generated images for restaurants
     - [ ] create images with ai

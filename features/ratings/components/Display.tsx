@@ -4,9 +4,11 @@ import { FaStar } from "react-icons/fa";
 export function Display({
   rating,
   ratingCount,
+  showCount = false,
 }: {
   rating?: number;
   ratingCount?: number;
+  showCount?: boolean;
 }) {
   const noRatings = typeof rating === "undefined" || ratingCount === 0;
 
@@ -18,11 +20,13 @@ export function Display({
             <FaStar />
           </Text>
         ))}
-      <Text size="sm" c="dimmed">
-        {noRatings
-          ? "No ratings yet"
-          : `${ratingCount} ${ratingCount === 1 ? "rating" : "ratings"}`}
-      </Text>
+      {showCount && (
+        <Text size="sm" c="dimmed">
+          {noRatings
+            ? "No ratings yet"
+            : `${ratingCount} ${ratingCount === 1 ? "rating" : "ratings"}`}
+        </Text>
+      )}
     </Group>
   );
 }

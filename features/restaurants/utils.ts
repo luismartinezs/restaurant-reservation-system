@@ -24,6 +24,13 @@ export function getDates(
   }
 }
 
+export function getRestaurantsByLocation<T extends RestaurantRead>(restaurants: T[], locations: string[]) {
+  if (locations.length === 0) {
+    return restaurants
+  }
+  return restaurants.filter(r => locations.includes(r.location))
+}
+
 export function getRestaurantsByCuisine<T extends RestaurantRead>(restaurants: T[], cuisines: string[]) {
   if (cuisines.length === 0) {
     return restaurants
@@ -54,6 +61,11 @@ export function getAvailableRestaurants<T extends RestaurantRead>(restaurants: T
   }))
 }
 
+function roundTo(n: number, digits: number) {
+  const factor = 10 ** digits;
+  return Math.round(n * factor) / factor;
+}
+
 export function getRestaurantsWithAvgRating<T extends RestaurantRead>(restaurants: T[], ratings: RatingRead[]) {
   const ratingMap = new Map<number, { sum: number; count: number }>();
 
@@ -69,10 +81,22 @@ export function getRestaurantsWithAvgRating<T extends RestaurantRead>(restaurant
 
   return restaurants.map(restaurant => {
     const restaurantRating = ratingMap.get(restaurant.id);
-    const avgRating = restaurantRating
+    const avgRating = roundTo(restaurantRating
       ? restaurantRating.sum / restaurantRating.count
-      : 0;
+      : 0, 1);
     const ratingCount = restaurantRating?.count || 0;
     return { ...restaurant, avgRating, ratingCount };
   });
+}
+
+export function getLocationsAndCount<T extends RestaurantRead>(restaurants: T[]) {
+  const locationMap = new Map<string, number>();
+  for (const restaurant of restaurants) {
+    const { location } = restaurant;
+    if (!locationMap.has(location)) {
+      locationMap.set(location, 0);
+    }
+    locationMap.set(location, locationMap.get(location)! + 1);
+  }
+  return Array.from(locationMap.entries()).map(([location, count]) => ({ location, count }));
 }

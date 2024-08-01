@@ -3,12 +3,13 @@ import { Inter } from "next/font/google";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
-import '@mantine/dates/styles.css';
+import "@mantine/dates/styles.css";
 
 import { theme } from "./theme";
 import "./globals.css";
 import { CollapseDesktop } from "@/common/components/CollapseDesktop";
 import { Navbar } from "@/common/components/Navbar";
+import { ScrollToTop } from "@/common/components/ScrollToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,8 +36,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <MantineProvider defaultColorScheme="dark" theme={theme}>
           <CollapseDesktop navbar={<Navbar showAuthButton />}>
-            {children}
+            <div className="relative isolate mb-32">
+              {children}
+            </div>
           </CollapseDesktop>
+          <ScrollToTop />
         </MantineProvider>
       </body>
     </html>

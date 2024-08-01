@@ -9,6 +9,7 @@ import {
   Text,
   Group,
   Skeleton,
+  Overlay,
 } from "@mantine/core";
 
 import { RestaurantRead } from "../types";
@@ -43,7 +44,9 @@ export const RestaurantCard = ({
       withBorder
       component={Link}
       href={`/${KEY}/${id}`}
+      className="group hover:scale-[1.01] transition-transform duration-300 ease-out"
     >
+       <Overlay color="#fff" className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out" />
       {/* <CardSection>
         <Image
           component={NextImage}
@@ -64,7 +67,7 @@ export const RestaurantCard = ({
         </Badge>
       </Group> */}
 
-      <Display rating={rating} ratingCount={ratingCount} />
+      <Display rating={rating} ratingCount={ratingCount} showCount />
 
       <Text size="sm" c="dimmed" mt="sm">
         {[cuisine_type, location].join(" • ")}
