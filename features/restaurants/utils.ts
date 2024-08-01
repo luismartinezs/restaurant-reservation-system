@@ -24,6 +24,13 @@ export function getDates(
   }
 }
 
+export function getRestaurantsByLocation<T extends RestaurantRead>(restaurants: T[], locations: string[]) {
+  if (locations.length === 0) {
+    return restaurants
+  }
+  return restaurants.filter(r => locations.includes(r.location))
+}
+
 export function getRestaurantsByCuisine<T extends RestaurantRead>(restaurants: T[], cuisines: string[]) {
   if (cuisines.length === 0) {
     return restaurants

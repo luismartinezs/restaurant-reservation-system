@@ -1,12 +1,11 @@
 "use client";
 
 import { ActionIcon, Box, Container, Drawer } from "@mantine/core";
-import { CuisineFilters } from "./CuisineFilters";
-import { Suspense, useState } from "react";
+import { ReactNode, Suspense, useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
 import { CiFilter } from "react-icons/ci";
 
-export function FiltersMenu() {
+export function FiltersMenu({ filters }: { filters: ReactNode }) {
   const [opened, setOpened] = useState(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -15,7 +14,7 @@ export function FiltersMenu() {
   const content = (
     <Suspense fallback={<div>Loading...</div>}>
       <Box component="form" w="100%" py={8}>
-        <CuisineFilters />
+        <div className="flex flex-col gap-4">{filters}</div>
       </Box>
     </Suspense>
   );

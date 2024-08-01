@@ -8,5 +8,6 @@ export function useFilterQuery() {
 
   return getFilterQuery({
     cuisine: searchParams.get("cuisine"),
+    location: searchParams.get("location"),
   });
 }

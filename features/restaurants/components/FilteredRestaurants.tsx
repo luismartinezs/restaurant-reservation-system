@@ -7,6 +7,7 @@ import { useSearchQuery } from "@/features/search";
 import {
   getAvailableRestaurants,
   getRestaurantsByCuisine,
+  getRestaurantsByLocation,
   getRestaurantsWithAvgRating,
 } from "../utils";
 import { RestaurantCard } from "./RestaurantCard";
@@ -24,13 +25,16 @@ export function FilteredRestaurants({
   ratings: RatingRead[];
 }) {
   const { date, time, people } = useSearchQuery();
-  const { cuisine } = useFilterQuery();
+  const { cuisine, location } = useFilterQuery();
 
   const filteredRestaurants = useMemo(
     () =>
       getRestaurantsWithAvgRating(
         getAvailableRestaurants(
-          getRestaurantsByCuisine(restaurants, cuisine),
+          getRestaurantsByCuisine(
+            getRestaurantsByLocation(restaurants, location),
+            cuisine
+          ),
           reservations,
           {
             date,
