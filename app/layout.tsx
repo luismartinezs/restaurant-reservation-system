@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <MantineProvider defaultColorScheme="dark" theme={theme}>
           <CollapseDesktop navbar={<Navbar showAuthButton />}>
-            <div className="relative isolate">
+            <div className="relative isolate mb-32">
               {children}
             </div>
           </CollapseDesktop>

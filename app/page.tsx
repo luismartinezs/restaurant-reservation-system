@@ -3,11 +3,8 @@ import NextImage from "next/image";
 import {
   Text,
   Container,
-  Card,
   Image,
   Group,
-  SimpleGrid,
-  CardSection,
   Title,
 } from "@mantine/core";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
@@ -17,7 +14,7 @@ import { SectionByLocation } from "@/features/restaurants/components/landing/Sec
 
 const RestaurantListingPage = () => {
   return (
-    <div className="flex flex-col mb-32 gap-16">
+    <div className="flex flex-col gap-16">
       <FullBleedHero
         title="Dining Made Easy"
         subtitle="Discover delicious spots and save with deals"
@@ -36,8 +33,6 @@ const RestaurantListingPage = () => {
           <TopRecommendations />
 
           <NewThisWeek />
-
-          {/* Add more sections here: New This Week, Discovery Made Easy, etc. */}
 
           <SectionByLocation />
 
