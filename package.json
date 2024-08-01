@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "vitest",
+    "vitest": "vitest",
+    "e2e": "exec playwright test",
     "lint": "next lint",
     "prepare": "husky",
     "sanity": "echo 'Sanity check'",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@playwright/test": "^1.45.3",
     "@testing-library/react": "^16.0.0",
     "@types/node": "^20.14.12",
     "@types/react": "^18.3.3",
