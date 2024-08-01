@@ -17,7 +17,7 @@ import { SectionByLocation } from "@/features/restaurants/components/landing/Sec
 
 const RestaurantListingPage = () => {
   return (
-    <div className="flex flex-col mb-16 gap-16">
+    <div className="flex flex-col mb-32 gap-16">
       <FullBleedHero
         title="Dining Made Easy"
         subtitle="Discover delicious spots and save with deals"
@@ -32,7 +32,7 @@ const RestaurantListingPage = () => {
         }
       />
       <Container size="xl">
-        <div className="flex flex-col gap-14">
+        <div className="flex flex-col gap-16">
           <TopRecommendations />
 
           <NewThisWeek />

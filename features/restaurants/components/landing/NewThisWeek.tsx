@@ -30,7 +30,7 @@ export const NewThisWeek = async () => {
             >
               <RestaurantCard
                 image={`https://res.cloudinary.com/dicyllvry/image/upload/v1722433325/restaurant-reservation-system/phuket_nwegsz.jpg`}
-                title={restaurant.name}
+                restaurant={restaurant}
                 rating={avgRating}
                 ratingCount={ratingCount}
               />
