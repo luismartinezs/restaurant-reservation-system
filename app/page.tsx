@@ -1,16 +1,12 @@
 import React from "react";
 import NextImage from "next/image";
-import {
-  Text,
-  Container,
-  Image,
-  Group,
-  Title,
-} from "@mantine/core";
+import { Text, Container, Image, Group, Title } from "@mantine/core";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { TopRecommendations } from "@/features/restaurants/components/landing/TopRecommendations";
 import { NewThisWeek } from "@/features/restaurants/components/landing/NewThisWeek";
 import { SectionByLocation } from "@/features/restaurants/components/landing/SectionByLocation";
+import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { FOLDER_PATH } from "@/lib/cloudinary/constants";
 
 const RestaurantListingPage = () => {
   return (
@@ -19,12 +15,14 @@ const RestaurantListingPage = () => {
         title="Dining Made Easy"
         subtitle="Discover delicious spots and save with deals"
         image={
-          <Image
-            component={NextImage}
-            src="https://res.cloudinary.com/dicyllvry/image/upload/v1722433325/restaurant-reservation-system/phuket_nwegsz.jpg"
-            fill
-            alt="lorem ipsum"
-            className="object-cover"
+          <CloudinaryImage
+            src="phuket_nwegsz"
+            alt="test"
+            className="object-cover max-w-fit"
+            width={1920}
+            height={400}
+            crop="fill"
+            gravity="center"
           />
         }
       />
@@ -58,7 +56,6 @@ const RestaurantListingPage = () => {
               and experience the best in culinary delights.
             </Text>
           </Group>
-
         </div>
       </Container>
     </div>

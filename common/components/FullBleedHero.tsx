@@ -1,5 +1,4 @@
-import React from "react";
-import { Title, Text } from "@mantine/core";
+import React, { ReactNode } from "react";
 
 export function FullBleedHero({
   image,
@@ -7,10 +6,10 @@ export function FullBleedHero({
   subtitle,
   link,
 }: {
-  image: React.ReactNode;
+  image: ReactNode;
   title: string;
   subtitle: string;
-  link?: React.ReactNode;
+  link?: ReactNode;
 }) {
   return (
     <div className="relative -mx-[20px] !mb-0 py-0 xl:mb-12 -mt-[18px]">

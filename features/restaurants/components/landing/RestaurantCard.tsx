@@ -12,6 +12,7 @@ import { Display } from "@/features/ratings";
 import Link from "next/link";
 import { KEY } from "../../constants";
 import { RestaurantRead } from "../../types";
+import { CloudinaryImage } from "@/common/components/CloudinaryImage";
 
 export const RestaurantCard = ({
   restaurant,
@@ -39,13 +40,18 @@ export const RestaurantCard = ({
       className="group hover:scale-[1.01] transition-transform duration-300 ease-out"
     >
       <CardSection className="">
-        <Overlay color="#fff" className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out" />
-        <Image
-          component={NextImage}
+        <Overlay
+          color="#fff"
+          className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
+        />
+        <CloudinaryImage
           src={image}
           height={160}
           width={160}
           alt={name}
+          crop="fill"
+          gravity="center"
+          className="h-full w-full"
         />
       </CardSection>
 

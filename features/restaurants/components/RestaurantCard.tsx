@@ -10,12 +10,14 @@ import {
   Group,
   Skeleton,
   Overlay,
+  CardSection,
 } from "@mantine/core";
 
 import { RestaurantRead } from "../types";
 import Link from "next/link";
 import { KEY, MIN_SEATS_DISPLAY } from "../constants";
 import { Display } from "@/features/ratings";
+import { CloudinaryImage } from "@/common/components/CloudinaryImage";
 
 export const RestaurantCard = ({
   restaurant,
@@ -39,23 +41,28 @@ export const RestaurantCard = ({
   return (
     <Card
       shadow="sm"
-      p="lg"
+      pt={0}
       radius="md"
       withBorder
       component={Link}
       href={`/${KEY}/${id}`}
       className="group hover:scale-[1.01] transition-transform duration-300 ease-out"
     >
-       <Overlay color="#fff" className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out" />
-      {/* <CardSection>
-        <Image
-          component={NextImage}
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
+      <Overlay
+        color="#fff"
+        className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
+      />
+      <CardSection pb="md">
+        <CloudinaryImage
+          src="phuket_nwegsz"
           height={160}
           width={160}
           alt={name}
+          crop="fill"
+          gravity="center"
+          className="h-full w-full"
         />
-      </CardSection> */}
+      </CardSection>
 
       <Group align="apart" mb="xs">
         <Text fw={500}>{name}</Text>
