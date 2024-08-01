@@ -1,6 +1,6 @@
 "use client";
 
-import { ActionIcon, Box, Container, Drawer } from "@mantine/core";
+import { Box, Container, Drawer } from "@mantine/core";
 import { ReactNode, useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
 import { CiFilter } from "react-icons/ci";
@@ -20,13 +20,14 @@ export function FiltersMenu({ filters }: { filters: ReactNode }) {
   if (isMobile) {
     return (
       <div>
-        <ActionIcon
-          variant="subtle"
+        <button
+          type="button"
           onClick={toggleDrawer}
-          aria-label="Toggle filters"
+          className="flex gap-2 items-center text-blue-400"
         >
           <CiFilter />
-        </ActionIcon>
+          Filters
+        </button>
         <Drawer
           opened={opened}
           onClose={toggleDrawer}
