@@ -81,3 +81,15 @@ export function getRestaurantsWithAvgRating<T extends RestaurantRead>(restaurant
     return { ...restaurant, avgRating, ratingCount };
   });
 }
+
+export function getLocationsAndCount<T extends RestaurantRead>(restaurants: T[]) {
+  const locationMap = new Map<string, number>();
+  for (const restaurant of restaurants) {
+    const { location } = restaurant;
+    if (!locationMap.has(location)) {
+      locationMap.set(location, 0);
+    }
+    locationMap.set(location, locationMap.get(location)! + 1);
+  }
+  return Array.from(locationMap.entries()).map(([location, count]) => ({ location, count }));
+}

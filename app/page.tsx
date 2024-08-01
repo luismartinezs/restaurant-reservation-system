@@ -3,20 +3,17 @@ import NextImage from "next/image";
 import {
   Text,
   Container,
-  Grid,
   Card,
   Image,
-  Badge,
   Group,
   SimpleGrid,
   CardSection,
-  GridCol,
   Title,
 } from "@mantine/core";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
-import { RestaurantCard } from "@/features/restaurants/components/landing/RestaurantCard";
 import { TopRecommendations } from "@/features/restaurants/components/landing/TopRecommendations";
 import { NewThisWeek } from "@/features/restaurants/components/landing/NewThisWeek";
+import { SectionByLocation } from "@/features/restaurants/components/landing/SectionByLocation";
 
 const RestaurantListingPage = () => {
   return (
@@ -42,34 +39,8 @@ const RestaurantListingPage = () => {
 
           {/* Add more sections here: New This Week, Discovery Made Easy, etc. */}
 
-          <div>
-            <Text size="lg" fw={600}>
-              Browse by Locations
-            </Text>
-            <Text mb="lg">Discover restaurants in these locations</Text>
-            <SimpleGrid cols={{ base: 2, sm: 5 }} spacing="lg">
-              {["Patong", "Kata", "Chalong", "Maekhao", "Phuket"].map(
-                (location) => (
-                  <Card key={location} shadow="sm" radius="md" withBorder>
-                    <CardSection>
-                      <Image
-                        component={NextImage}
-                        src={`https://res.cloudinary.com/dicyllvry/image/upload/v1722433325/restaurant-reservation-system/phuket_nwegsz.jpg`}
-                        height={160}
-                        width={160}
-                        alt={location}
-                      />
-                    </CardSection>
-                    <Group justify="space-between" mt="md">
-                      <Text fw={700} size="xl" className="text-center">
-                        {location}
-                      </Text>
-                    </Group>
-                  </Card>
-                )
-              )}
-            </SimpleGrid>
-          </div>
+          <SectionByLocation />
+
           <Group>
             <Title>About RicoRico</Title>
             <Text>
@@ -93,11 +64,6 @@ const RestaurantListingPage = () => {
             </Text>
           </Group>
 
-          {/* <Footer height={60} p="md" style={{ marginTop: "2rem" }}>
-            <Text size="sm" align="center">
-              © 2024 Chope. All rights reserved.
-            </Text>
-          </Footer> */}
         </div>
       </Container>
     </div>
