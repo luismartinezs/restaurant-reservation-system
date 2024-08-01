@@ -16,7 +16,7 @@ const RestaurantListingPage = () => {
         image={
           <CloudinaryImage
             folderPath="assets"
-            imgId="phuket_nwegsz"
+            imgId="burger.jpg"
             alt="test"
             className="object-cover max-w-fit"
             width={1920}
