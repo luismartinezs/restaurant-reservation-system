@@ -57,7 +57,7 @@ describe('canReserve', () => {
   });
 
   // Reservation with people count exceeding capacity for start time should return false
-  it.only('should return false when reservation people count exceeds capacity for start time', () => {
+  it('should return false when reservation people count exceeds capacity for start time', () => {
     // Mock data
     const reservationAttempt = { start: '2023-10-10T12:00:00+0500', people: 6, ...fixedProps };
     const existingReservations = [
