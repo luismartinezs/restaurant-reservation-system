@@ -277,10 +277,10 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] same with reservations and reservations/:uid
 - [x] init DB with plenty data for reservations + ratings so more realistic use case can be visualized
 - [x] add landing page similar to https://www.chope.co/phuket-restaurants
-- [ ] images
-  - [ ] add ai generated images for restaurants
-    - [ ] create images with ai
-    - [ ] add images to DB and display in UI
+- [x] images
+  - [x] add ai generated images for restaurants
+    - [x] create images with ai
+    - [x] add images to DB and display in UI
 - [ ] Cleanup login page
   - [ ] Add signin with google
 - [ ] icing cake
@@ -289,8 +289,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [ ] README cleanup
   - [ ] fix theme popup
 - [ ] Manual testing / search for bugs (do not fix em though)
-- [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
 - [ ] Supabase: security and RLS
+- [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
 
 ## Known bugs
 

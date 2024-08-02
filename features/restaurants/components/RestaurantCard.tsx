@@ -1,21 +1,24 @@
-// import NextImage from "next/image";
+import NextImage from "next/image";
 
 import {
   Card,
   // CardSection,
   // Badge,
   // Button,
-  // Image,
+  Image,
   Text,
   Group,
   Skeleton,
   Overlay,
+  CardSection,
 } from "@mantine/core";
 
 import { RestaurantRead } from "../types";
 import Link from "next/link";
 import { KEY, MIN_SEATS_DISPLAY } from "../constants";
 import { Display } from "@/features/ratings";
+import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { slugify } from "@/common/utils";
 
 export const RestaurantCard = ({
   restaurant,
@@ -39,23 +42,42 @@ export const RestaurantCard = ({
   return (
     <Card
       shadow="sm"
-      p="lg"
+      pt={0}
       radius="md"
       withBorder
       component={Link}
       href={`/${KEY}/${id}`}
       className="group hover:scale-[1.01] transition-transform duration-300 ease-out"
     >
-       <Overlay color="#fff" className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out" />
-      {/* <CardSection>
-        <Image
-          component={NextImage}
-          src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
+      <Overlay
+        color="#fff"
+        className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
+      />
+      <CardSection pb="md">
+        <CloudinaryImage
+          folderPath="restaurants/thumbnails"
+          imgId={`${id}_${slugify(name)}_interior_0001`}
+          fallback={
+            <Image
+              component={NextImage}
+              src={`https://placehold.co/512x512/242424/FFF.png?text=${name.replace(
+                /\W/,
+                "+"
+              )}`}
+              className="h-full w-full"
+              alt=""
+              width={160}
+              height={160}
+            />
+          }
           height={160}
           width={160}
           alt={name}
+          crop="fill"
+          gravity="center"
+          className="h-full w-full"
         />
-      </CardSection> */}
+      </CardSection>
 
       <Group align="apart" mb="xs">
         <Text fw={500}>{name}</Text>
@@ -97,5 +119,5 @@ export const RestaurantCard = ({
 };
 
 export const RestaurantCardSkeleton = () => {
-  return <Skeleton p="lg" radius="md" h={160} w={215} />;
+  return <Skeleton p="lg" radius="md" h={360} w={215} />;
 };

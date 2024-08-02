@@ -29,7 +29,6 @@ export const TopRecommendations = async () => {
               span={{ base: 6, sm: 4, md: 3, lg: 2.4 }}
             >
               <RestaurantCard
-                image={`https://res.cloudinary.com/dicyllvry/image/upload/v1722433325/restaurant-reservation-system/phuket_nwegsz.jpg`}
                 restaurant={restaurant}
                 rating={avgRating}
                 ratingCount={ratingCount}

@@ -1,5 +1,5 @@
 import { Collapse } from "@mantine/core";
-import { useDisclosure, useMediaQuery } from "@mantine/hooks";
+import { useDisclosure, useId, useMediaQuery } from "@mantine/hooks";
 import { RxCaretDown, RxCaretUp } from "react-icons/rx";
 
 export const FilterSlicer = ({
@@ -13,6 +13,7 @@ export const FilterSlicer = ({
 }) => {
   const [opened, { toggle }] = useDisclosure(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const disclosureId = useId();
 
   if (isMobile) {
     return (
@@ -26,12 +27,14 @@ export const FilterSlicer = ({
     <>
       <div className="flex flex-wrap gap-5 md:flex-col">
         {items.slice(0, cutoff).map((item) => renderItem(item))}
-        <Collapse in={opened}>
+        <Collapse in={opened} id={disclosureId}>
           <div className="flex flex-wrap gap-5 md:flex-col">
             {items.slice(cutoff).map((item) => renderItem(item))}
           </div>
         </Collapse>
         <button
+          aria-controls={disclosureId}
+          aria-expanded={opened ? "true" : "false"}
           type="button"
           onClick={toggle}
           className="flex gap-1 px-0 mx-0 justify-start text-sm items-center text-blue-400 hover:underline"

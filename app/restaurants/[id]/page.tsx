@@ -6,6 +6,9 @@ import { BookForm, BookFormSkeleton } from "@/features/reservations";
 import { Container } from "@mantine/core";
 import { getUser } from "@/features/auth/utils";
 import { Suspense } from "react";
+import { FullBleedHero } from "@/common/components/FullBleedHero";
+import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { getCloudinaryImageId } from "@/features/restaurants";
 
 // issue where is that this page will not be cached
 export default async function Page({ params }: { params: { id: string } }) {
@@ -22,20 +25,41 @@ export default async function Page({ params }: { params: { id: string } }) {
     const restaurant = await api().getRestaurantById(numId);
 
     return (
-      <Container>
-        <div className="flex flex-col gap-8">
-          <Suspense fallback={<DetailSkeleton />}>
-            <Detail restaurant={restaurant} />
-          </Suspense>
-          <Suspense fallback={<BookFormSkeleton />}>
-            {user?.id ? (
-              <BookForm restaurantId={restaurant.id} userId={user?.id} />
-            ) : (
-              <div>Login / register to make a reservation</div>
-            )}
-          </Suspense>
-        </div>
-      </Container>
+      <>
+        <FullBleedHero
+          title={restaurant.name}
+          image={
+            <CloudinaryImage
+              folderPath="restaurants/heros"
+              imgId={getCloudinaryImageId(
+                restaurant,
+                "interior_hero_1920_0001"
+              )}
+              fallback={<div className="absolute inset-0 bg-gradient-to-br from-gray-500 via-gray-600 to-gray-700"></div>}
+              alt="test"
+              className="object-cover max-w-fit"
+              width={1920}
+              height={400}
+              crop="fill"
+              gravity="center"
+            />
+          }
+        />
+        <Container>
+          <div className="flex flex-col gap-8">
+            <Suspense fallback={<DetailSkeleton />}>
+              <Detail restaurant={restaurant} />
+            </Suspense>
+            <Suspense fallback={<BookFormSkeleton />}>
+              {user?.id ? (
+                <BookForm restaurantId={restaurant.id} userId={user?.id} />
+              ) : (
+                <div>Login / register to make a reservation</div>
+              )}
+            </Suspense>
+          </div>
+        </Container>
+      </>
     );
   } catch (err) {
     return notFound();

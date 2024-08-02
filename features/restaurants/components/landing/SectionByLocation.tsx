@@ -4,14 +4,16 @@ import {
   CardSection,
   SimpleGrid,
   Text,
-  Image,
   Group,
   Overlay,
+  Image
 } from "@mantine/core";
 import { api } from "../../api";
 import { getLocationsAndCount } from "../../utils";
 import Link from "next/link";
 import { KEY } from "../../constants";
+import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { slugify } from "@/common/utils";
 
 export const SectionByLocation = async () => {
   const restaurants = await api().getAllRestaurants();
@@ -41,12 +43,25 @@ export const SectionByLocation = async () => {
                 color="#fff"
                 className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
               />
-              <Image
-                component={NextImage}
-                src={`https://res.cloudinary.com/dicyllvry/image/upload/v1722433325/restaurant-reservation-system/phuket_nwegsz.jpg`}
+              <CloudinaryImage
+                folderPath="locations"
+                imgId={`${slugify(location)}.png`}
+                fallback={
+                  <Image
+                    component={NextImage}
+                    src={`https://placehold.co/512x512/242424/FFF.png?text=${location}`}
+                    className="h-full w-full"
+                    alt=""
+                    width={160}
+                    height={160}
+                  />
+                }
                 height={160}
                 width={160}
                 alt={location}
+                crop="fill"
+                gravity="center"
+                className="h-full w-full"
               />
             </CardSection>
             <Group justify="space-between" mt="md">

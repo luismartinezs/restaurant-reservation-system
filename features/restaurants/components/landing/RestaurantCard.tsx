@@ -2,16 +2,18 @@ import NextImage from "next/image";
 import {
   Text,
   Card,
-  Image,
   Badge,
   CardSection,
   Stack,
   Overlay,
+  Image,
 } from "@mantine/core";
 import { Display } from "@/features/ratings";
 import Link from "next/link";
 import { KEY } from "../../constants";
 import { RestaurantRead } from "../../types";
+import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { slugify } from "@/common/utils";
 
 export const RestaurantCard = ({
   restaurant,
@@ -20,12 +22,13 @@ export const RestaurantCard = ({
   ratingCount,
 }: {
   restaurant: RestaurantRead;
-  image: string;
+  image?: string;
   rating?: number;
   ratingCount?: number;
 }) => {
   const isRated = ratingCount && ratingCount !== 0;
   const { name, id } = restaurant;
+  const _image = image ?? `${id}_${slugify(name)}_interior_0001`;
 
   return (
     <Card
@@ -39,13 +42,32 @@ export const RestaurantCard = ({
       className="group hover:scale-[1.01] transition-transform duration-300 ease-out"
     >
       <CardSection className="">
-        <Overlay color="#fff" className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out" />
-        <Image
-          component={NextImage}
-          src={image}
+        <Overlay
+          color="#fff"
+          className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
+        />
+        <CloudinaryImage
+          folderPath="restaurants/thumbnails"
+          fallback={
+            <Image
+              component={NextImage}
+              src={`https://placehold.co/512x512/242424/FFF.png?text=${name.replace(
+                /\W/,
+                "+"
+              )}`}
+              className="h-full w-full"
+              alt=""
+              width={160}
+              height={160}
+            />
+          }
+          imgId={_image}
           height={160}
           width={160}
           alt={name}
+          crop="fill"
+          gravity="center"
+          className="h-full w-full"
         />
       </CardSection>
 

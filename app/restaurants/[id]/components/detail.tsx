@@ -1,6 +1,6 @@
 import { Display as RatingDisplay } from "@/features/ratings";
 import { RestaurantRead } from "@/features/restaurants";
-import { Container, Group, Skeleton } from "@mantine/core";
+import { Group, Skeleton } from "@mantine/core";
 import { api as ratingsApi } from "@/features/ratings/server";
 import { CiForkAndKnife, CiLocationOn } from "react-icons/ci";
 
@@ -14,8 +14,8 @@ export async function Detail({ restaurant }: { restaurant: RestaurantRead }) {
   const ratingCount = ratings.length;
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold my-6">{restaurant.name}</h1>
+    <div className="mt-6">
+      {/* <h1 className="text-3xl font-bold my-6">{restaurant.name}</h1> */}
       <div className="flex gap-6">
         <RatingDisplay rating={rating} ratingCount={ratingCount} />
         <Group gap={4}>
