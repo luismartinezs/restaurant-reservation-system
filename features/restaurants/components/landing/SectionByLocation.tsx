@@ -1,3 +1,4 @@
+import NextImage from "next/image";
 import {
   Card,
   CardSection,
@@ -5,12 +6,14 @@ import {
   Text,
   Group,
   Overlay,
+  Image
 } from "@mantine/core";
 import { api } from "../../api";
 import { getLocationsAndCount } from "../../utils";
 import Link from "next/link";
 import { KEY } from "../../constants";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { slugify } from "@/common/utils";
 
 export const SectionByLocation = async () => {
   const restaurants = await api().getAllRestaurants();
@@ -41,8 +44,18 @@ export const SectionByLocation = async () => {
                 className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
               />
               <CloudinaryImage
-                folderPath="assets"
-                imgId="phuket_nwegsz"
+                folderPath="locations"
+                imgId={`${slugify(location)}.png`}
+                fallback={
+                  <Image
+                    component={NextImage}
+                    src={`https://placehold.co/512x512/242424/FFF.png?text=${location}`}
+                    className="h-full w-full"
+                    alt=""
+                    width={160}
+                    height={160}
+                  />
+                }
                 height={160}
                 width={160}
                 alt={location}

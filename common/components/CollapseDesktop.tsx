@@ -1,7 +1,10 @@
 "use client";
 
-import { AppShell, Burger, Flex, Group, Text } from "@mantine/core";
+import NextLink from "next/link";
+
+import { Anchor, AppShell, Burger, Flex, Group, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { CloudinaryImage } from "./CloudinaryImage";
 
 export function CollapseDesktop({
   navbar,
@@ -26,7 +29,20 @@ export function CollapseDesktop({
         <Group h="100%" px="lg">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
           <Group justify="space-between" style={{ flex: 1 }}>
-            <div>Logo</div>
+            <Anchor component={NextLink} href="/" underline="never" c="white">
+              <Group gap={4}>
+                <CloudinaryImage
+                  folderPath="assets"
+                  imgId="logo_sy2afn"
+                  alt="A logo looking like a burger"
+                  width={50}
+                  height={50}
+                />
+                <Text size="xl" fw={700}>
+                  RicoRico
+                </Text>
+              </Group>
+            </Anchor>
             <Group ml="xl" gap={20} visibleFrom="sm" component="ul">
               {navbar}
             </Group>

@@ -1,3 +1,5 @@
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 import dayjs, { Dayjs } from "dayjs";
 
 export function toDateFormat(date: string | Dayjs) {
@@ -15,4 +17,8 @@ export function slugify(text: string) {
     .replace(/[\'\&]/, '_')
     .replace(/ /g, "-")
     .replace(/[^\w-]+/g, "");
+}
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
 }

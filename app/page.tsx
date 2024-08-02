@@ -12,11 +12,11 @@ const RestaurantListingPage = () => {
       <FullBleedHero
         title="Dining Made Easy"
         subtitle="Discover delicious spots and save with deals"
+        className="-mt-[18px]"
         image={
           <CloudinaryImage
             folderPath="assets"
-            // fallback={<div className="h-[200px] w-[200px] bg-pink-500">HELLLO</div>}
-            imgId="burger.jpg"
+            imgId="hero_banner_1920_qcmdaw"
             alt="test"
             className="object-cover max-w-fit"
             width={1920}

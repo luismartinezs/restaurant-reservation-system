@@ -21,14 +21,14 @@ describe('getRandInt', () => {
 
 describe('slugify', () => {
   it('should convert spaces to hyphens when given a string with spaces', () => {
-    const text = "Hello World";
-    const result = slugify(text);
-    expect(result).toBe("Hello-World");
+    expect(slugify("Hello World")).toBe("Hello-World");
   });
 
   it('should handle apostrophes', () => {
-    const text = "Dragon's Delight";
-    const result = slugify(text);
-    expect(result).toBe("Dragon_s-Delight");
+    expect(slugify("Dragon's Delight")).toBe("Dragon_s-Delight");
+  });
+
+  it('should handle location names', () => {
+    expect(slugify("Hong Kong")).toBe("Hong-Kong");
   });
 });
