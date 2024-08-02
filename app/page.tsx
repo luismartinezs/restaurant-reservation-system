@@ -1,6 +1,5 @@
 import React from "react";
-import NextImage from "next/image";
-import { Text, Container, Image, Group, Title } from "@mantine/core";
+import { Text, Container, Group, Title } from "@mantine/core";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { TopRecommendations } from "@/features/restaurants/components/landing/TopRecommendations";
 import { NewThisWeek } from "@/features/restaurants/components/landing/NewThisWeek";
@@ -16,6 +15,7 @@ const RestaurantListingPage = () => {
         image={
           <CloudinaryImage
             folderPath="assets"
+            // fallback={<div className="h-[200px] w-[200px] bg-pink-500">HELLLO</div>}
             imgId="burger.jpg"
             alt="test"
             className="object-cover max-w-fit"

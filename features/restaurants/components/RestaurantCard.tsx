@@ -1,11 +1,11 @@
-// import NextImage from "next/image";
+import NextImage from "next/image";
 
 import {
   Card,
   // CardSection,
   // Badge,
   // Button,
-  // Image,
+  Image,
   Text,
   Group,
   Skeleton,
@@ -18,6 +18,7 @@ import Link from "next/link";
 import { KEY, MIN_SEATS_DISPLAY } from "../constants";
 import { Display } from "@/features/ratings";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { slugify } from "@/common/utils";
 
 export const RestaurantCard = ({
   restaurant,
@@ -54,8 +55,21 @@ export const RestaurantCard = ({
       />
       <CardSection pb="md">
         <CloudinaryImage
-          folderPath="assets"
-          imgId="phuket_nwegsz"
+          folderPath="restaurants/thumbnails"
+          imgId={`${id}_${slugify(name)}_interior_0001`}
+          fallback={
+            <Image
+              component={NextImage}
+              src={`https://placehold.co/512x512/242424/FFF.png?text=${name.replace(
+                /\W/,
+                "+"
+              )}`}
+              className="h-full w-full"
+              alt=""
+              width={160}
+              height={160}
+            />
+          }
           height={160}
           width={160}
           alt={name}
@@ -105,5 +119,5 @@ export const RestaurantCard = ({
 };
 
 export const RestaurantCardSkeleton = () => {
-  return <Skeleton p="lg" radius="md" h={160} w={215} />;
+  return <Skeleton p="lg" radius="md" h={360} w={215} />;
 };

@@ -8,7 +8,7 @@ export function FullBleedHero({
 }: {
   image: ReactNode;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   link?: ReactNode;
 }) {
   return (
@@ -23,7 +23,11 @@ export function FullBleedHero({
             {title}
           </h1>
         </div>
-        <p className="font-semibold text-md md:text-xl text-white">{subtitle}</p>
+        {subtitle ?? (
+          <p className="font-semibold text-md md:text-xl text-white">
+            {subtitle}
+          </p>
+        )}
         {link}
       </div>
     </div>

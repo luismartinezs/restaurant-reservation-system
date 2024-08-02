@@ -1,4 +1,5 @@
-import { RestaurantRead } from "./types";
+import { slugify } from "@/common/utils";
+import { Id, RestaurantRead } from "./types";
 import { Read as RatingRead } from "@/features/ratings"
 import { Read as ReservationRead } from "@/features/reservations"
 import { SearchQuery } from "@/features/search"
@@ -99,4 +100,14 @@ export function getLocationsAndCount<T extends RestaurantRead>(restaurants: T[])
     locationMap.set(location, locationMap.get(location)! + 1);
   }
   return Array.from(locationMap.entries()).map(([location, count]) => ({ location, count }));
+}
+
+export function getCloudinaryImageId({
+  id,
+  name
+}: {
+  id: Id
+  name: RestaurantRead['name']
+}, append: string = '') {
+  return `${id}_${slugify(name)}${append ? `_${append}` : ''}`
 }

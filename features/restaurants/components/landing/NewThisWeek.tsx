@@ -29,7 +29,6 @@ export const NewThisWeek = async () => {
               span={{ base: 6, sm: 4, md: 3, lg: 2.4 }}
             >
               <RestaurantCard
-                image="phuket_nwegsz"
                 restaurant={restaurant}
                 rating={avgRating}
                 ratingCount={ratingCount}

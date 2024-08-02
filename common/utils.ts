@@ -9,3 +9,10 @@ export function getRandInt(length: number) {
   const max = 10 ** (length) - 1
   return Math.round(Math.random() * (max - min + 1)) + min
 }
+
+export function slugify(text: string) {
+  return text
+    .replace(/[\'\&]/, '_')
+    .replace(/ /g, "-")
+    .replace(/[^\w-]+/g, "");
+}

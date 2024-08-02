@@ -1,6 +1,6 @@
 // Generates a random integer of specified length
 import { describe, expect, it } from "vitest";
-import { getRandInt } from "./utils";
+import { getRandInt, slugify } from "./utils";
 
 describe('getRandInt', () => {
 
@@ -17,4 +17,18 @@ describe('getRandInt', () => {
     expect(result).toBeLessThanOrEqual(9);
   });
 
+});
+
+describe('slugify', () => {
+  it('should convert spaces to hyphens when given a string with spaces', () => {
+    const text = "Hello World";
+    const result = slugify(text);
+    expect(result).toBe("Hello-World");
+  });
+
+  it('should handle apostrophes', () => {
+    const text = "Dragon's Delight";
+    const result = slugify(text);
+    expect(result).toBe("Dragon_s-Delight");
+  });
 });
