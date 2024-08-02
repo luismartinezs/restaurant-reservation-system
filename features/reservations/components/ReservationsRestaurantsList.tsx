@@ -1,6 +1,6 @@
 import React from "react";
 import { api } from "../server";
-import { Stack } from "@mantine/core";
+import { Stack, Text } from "@mantine/core";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import { ReservationsRestaurantsItem } from "./ReservationsRestaurantsItem";
@@ -15,6 +15,10 @@ export const ReservationsRestaurantsList = async ({
 }) => {
   const reservationsRestaurants =
     await api().getFilteredReservationsRestaurants("user_id", userId);
+
+  if (reservationsRestaurants.length === 0) {
+    return <Text>You don't have any reservations</Text>
+  }
 
   return (
     <Stack gap="md">

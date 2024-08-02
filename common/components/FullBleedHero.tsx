@@ -18,7 +18,7 @@ export function FullBleedHero({
     <div className={cn("relative -mx-[20px] !mb-0 py-0 xl:mb-12", className)}>
       <div className="relative h-[400px] w-full overflow-hidden">
         {image}
-        <div className="absolute inset-0 bg-stone-900 object-cover opacity-50"></div>
+        <div className="absolute inset-0 bg-stone-900 object-cover opacity-40"></div>
       </div>
       <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center text-center">
         <div className="flex items-center">

@@ -1,10 +1,10 @@
 import { Account } from "@/features/auth";
-import { Container } from "@mantine/core";
+import { Container, Title } from "@mantine/core";
 
 export default function AccountPage() {
   return (
     <Container>
-      <h1>Your account</h1>
+      <Title order={1} mb={8}>Your account</Title>
       <Account />
     </Container>
   );

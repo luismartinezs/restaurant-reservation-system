@@ -16,7 +16,6 @@ export async function Account() {
           <AuthButton />
         </Stack>
       </Card>
-      {/* <pre>{JSON.stringify(user, null, 2)}</pre> */}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { Navbar } from "@/common/components/Navbar";
 import { checkAuth } from "@/features/auth/utils";
-import { Group } from "@mantine/core";
+import { Container, Group } from "@mantine/core";
 
 export default async function AccountLayout({
   children,
@@ -10,9 +10,9 @@ export default async function AccountLayout({
   await checkAuth();
 
   return (
-    <div>
-      <nav aria-label="account">
-        <Group ml="xl" gap={20} visibleFrom="sm" component="ul">
+    <Container mb={10}>
+      <nav aria-label="account" className="border-b border-gray-600 mb-4">
+        <Group gap={20} component="ul">
           <Navbar
             links={[
               {
@@ -28,6 +28,6 @@ export default async function AccountLayout({
         </Group>
       </nav>
       {children}
-    </div>
+    </Container>
   );
 }

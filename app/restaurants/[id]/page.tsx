@@ -1,9 +1,10 @@
+import NextLink from "next/link";
 import { api } from "@/features/restaurants/api";
 import { notFound } from "next/navigation";
 import invariant from "tiny-invariant";
 import { Detail, DetailSkeleton } from "./components/detail";
 import { BookForm, BookFormSkeleton } from "@/features/reservations";
-import { Container } from "@mantine/core";
+import { Anchor, Container } from "@mantine/core";
 import { getUser } from "@/features/auth/utils";
 import { Suspense } from "react";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
@@ -28,6 +29,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <>
         <FullBleedHero
           title={restaurant.name}
+          className="-mt-8"
           image={
             <CloudinaryImage
               folderPath="restaurants/heros"
@@ -35,7 +37,9 @@ export default async function Page({ params }: { params: { id: string } }) {
                 restaurant,
                 "interior_hero_1920_0001"
               )}
-              fallback={<div className="absolute inset-0 bg-gradient-to-br from-gray-500 via-gray-600 to-gray-700"></div>}
+              fallback={
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-500 via-gray-600 to-gray-700"></div>
+              }
               alt="test"
               className="object-cover max-w-fit"
               width={1920}
@@ -54,7 +58,12 @@ export default async function Page({ params }: { params: { id: string } }) {
               {user?.id ? (
                 <BookForm restaurantId={restaurant.id} userId={user?.id} />
               ) : (
-                <div>Login / register to make a reservation</div>
+                <div>
+                  <Anchor component={NextLink} href="/login">
+                    Login / register
+                  </Anchor>{" "}
+                  to make a reservation
+                </div>
               )}
             </Suspense>
           </div>

@@ -48,3 +48,19 @@ export const signUp = async (formData: FormData) => {
 
   return redirect("/login?message=Check email to continue sign in process");
 };
+
+export const googleSignIn = async () => {
+  const origin = headers().get("origin");
+  const supabase = createClient();
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${origin}/auth/callback/google`,
+    },
+  })
+
+  if (data.url) {
+    redirect(data.url) // use the redirect API for your server framework
+  }
+}
