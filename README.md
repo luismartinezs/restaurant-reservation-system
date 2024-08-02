@@ -289,8 +289,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [ ] README cleanup
   - [ ] fix theme popup
 - [ ] Manual testing / search for bugs (do not fix em though)
-- [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
 - [ ] Supabase: security and RLS
+- [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
 
 ## Known bugs
 
