@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+// import Script from 'next/script'
 import { Inter } from "next/font/google";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
@@ -42,6 +43,7 @@ export default function RootLayout({
           </CollapseDesktop>
           <ScrollToTop />
         </MantineProvider>
+        {/* <Script src="https://accounts.google.com/gsi/client" async /> */}
       </body>
     </html>
   );

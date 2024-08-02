@@ -289,6 +289,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [ ] README cleanup
   - [ ] fix theme popup
 - [ ] Manual testing / search for bugs (do not fix em though)
+- [ ] User can do a reservation
+- [ ] User can add ratings for their own reservations in the past
 - [ ] Supabase: security and RLS
 - [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
 
@@ -303,6 +305,7 @@ None yet
 - clean up booking flow by adding loading state and display booking response (either error, or full restaurant, or success)
 - show list of available reservation times for each restaurant in listing and detail pages
 - add pages to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
+- make dates consistently work with the current user location
 
 ## Troubleshooting
 
