@@ -3,7 +3,7 @@
 import NextLink from "next/link";
 
 import { Anchor, AppShell, Burger, Flex, Group, Text } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+import { useDisclosure, useEventListener } from "@mantine/hooks";
 import { CloudinaryImage } from "./CloudinaryImage";
 
 export function CollapseDesktop({
@@ -14,6 +14,7 @@ export function CollapseDesktop({
   children: React.ReactNode;
 }) {
   const [opened, { toggle }] = useDisclosure();
+  const ref = useEventListener('click', toggle);
 
   return (
     <AppShell
@@ -50,7 +51,7 @@ export function CollapseDesktop({
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        <Flex component="ul" direction="column" gap={12}>
+        <Flex component="ul" direction="column" gap={12} ref={ref}>
           {navbar}
         </Flex>
       </AppShell.Navbar>
