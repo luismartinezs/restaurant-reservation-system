@@ -13,8 +13,10 @@ import { LocationFilters } from "@/features/filters/components/LocationFilters";
 import { getLocationsAndCount } from "@/features/restaurants";
 
 export default async function Page() {
-  const restaurants = await api().getAllRestaurants()
-  const locationOptions = getLocationsAndCount(restaurants).sort((a, b) => b.count - a.count).map(({location}) => location)
+  const restaurants = await api().getAllRestaurants();
+  const locationOptions = getLocationsAndCount(restaurants)
+    .sort((a, b) => b.count - a.count)
+    .map(({ location }) => location);
 
   return (
     <Container size="lg" px={0}>
@@ -35,7 +37,7 @@ export default async function Page() {
               RESTAURANTS
             </Title>
             <Suspense fallback={<SearchSkeleton />}>
-              <Search />
+              <Search title="Make a free reservation" />
             </Suspense>
             <Suspense fallback={<RestaurantListSkeleton />}>
               <RestaurantList />

@@ -22,3 +22,10 @@ export function slugify(text: string) {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export function roundToNextHalfHour(date: dayjs.Dayjs) {
+  const minutes = date.minute()
+  const roundUp = minutes > 0 && minutes <= 30 ? 30 : 0
+  return date.minute(0).second(0).millisecond(0).add(1, 'hour').subtract(60 - roundUp, 'minute')
+}
+

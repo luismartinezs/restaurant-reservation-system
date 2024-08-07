@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { Box, Button, Flex, NumberInput, Skeleton, Title } from "@mantine/core";
+import { Box, Button, Flex, MantineSize, NumberInput, Skeleton, Title } from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
 import dayjs from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
@@ -10,7 +10,13 @@ import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 import { useSearchQuery } from "../hooks/useSearchQuery";
 import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
 
-export function Search() {
+export function Search({
+  title,
+  size = 'sm',
+}: {
+  title?: string;
+  size?: MantineSize;
+}) {
   const search = useSearchQuery();
   const router = useRouter();
   const { update } = useChangeSearchParams();
@@ -34,11 +40,13 @@ export function Search() {
 
   return (
     <Box>
-      <Box mb="xl">
-        <Title order={2} fw={400}>
-          Make a free reservation
-        </Title>
-      </Box>
+      {title && (
+        <Box mb="xl">
+          <Title order={2} fw={400}>
+            {title}
+          </Title>
+        </Box>
+      )}
       <form>
         <Flex
           align="center"
@@ -60,6 +68,7 @@ export function Search() {
             required
             defaultValue={dayjs(search.date).toDate()}
             name="date"
+            size={size}
           />
           <TimeInput
             w={{
@@ -74,6 +83,7 @@ export function Search() {
             required
             defaultValue={search.time}
             name="time"
+            size={size}
           />
           <NumberInput
             w={{
@@ -90,6 +100,7 @@ export function Search() {
             required
             name="people"
             defaultValue={search.people}
+            size={size}
           />
           <Button
             className="min-w-[150px]"
@@ -99,6 +110,7 @@ export function Search() {
             }}
             type="submit"
             formAction={submit}
+            size={size}
           >
             Let&apos;s go
           </Button>
@@ -108,9 +120,6 @@ export function Search() {
   );
 }
 
-
 export function SearchSkeleton() {
-  return (
-    <Skeleton mb="xl" w="100%" h={36} />
-  );
+  return <Skeleton mb="xl" w="100%" h={36} />;
 }

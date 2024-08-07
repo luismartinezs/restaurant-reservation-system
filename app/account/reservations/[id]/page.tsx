@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { checkAuth } from "@/features/auth/utils";
 import { api } from "@/features/reservations/server";
 import { BookForm, ReservationsRestaurantsItem } from "@/features/reservations";
+import { EditReservationForm } from "@/features/reservations/components/EditReservationForm";
 
 dayjs.extend(utc);
 
@@ -41,7 +42,7 @@ export default async function ReservationPage({
         <ReservationsRestaurantsItem
           reservationRestaurant={reservationRestaurant}
         />
-        <BookForm
+        <EditReservationForm
           restaurantId={restaurant_id}
           reservationId={numId}
           userId={user_id}

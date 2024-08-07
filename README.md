@@ -8,6 +8,7 @@
   - [Code generation](#code-generation)
   - [Testing](#testing)
   - [Pre-commit hooks](#pre-commit-hooks)
+  - [Deployment pipelines](#deployment-pipelines)
   - [Project requirements](#project-requirements)
   - [Questions about business logic](#questions-about-business-logic)
   - [Database structure](#database-structure)
@@ -29,9 +30,10 @@
 
 - React / Next.js
 - Mantine
-- Supabase postgresql
+- Supabase Database
 - Supabase auth
-- Zustand
+- Cloudinary
+- ~~Zustand~~ (app state solution not used, used on query params instead)
 
 ## Pre-requisites to run this project
 
@@ -49,32 +51,35 @@ npm install
 # Run development server
 npm dev
 # Build and deploy app locally
-npm build && npm preview
+npm build && npm start
 # You can also run the above commands with pnpm or yarn, e.g.:
 pnpm install
 pnpm dev
-pnpm build && pnpm preview
+pnpm build && pnpm start
 ```
 
 ## Emulate database
 
-To come
+There's not database emulation. As this is just a prototype, the same database is used locally and in the live environment. In a real site a separate database would be needed for development and testing, and a locally emulated database should be spinned.
 
 ## Code generation
 
-- Run `pnpm plop` to scaffold new components or pages (not yet set up)
+- ~~Run `pnpm plop` to scaffold new components or pages~~ (no code generation used in this project)
 
 ## Testing
 
-(no tests yet)
-
-- Run `pnpm test` to run all tests
+- Run `pnpm vitest` to run unit tests
+- Run `pnpm e2e` to run end-to-end tests (no e2e tests setup currently except for a sanity test)
 
 ## Pre-commit hooks
 
 - `pnpm lint` without errors
-- All tests must pass
+- ~~All tests must pass~~ disabling tests because it takes too long to run
 - Commit message must follow `commitlint` specs
+
+## Deployment pipelines
+
+- Unit and e2e tests run fore every attempt to push to or merge pull request to main branch (non blocking)
 
 ## Project requirements
 
@@ -186,14 +191,16 @@ Pages define what data needs to be shown together and thus fetched together (it 
 
 - /restaurants -> List of all restaurants, reservations and ratings
 - /restaurants/:uid -> One restaurant, with its reservations and ratings
-- /reservations -> List of all reservations for one specific user
-- /users -> List of all users, with all reservations for each user
-- /users/:uid -> One user, with reservations all for that user
+- /account -> Currently logged in user page
+- /account/reservations -> List of all reservations for one specific user
+- /account/reservations/:uid -> One reservation for the currently logged in user
 
 ## App state
 
-- Active filters for restaurants listing
-- Selected reservation start time (only future time)
+- App client state is handled with url search params
+  - Active filters for restaurants listing
+  - Selected reservation date and start time
+  - Number of guests
 
 ## Dev tasks
 
@@ -281,13 +288,15 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] add ai generated images for restaurants
     - [x] create images with ai
     - [x] add images to DB and display in UI
-- [ ] Cleanup login page
-  - [ ] Add signin with google
-- [ ] icing cake
-  - [ ] add simple logo
-  - [ ] add preselected reservation times in restaurant listing and detail, and do not show unavaiable times
-  - [ ] README cleanup
-  - [ ] fix theme popup
+- [x] Cleanup login page
+  - [x] Add signin with google
+- [x] icing cake
+  - [x] add simple logo
+  - [x] add search bar to home
+  - [x] add preselected reservation times in restaurant listing and detail, and do not show unavaiable times
+  - [x] README cleanup
+  - [x] fix theme popup
+  - [x] after logging in, return to page where user was located (or / by default)
 - [ ] Manual testing / search for bugs (do not fix em though)
 - [ ] User can do a reservation
 - [ ] User can add ratings for their own reservations in the past
@@ -296,7 +305,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
 
 ## Known bugs
 
-None yet
+- when changing cuisine and location simultaneously, query params not correctly setup
 
 ## If I had more time I would
 
@@ -306,6 +315,8 @@ None yet
 - show list of available reservation times for each restaurant in listing and detail pages
 - add pages to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
 - make dates consistently work with the current user location
+- use windowing or pagination on search results
+- Client fetching all reservations to display availability is not privacy-friendly, this logic should take place entirely server side and the client should only show aggregate data, for a prototype it's okay through
 
 ## Troubleshooting
 

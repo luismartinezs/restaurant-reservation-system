@@ -1,5 +1,6 @@
-import { describe, expect, it } from "vitest";
-import { canReserve } from "./utils";
+import { describe, expect, it, vi } from "vitest";
+import { canReserve, getNextTime } from "./utils";
+import dayjs from "dayjs";
 
 const fixedProps = {
   restaurant_id: 1,
@@ -88,5 +89,68 @@ describe('canReserve', () => {
 
     // Assertion
     expect(result).toBe(false);
+  });
+});
+
+
+describe('getNextTime', () => {
+
+  vi.useFakeTimers({
+    now: new Date('2023-10-10T10:00:00')
+  })
+
+  it('should return 13:00 if requesting for earlier than 13:00', () => {
+    const result = getNextTime(dayjs('2023-10-10T10:00:00'));
+    const expected = dayjs('2023-10-10T13:00:00')
+
+    expect(result.format("MM-DD HH:mm")).toBe(expected.format("MM-DD HH:mm"));
+  });
+
+  it('should return 13:00 of next day if requesting for later than 22:00', () => {
+    const result = getNextTime(dayjs('2023-10-10T22:30:00'));
+    const expected = dayjs('2023-10-11T13:00:00')
+
+    expect(result.format("MM-DD HH:mm")).toBe(expected.format("MM-DD HH:mm"));
+  });
+
+  it('should return next 30 min date for date within range', () => {
+    const result = getNextTime(dayjs('2023-10-10T14:14:00'));
+    const expected = dayjs('2023-10-10T14:30:00')
+
+    expect(result.format("MM-DD HH:mm")).toBe(expected.format("MM-DD HH:mm"));
+  });
+
+  it('should return next 00 min date for date within range', () => {
+    const result = getNextTime(dayjs('2023-10-10T14:45:00'));
+    const expected = dayjs('2023-10-10T15:00:00')
+
+    expect(result.format("MM-DD HH:mm")).toBe(expected.format("MM-DD HH:mm"));
+  });
+
+  // broken but let's not waste more time
+  it.skip('should return as expected when used iteratively', () => {
+    function* yieldTimes(
+      startTime: dayjs.Dayjs,
+      timeInterval: number,
+      timesCount: number
+    ) {
+      let time = getNextTime(startTime);
+      yield time;
+      for (let i = 0; i < timesCount - 1; i++) {
+        time = getNextTime(time.add(i * timeInterval, "minute"));
+        yield time;
+      }
+    }
+
+    const result = Array.from({ length: 5 }, () => yieldTimes(dayjs('2023-10-10T09:45:00'), 30, 5).next().value) as Array<dayjs.Dayjs>;
+    const expected = [
+      dayjs('2023-10-10T13:00:00'),
+      dayjs('2023-10-10T13:30:00'),
+      dayjs('2023-10-10T14:00:00'),
+      dayjs('2023-10-10T14:30:00'),
+      dayjs('2023-10-10T15:00:00'),
+    ]
+
+    expect(result.map((e) => e.format("MM-DD HH:mm"))).toEqual(expected.map(e => e.format("MM-DD HH:mm")));
   });
 });

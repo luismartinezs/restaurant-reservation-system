@@ -1,18 +1,30 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Text, Container, Group, Title } from "@mantine/core";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { TopRecommendations } from "@/features/restaurants/components/landing/TopRecommendations";
 import { NewThisWeek } from "@/features/restaurants/components/landing/NewThisWeek";
 import { SectionByLocation } from "@/features/restaurants/components/landing/SectionByLocation";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { Search, SearchSkeleton } from "@/features/search";
 
 const RestaurantListingPage = () => {
   return (
     <div className="flex flex-col gap-16">
       <FullBleedHero
-        title="Dining Made Easy"
-        subtitle="Discover delicious spots and save with deals"
+        // subtitle="Discover delicious spots and save with deals"
         className="-mt-[18px]"
+        content={
+          <div className="px-8 py-6 bg-gradient-to-br from-stone-700 via-stone-800 to-stone-900 flex flex-col gap-4 items-center">
+            <div className="flex items-center">
+              <h1 className="text-2xl md:text-3xl text-white font-bold">
+                Find your table for any occasion
+              </h1>
+            </div>
+            <Suspense fallback={<SearchSkeleton />}>
+              <Search size="md" />
+            </Suspense>
+          </div>
+        }
         image={
           <CloudinaryImage
             folderPath="assets"
