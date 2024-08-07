@@ -13,7 +13,7 @@ export function ScrollToTop() {
         Affix is located at the bottom of the screen, scroll to see it
       </Text>
       <Affix position={{ bottom: 10, right: 10 }}>
-        <Transition transition="slide-up" mounted={scroll.y > 0}>
+        <Transition transition="slide-up" mounted={scroll.y > 100}>
           {(transitionStyles) => (
             <Button
               leftSection={

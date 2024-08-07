@@ -14,6 +14,7 @@ import { createReservation } from "../actions";
 import { Update } from "../types";
 import { FormStateDisplay } from "@/common/components/FormStateDisplay";
 import { useSearchQuery } from "@/features/search";
+import { MAX_DATE_RANGE, MAX_PEOPLE, MAX_TIME, MIN_PEOPLE, MIN_TIME } from "../constants";
 
 const initialState = {
   message: "",
@@ -36,8 +37,6 @@ export const CreateReservationForm = ({
     restaurantId,
     userId,
   });
-  console.log(query);
-
   const [state, formAction] = useFormState(bookWithIds, initialState);
 
   return (
@@ -60,7 +59,7 @@ export const CreateReservationForm = ({
             required
             name="date"
             minDate={dayjs().toDate()}
-            maxDate={dayjs().add(2, "month").toDate()}
+            maxDate={dayjs().add(MAX_DATE_RANGE, "month").toDate()}
             defaultValue={dayjs(query.date).toDate()}
           />
           <TimeInput
@@ -76,8 +75,8 @@ export const CreateReservationForm = ({
             required
             name="time"
             defaultValue={query.time}
-            minTime="13:00"
-            maxTime="22:00"
+            minTime={MIN_TIME}
+            maxTime={MAX_TIME}
           />
           <NumberInput
             w={{
@@ -89,8 +88,8 @@ export const CreateReservationForm = ({
             placeholder="Select number of people"
             leftSection={<CiUser size="1.1rem" />}
             leftSectionPointerEvents="none"
-            min={1}
-            max={8}
+            min={MIN_PEOPLE}
+            max={MAX_PEOPLE}
             required
             name="people"
             defaultValue={query?.people}

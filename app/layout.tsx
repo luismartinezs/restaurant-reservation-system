@@ -11,6 +11,7 @@ import "./globals.css";
 import { CollapseDesktop } from "@/common/components/CollapseDesktop";
 import { Navbar } from "@/common/components/Navbar";
 import { ScrollToTop } from "@/common/components/ScrollToTop";
+import { cn } from "@/common/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body className={inter.className}>
+      <body className={cn(inter.className, 'overflow-x-hidden')}>
         <MantineProvider defaultColorScheme="dark" theme={theme}>
           <CollapseDesktop navbar={<Navbar showAuthButton />}>
             <div className="relative isolate mb-32">

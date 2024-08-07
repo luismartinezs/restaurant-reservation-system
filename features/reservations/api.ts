@@ -90,9 +90,6 @@ export function api() {
       restaurantReservations.filter(({ id }) => id !== reservation.id),
       seating_capacity)
 
-    console.log('canReserve', _canReserve);
-
-
     if (canReserve(reservation,
       // exclude current reservation as it will be overriden
       restaurantReservations.filter(({ id }) => id !== reservation.id),

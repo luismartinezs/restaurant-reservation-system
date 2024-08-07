@@ -309,6 +309,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - add pages to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
 - make dates consistently work with the current user location
 - use windowing or pagination on search results
+- Client fetching all reservations to display availability is not privacy-friendly, this logic should take place entirely server side and the client should only show aggregate data, for a prototype it's okay through
 
 ## Troubleshooting
 
