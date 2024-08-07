@@ -93,6 +93,104 @@ const schema = z.object({
   user_id: z.string(),
 });
 
+export async function editReservation(payload: {
+  restaurantId: Id;
+  userId: User["id"];
+  reservationId?: Id;
+}, prevState: any, formData: FormData) {
+  const data = parseFormData(formData, payload);
+
+  const { editBooking } = api();
+
+  const validatedFields = schema.safeParse(data);
+
+  if (!validatedFields.success) {
+    return {
+      key: getRandInt(6),
+      errors: validatedFields.error.flatten().fieldErrors,
+    }
+  }
+
+  try {
+    // @ts-ignore - prevent useless ts error
+    const reservation = await editBooking(data)
+    revalidatePath(`/account/reservations`);
+    revalidatePath(`/restaurants`);
+    revalidatePath(`/account/reservations/${reservation.id}`);
+    return {
+      key: getRandInt(6),
+      message: "Booking update successful",
+      type: "success"
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      return {
+        key: getRandInt(6),
+        errors: {
+          server: [err.message]
+        }
+      }
+    }
+    return {
+      key: getRandInt(6),
+      errors: {
+        server:
+          ["An error occurred"]
+      }
+    }
+  }
+}
+
+export async function createReservation(
+  payload: {
+    restaurantId: Id;
+    userId: User["id"];
+  },
+  prevState: any, formData: FormData
+) {
+  const data = parseFormData(formData, payload);
+
+  const { book: doBook } = api();
+
+  const validatedFields = schema.safeParse(data);
+
+  if (!validatedFields.success) {
+    return {
+      key: getRandInt(6),
+      errors: validatedFields.error.flatten().fieldErrors,
+    }
+  }
+
+  try {
+    // @ts-ignore - prevent useless ts error
+    const reservation = await doBook(data)
+    revalidatePath(`/account/reservations`);
+    revalidatePath(`/restaurants`);
+    redirect(`/account/reservations/${reservation.id}`);
+    return {
+      key: getRandInt(6),
+      message: "Booking successful",
+      type: "success"
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      return {
+        key: getRandInt(6),
+        errors: {
+          server: [err.message]
+        }
+      }
+    }
+    return {
+      key: getRandInt(6),
+      errors: {
+        server:
+          ["An error occurred"]
+      }
+    }
+  }
+}
+
 export async function book(
   ids: {
     restaurantId: Id;

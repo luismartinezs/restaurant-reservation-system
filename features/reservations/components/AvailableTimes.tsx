@@ -26,7 +26,7 @@ export const AvailableTimes = ({
             variant="light"
             color="blue"
             size="xs"
-            href={`/restaurants/${restaurantId}?start=${dayjs(time).format("HH:mm")}`}
+            href={`/restaurants/${restaurantId}?time=${dayjs(time).format("HH:mm")}`}
           >
             {dayjs(time).format("hh:mm A")}
           </Button>

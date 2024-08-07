@@ -10,6 +10,7 @@ import { Suspense } from "react";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
 import { getCloudinaryImageId } from "@/features/restaurants";
+import { CreateReservationForm } from "@/features/reservations/components/CreateReservationForm";
 
 // issue where is that this page will not be cached
 export default async function Page({ params }: { params: { id: string } }) {
@@ -56,7 +57,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             </Suspense>
             <Suspense fallback={<BookFormSkeleton />}>
               {user?.id ? (
-                <BookForm restaurantId={restaurant.id} userId={user?.id} />
+                <CreateReservationForm restaurantId={restaurant.id} userId={user?.id} />
               ) : (
                 <div>
                   <Anchor component={NextLink} href="/login">
