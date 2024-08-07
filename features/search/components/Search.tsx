@@ -10,7 +10,11 @@ import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 import { useSearchQuery } from "../hooks/useSearchQuery";
 import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
 
-export function Search() {
+export function Search({
+  title,
+}: {
+  title?: string;
+}) {
   const search = useSearchQuery();
   const router = useRouter();
   const { update } = useChangeSearchParams();
@@ -34,11 +38,13 @@ export function Search() {
 
   return (
     <Box>
-      <Box mb="xl">
-        <Title order={2} fw={400}>
-          Make a free reservation
-        </Title>
-      </Box>
+      {title && (
+        <Box mb="xl">
+          <Title order={2} fw={400}>
+            {title}
+          </Title>
+        </Box>
+      )}
       <form>
         <Flex
           align="center"
@@ -108,9 +114,6 @@ export function Search() {
   );
 }
 
-
 export function SearchSkeleton() {
-  return (
-    <Skeleton mb="xl" w="100%" h={36} />
-  );
+  return <Skeleton mb="xl" w="100%" h={36} />;
 }

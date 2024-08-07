@@ -1,18 +1,24 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Text, Container, Group, Title } from "@mantine/core";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { TopRecommendations } from "@/features/restaurants/components/landing/TopRecommendations";
 import { NewThisWeek } from "@/features/restaurants/components/landing/NewThisWeek";
 import { SectionByLocation } from "@/features/restaurants/components/landing/SectionByLocation";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
+import { Search, SearchSkeleton } from "@/features/search";
 
 const RestaurantListingPage = () => {
   return (
     <div className="flex flex-col gap-16">
       <FullBleedHero
-        title="Dining Made Easy"
-        subtitle="Discover delicious spots and save with deals"
+        title="Find your table for any occasion"
+        // subtitle="Discover delicious spots and save with deals"
         className="-mt-[18px]"
+        widget={
+          <Suspense fallback={<SearchSkeleton />}>
+            <Search />
+          </Suspense>
+        }
         image={
           <CloudinaryImage
             folderPath="assets"

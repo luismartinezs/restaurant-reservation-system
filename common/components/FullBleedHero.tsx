@@ -5,13 +5,13 @@ export function FullBleedHero({
   image,
   title,
   subtitle,
-  link,
+  widget,
   className
 }: {
   image: ReactNode;
   title: string;
   subtitle?: string;
-  link?: ReactNode;
+  widget?: ReactNode;
   className?: string;
 }) {
   return (
@@ -20,7 +20,7 @@ export function FullBleedHero({
         {image}
         <div className="absolute inset-0 bg-stone-900 object-cover opacity-40"></div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center text-center">
+      <div className="absolute bottom-0 left-0 right-0 top-0 flex flex-col items-center justify-center text-center gap-2">
         <div className="flex items-center">
           <h1 className="text-3xl md:text-5xl text-white font-bold">
             {title}
@@ -31,7 +31,7 @@ export function FullBleedHero({
             {subtitle}
           </p>
         )}
-        {link}
+        {widget}
       </div>
     </div>
   );
