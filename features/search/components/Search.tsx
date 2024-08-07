@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
-import { Box, Button, Flex, NumberInput, Skeleton, Title } from "@mantine/core";
+import { Box, Button, Flex, MantineSize, NumberInput, Skeleton, Title } from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
 import dayjs from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
@@ -12,8 +12,10 @@ import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
 
 export function Search({
   title,
+  size = 'sm',
 }: {
   title?: string;
+  size?: MantineSize;
 }) {
   const search = useSearchQuery();
   const router = useRouter();
@@ -66,6 +68,7 @@ export function Search({
             required
             defaultValue={dayjs(search.date).toDate()}
             name="date"
+            size={size}
           />
           <TimeInput
             w={{
@@ -80,6 +83,7 @@ export function Search({
             required
             defaultValue={search.time}
             name="time"
+            size={size}
           />
           <NumberInput
             w={{
@@ -96,6 +100,7 @@ export function Search({
             required
             name="people"
             defaultValue={search.people}
+            size={size}
           />
           <Button
             className="min-w-[150px]"
@@ -105,6 +110,7 @@ export function Search({
             }}
             type="submit"
             formAction={submit}
+            size={size}
           >
             Let&apos;s go
           </Button>

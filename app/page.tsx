@@ -11,13 +11,19 @@ const RestaurantListingPage = () => {
   return (
     <div className="flex flex-col gap-16">
       <FullBleedHero
-        title="Find your table for any occasion"
         // subtitle="Discover delicious spots and save with deals"
         className="-mt-[18px]"
-        widget={
-          <Suspense fallback={<SearchSkeleton />}>
-            <Search />
-          </Suspense>
+        content={
+          <div className="px-8 py-6 bg-gradient-to-br from-stone-700 via-stone-800 to-stone-900 flex flex-col gap-4 items-center">
+            <div className="flex items-center">
+              <h1 className="text-2xl md:text-3xl text-white font-bold">
+                Find your table for any occasion
+              </h1>
+            </div>
+            <Suspense fallback={<SearchSkeleton />}>
+              <Search size="md" />
+            </Suspense>
+          </div>
         }
         image={
           <CloudinaryImage
