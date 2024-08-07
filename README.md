@@ -281,13 +281,14 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] add ai generated images for restaurants
     - [x] create images with ai
     - [x] add images to DB and display in UI
-- [ ] Cleanup login page
-  - [ ] Add signin with google
+- [x] Cleanup login page
+  - [x] Add signin with google
 - [ ] icing cake
-  - [ ] add simple logo
+  - [x] add simple logo
   - [ ] add preselected reservation times in restaurant listing and detail, and do not show unavaiable times
   - [ ] README cleanup
   - [ ] fix theme popup
+  - [ ] after logging in, return to page where user was located (or / by default)
 - [ ] Manual testing / search for bugs (do not fix em though)
 - [ ] User can do a reservation
 - [ ] User can add ratings for their own reservations in the past
@@ -296,7 +297,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
 
 ## Known bugs
 
-None yet
+- when changing cuisine and location simultaneously, query params not correctly setup
 
 ## If I had more time I would
 
@@ -306,6 +307,7 @@ None yet
 - show list of available reservation times for each restaurant in listing and detail pages
 - add pages to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
 - make dates consistently work with the current user location
+- use windowing or pagination on search results
 
 ## Troubleshooting
 
