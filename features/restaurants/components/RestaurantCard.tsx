@@ -19,9 +19,8 @@ import Link from "next/link";
 import { KEY, MIN_SEATS_DISPLAY } from "../constants";
 import { Display } from "@/features/ratings";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
-import { roundToNextHalfHour, slugify } from "@/common/utils";
+import { slugify } from "@/common/utils";
 import { AvailableTimes } from "@/features/reservations/components/AvailableTimes";
-import dayjs from "dayjs";
 
 export const RestaurantCard = ({
   restaurant,
