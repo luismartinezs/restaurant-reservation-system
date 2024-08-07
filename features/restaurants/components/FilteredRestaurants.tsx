@@ -52,6 +52,7 @@ export function FilteredRestaurants({
       {filteredRestaurants.map(
         ({ avgRating, ratingCount, availableSeats, ...restaurant }) => (
           <RestaurantCard
+            showAvailableTimes
             key={restaurant.id}
             restaurant={restaurant}
             rating={avgRating}

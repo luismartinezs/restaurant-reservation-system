@@ -11,6 +11,7 @@ import {
   Skeleton,
   Overlay,
   CardSection,
+  Button,
 } from "@mantine/core";
 
 import { RestaurantRead } from "../types";
@@ -18,7 +19,9 @@ import Link from "next/link";
 import { KEY, MIN_SEATS_DISPLAY } from "../constants";
 import { Display } from "@/features/ratings";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
-import { slugify } from "@/common/utils";
+import { roundToNextHalfHour, slugify } from "@/common/utils";
+import { AvailableTimes } from "@/features/reservations/components/AvailableTimes";
+import dayjs from "dayjs";
 
 export const RestaurantCard = ({
   restaurant,
@@ -26,18 +29,17 @@ export const RestaurantCard = ({
   ratingCount,
   availableSeats,
   alwaysShowAvailableSeats,
+  showAvailableTimes,
 }: {
   restaurant: RestaurantRead;
   rating?: number;
   ratingCount?: number;
   availableSeats?: number;
   alwaysShowAvailableSeats?: boolean;
+  showAvailableTimes?: boolean;
 }) => {
   const { id, name, cuisine_type, location, seating_capacity } = restaurant;
   const noRatings = typeof rating === "undefined" || ratingCount === 0;
-
-  // const bookings: number = 5;
-  // const availableTimes: string[] = ["12:00 PM", "12:30 PM", "13:00 PM", "13:30 PM"];
 
   return (
     <Card
@@ -45,75 +47,73 @@ export const RestaurantCard = ({
       pt={0}
       radius="md"
       withBorder
-      component={Link}
-      href={`/${KEY}/${id}`}
-      className="group hover:scale-[1.01] transition-transform duration-300 ease-out"
+      className="group hover:scale-[1.01] transition-transform duration-300 ease-out has-[.restaurant-link:focus]:!outline has-[:focus]:outline-offset-2 has-[:focus]:!outline-1 has-[:focus]:!outline-blue-500"
     >
-      <Overlay
-        color="#fff"
-        className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
-      />
-      <CardSection pb="md">
-        <CloudinaryImage
-          folderPath="restaurants/thumbnails"
-          imgId={`${id}_${slugify(name)}_interior_0001`}
-          fallback={
-            <Image
-              component={NextImage}
-              src={`https://placehold.co/512x512/242424/FFF.png?text=${name.replace(
-                /\W/,
-                "+"
-              )}`}
-              className="h-full w-full"
-              alt=""
-              width={160}
-              height={160}
-            />
-          }
-          height={160}
-          width={160}
-          alt={name}
-          crop="fill"
-          gravity="center"
-          className="h-full w-full"
-        />
-      </CardSection>
+      <Link
+        href={`/${KEY}/${id}`}
+        className="peer restaurant-link focus:outline-none"
+      >
+        <CardSection pb="md">
+          <CloudinaryImage
+            folderPath="restaurants/thumbnails"
+            imgId={`${id}_${slugify(name)}_interior_0001`}
+            fallback={
+              <Image
+                component={NextImage}
+                src={`https://placehold.co/512x512/242424/FFF.png?text=${name.replace(
+                  /\W/,
+                  "+"
+                )}`}
+                className="h-full w-full"
+                alt=""
+                width={160}
+                height={160}
+              />
+            }
+            height={160}
+            width={160}
+            alt={name}
+            crop="fill"
+            gravity="center"
+            className="h-full w-full"
+          />
+        </CardSection>
 
-      <Group align="apart" mb="xs">
-        <Text fw={500}>{name}</Text>
-      </Group>
+        <Group align="apart" mb="xs">
+          <Text fw={500}>{name}</Text>
+        </Group>
 
-      {/* <Group align="apart" mb="xs">
+        {/* <Group align="apart" mb="xs">
         <Badge color="pink" variant="light">
           {cuisine_type}
         </Badge>
       </Group> */}
 
-      <Display rating={rating} ratingCount={ratingCount} showCount />
+        <Display rating={rating} ratingCount={ratingCount} showCount />
 
-      <Text size="sm" c="dimmed" mt="sm">
-        {[cuisine_type, location].join(" • ")}
-      </Text>
+        <Text size="sm" c="dimmed" mt="sm">
+          {[cuisine_type, location].join(" • ")}
+        </Text>
 
-      {/* <Text size="sm" mt="sm">
+        {/* <Text size="sm" mt="sm">
         Booked {bookings} {bookings === 1 ? "time" : "times"} today
       </Text> */}
 
-      {((availableSeats && availableSeats <= MIN_SEATS_DISPLAY) ||
-        alwaysShowAvailableSeats) && (
-        <Text size="sm" mt="sm" c="red">
-          Only {availableSeats} {availableSeats === 1 ? "seat" : "seats"}{" "}
-          available
-        </Text>
-      )}
+        {((availableSeats && availableSeats <= MIN_SEATS_DISPLAY) ||
+          alwaysShowAvailableSeats) && (
+          <Text size="sm" mt="sm" c="red">
+            Only {availableSeats} {availableSeats === 1 ? "seat" : "seats"}{" "}
+            available
+          </Text>
+        )}
+      </Link>
 
-      {/* <Group mt="md" gap="xs">
-        {availableTimes.map((time) => (
-          <Button key={time} variant="light" color="blue" size="xs">
-            {time}
-          </Button>
-        ))}
-      </Group> */}
+      <Overlay
+        color="#fff"
+        className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out pointer-events-none peer-focus:opacity-20"
+      />
+
+      {showAvailableTimes && <AvailableTimes restaurantId={id} />}
     </Card>
   );
 };
