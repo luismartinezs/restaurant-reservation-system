@@ -43,7 +43,7 @@ export const CreateReservationForm = ({
   return (
     <div>
       <Title order={2} mb="md">
-        {"Change your reservation"}
+        Make a reservation
       </Title>
       <form action={formAction} className="flex flex-col gap-4">
         <div className="flex flex-col md:flex-row gap-4">

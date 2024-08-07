@@ -285,8 +285,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] Add signin with google
 - [ ] icing cake
   - [x] add simple logo
-  - [ ] add search bar to home
-  - [ ] add preselected reservation times in restaurant listing and detail, and do not show unavaiable times
+  - [x] add search bar to home
+  - [x] add preselected reservation times in restaurant listing and detail, and do not show unavaiable times
   - [ ] README cleanup
   - [ ] fix theme popup
   - [ ] after logging in, return to page where user was located (or / by default)
