@@ -288,7 +288,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] add search bar to home
   - [x] add preselected reservation times in restaurant listing and detail, and do not show unavaiable times
   - [ ] README cleanup
-  - [ ] fix theme popup
+  - [x] fix theme popup
   - [ ] after logging in, return to page where user was located (or / by default)
 - [ ] Manual testing / search for bugs (do not fix em though)
 - [ ] User can do a reservation

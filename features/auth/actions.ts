@@ -11,7 +11,7 @@ export const signOut = async () => {
   return redirect("/login");
 };
 
-export const signIn = async (formData: FormData) => {
+export const signIn = async (payload: { redirect?: string }, prevState: any, formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const supabase = createClient();
@@ -25,10 +25,14 @@ export const signIn = async (formData: FormData) => {
     return redirect("/login?message=Could not authenticate user");
   }
 
+  if (payload.redirect) {
+    return redirect(payload.redirect);
+  }
+
   return redirect("/account");
 };
 
-export const signUp = async (formData: FormData) => {
+export const signUp = async (payload: { redirect?: string }, prevState: any, formData: FormData) => {
   const origin = headers().get("origin");
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
@@ -45,18 +49,24 @@ export const signUp = async (formData: FormData) => {
   if (error) {
     return redirect("/login?message=Could not authenticate user");
   }
+  if (payload.redirect) {
+    return redirect(payload.redirect);
+  }
 
   return redirect("/login?message=Check email to continue sign in process");
 };
 
-export const googleSignIn = async () => {
+export const googleSignIn = async (payload: { redirect?: string }) => {
   const origin = headers().get("origin");
   const supabase = createClient();
+  const redirectToBaseUrl = `${origin}/auth/callback/google`;
+  const redirectToParams = payload.redirect ?  `?next=${payload.redirect}` : '';
+  const redirectToUrl = `${redirectToBaseUrl}${redirectToParams}`;
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${origin}/auth/callback/google`,
+      redirectTo: redirectToUrl,
     },
   })
 

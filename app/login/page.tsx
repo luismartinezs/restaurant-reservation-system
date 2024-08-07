@@ -4,7 +4,7 @@ import { Container, Title } from "@mantine/core";
 export default function Login({
   searchParams,
 }: {
-  searchParams: { message: string };
+  searchParams: { message: string; redirect: string };
 }) {
   return (
     <Container size="xs">

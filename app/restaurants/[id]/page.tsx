@@ -61,7 +61,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 <CreateReservationForm restaurantId={restaurant.id} userId={user?.id} />
               ) : (
                 <div>
-                  <Anchor component={NextLink} href="/login">
+                  <Anchor component={NextLink} href={`/login?redirect=/restaurants/${id}`}>
                     Login / register
                   </Anchor>{" "}
                   to make a reservation
