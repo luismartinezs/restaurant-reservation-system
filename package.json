@@ -8,6 +8,8 @@
     "start": "next start",
     "vitest": "vitest",
     "e2e": "exec playwright test",
+    "e2e:debug": "exec playwright test --ui",
+    "e2e:gen": "npx playwright codegen --load-storage=e2e/auth.json http://localhost:3000",
     "lint": "next lint",
     "prepare": "husky",
     "sanity": "echo 'Sanity check'",

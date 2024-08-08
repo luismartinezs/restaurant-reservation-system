@@ -7,6 +7,7 @@
   - [Emulate database](#emulate-database)
   - [Code generation](#code-generation)
   - [Testing](#testing)
+    - [Create auth.json for e2e tests](#create-authjson-for-e2e-tests)
   - [Pre-commit hooks](#pre-commit-hooks)
   - [Deployment pipelines](#deployment-pipelines)
   - [Project requirements](#project-requirements)
@@ -70,6 +71,12 @@ There's not database emulation. As this is just a prototype, the same database i
 
 - Run `pnpm vitest` to run unit tests
 - Run `pnpm e2e` to run end-to-end tests (no e2e tests setup currently except for a sanity test)
+
+### Create auth.json for e2e tests
+
+- Serve project locally with `pnpm dev`
+- Run `npx playwright codegen http://localhost:3000 --save-storage=e2e/auth.json`
+- Sign in to the app
 
 ## Pre-commit hooks
 

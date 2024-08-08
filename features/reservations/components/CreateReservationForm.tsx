@@ -26,11 +26,9 @@ const initialState = {
 export const CreateReservationForm = ({
   restaurantId,
   userId,
-  initialData,
 }: {
   restaurantId: Id;
   userId: User["id"];
-  initialData?: Update;
 }) => {
   const query = useSearchQuery();
   const bookWithIds = createReservation.bind(null, {
@@ -68,6 +66,7 @@ export const CreateReservationForm = ({
               md: "auto",
             }}
             flex={1}
+            data-testid="time-input"
             aria-label="Time"
             placeholder="Select time"
             leftSection={<CiClock1 size="1.1rem" />}
@@ -77,6 +76,7 @@ export const CreateReservationForm = ({
             defaultValue={query.time}
             minTime={MIN_TIME}
             maxTime={MAX_TIME}
+            key={query.time}
           />
           <NumberInput
             w={{
@@ -99,7 +99,7 @@ export const CreateReservationForm = ({
               e.currentTarget.form?.requestSubmit();
             }}
           >
-            Edit booking
+            Book now
           </SubmitButton>
         </div>
         <FormStateDisplay state={state} key={state.key} />
