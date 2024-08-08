@@ -10,11 +10,11 @@ import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 import { Id } from "@/features/restaurants";
 import { SubmitButton } from "@/common/components/SubmitButton";
 
-import { editReservation } from "../actions";
+import { ActionResponseState, editReservation } from "../actions";
 import { Update } from "../types";
 import { FormStateDisplay } from "@/common/components/FormStateDisplay";
 
-const initialState = {
+const initialState: ActionResponseState = {
   message: "",
   type: "",
   errors: undefined,

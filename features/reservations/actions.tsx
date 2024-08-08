@@ -116,7 +116,7 @@ export async function editReservation(
   },
   prevState: any,
   formData: FormData
-) {
+): Promise<ActionResponseState> {
   const data = parseFormData(formData, payload);
 
   const { editBooking } = api();
@@ -126,6 +126,7 @@ export async function editReservation(
   if (!validatedFields.success) {
     return {
       key: getRandInt(6),
+      type: "error",
       errors: validatedFields.error.flatten().fieldErrors,
     };
   }
@@ -145,6 +146,7 @@ export async function editReservation(
     if (err instanceof Error) {
       return {
         key: getRandInt(6),
+        type: "error",
         errors: {
           server: [err.message],
         },
@@ -152,6 +154,7 @@ export async function editReservation(
     }
     return {
       key: getRandInt(6),
+      type: "error",
       errors: {
         server: ["An error occurred"],
       },
