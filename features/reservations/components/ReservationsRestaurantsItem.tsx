@@ -22,7 +22,7 @@ dayjs.extend(utc);
 
 export const ReservationsRestaurantsItem = ({
   reservationRestaurant,
-  showEdit
+  showEdit,
 }: {
   reservationRestaurant: ReservationRestaurant;
   showEdit?: boolean;
@@ -30,6 +30,8 @@ export const ReservationsRestaurantsItem = ({
   const { reservation_id, restaurant_name, start, people, location } =
     reservationRestaurant;
   const [pending, setPending] = useState(false);
+  const isCancellable = dayjs(start).subtract(1, "hour").isAfter(dayjs());
+  const isEditable = isCancellable
 
   invariant(reservation_id, "Reservation ID not defined");
 
@@ -54,9 +56,7 @@ export const ReservationsRestaurantsItem = ({
             {reservation_id}
           </Text>
         </Group>
-        <Badge variant="light">
-          {dayjs(start).local().format("YY-MM-DD")}
-        </Badge>
+        <Badge variant="light">{dayjs(start).local().format("YY-MM-DD")}</Badge>
       </Group>
       <Group justify="space-between">
         <Group gap="lg">
@@ -74,23 +74,27 @@ export const ReservationsRestaurantsItem = ({
           </Group>
         </Group>
         <Group align="baseline">
-          {showEdit && <Anchor
-            component={Link}
-            href={`/account/reservations/${reservation_id}`}
-          >
-            Edit
-          </Anchor>}
-          <Button
-            variant="transparent"
-            c="red"
-            size="md"
-            className="hover:underline"
-            fw={400}
-            onClick={remove}
-            disabled={pending}
-          >
-            {pending ? <Loader size={16} color="gray.5" /> : "Delete"}
-          </Button>
+          {isEditable && showEdit && (
+            <Anchor
+              component={Link}
+              href={`/account/reservations/${reservation_id}`}
+            >
+              Edit
+            </Anchor>
+          )}
+          {isCancellable && (
+            <Button
+              ml={10}
+              variant="light"
+              size="md"
+              className="hover:underline"
+              fw={400}
+              onClick={remove}
+              disabled={pending}
+            >
+              {pending ? <Loader size={16} color="gray.5" /> : "Cancel"}
+            </Button>
+          )}
         </Group>
       </Group>
     </Paper>

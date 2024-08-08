@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 import { Text, Alert } from "@mantine/core";
 import {
   IoInformationCircle,
@@ -6,30 +6,32 @@ import {
   IoWarning,
 } from "react-icons/io5";
 import { ErrorDisplay } from "./ErrorDisplay";
+import { ActionResponseState } from "@/features/reservations/actions";
 
-export const FormStateDisplay = ({
-  state,
-}: {
-  state: {
-    message?: string;
-    type?: string;
-    errors?: Record<string, string[] | undefined>;
-  };
-}) => {
-  const { message, type, errors } = state;
-  const [show, setShow] = useState(true);
-
-  let icon, color;
-  if (type === "error") {
-    icon = <IoWarning size={24} />;
-    color = "red";
-  } else if (type === "success") {
-    icon = <IoCheckmarkCircle size={24} />;
-    color = "green";
-  } else {
-    icon = <IoInformationCircle size={24} />;
-    color = "blue";
+function getAttrs(type: string) {
+  switch (type) {
+    case "error":
+      return {
+        icon: <IoWarning size={24} />,
+        color: "red",
+      };
+    case "success":
+      return {
+        icon: <IoCheckmarkCircle size={24} />,
+        color: "green",
+      };
+    default:
+      return {
+        icon: <IoInformationCircle size={24} />,
+        color: "blue",
+      };
   }
+}
+
+export const FormStateDisplay = ({ state }: { state: ActionResponseState }) => {
+  const { message, type, errors } = state;
+  const { icon, color } = getAttrs(type);
+  const [show, setShow] = useState(true);
 
   return (
     <>

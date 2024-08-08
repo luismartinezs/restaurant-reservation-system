@@ -10,15 +10,20 @@ import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 import { Id } from "@/features/restaurants";
 import { SubmitButton } from "@/common/components/SubmitButton";
 
-import { createReservation } from "../actions";
-import { Update } from "../types";
+import { ActionResponseState, createReservation } from "../actions";
 import { FormStateDisplay } from "@/common/components/FormStateDisplay";
 import { useSearchQuery } from "@/features/search";
-import { MAX_DATE_RANGE, MAX_PEOPLE, MAX_TIME, MIN_PEOPLE, MIN_TIME } from "../constants";
+import {
+  MAX_DATE_RANGE,
+  MAX_PEOPLE,
+  MAX_TIME,
+  MIN_PEOPLE,
+  MIN_TIME,
+} from "../constants";
 
-const initialState = {
-  message: "",
-  type: "",
+const initialState: ActionResponseState = {
+  message: null,
+  type: "idle",
   errors: undefined,
   key: 1,
 };

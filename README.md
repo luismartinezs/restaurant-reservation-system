@@ -305,6 +305,11 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] fix theme popup
   - [x] after logging in, return to page where user was located (or / by default)
 - [ ] Manual testing / search for bugs (do not fix em though)
+- [ ] Ratings
+  - [ ] user can see their ratings /account/ratings
+  - [ ] user can rate a restaurant if they have a reservation in the past for said restaurant
+    - [ ] from the restaurant detail page
+    - [ ] from the /account/reservations page
 - [ ] User can do a reservation
 - [ ] User can add ratings for their own reservations in the past
 - [ ] Supabase: security and RLS
@@ -316,13 +321,13 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [x] search bar allows select date / time before today
 - [ ] restaurant detail
   - [x] restaurant time not being updated on btn click
-  - [ ] time buttons not sequenced as expected
-  - [ ] when user does reservation, they get error always
-  - [ ] btn to create booking says "edit booking"
+  - [x] time buttons not sequenced as expected
+  - [x] when user does reservation, they get error always
+  - [x] btn to create booking says "edit booking"
   - [ ] *if user booked this restaurant in the past, there should be option to rate, and if they already rated, they can see their own rating and edit it
 - [ ] account/reservations
-  - [ ] delete should be cancel
-  - [ ] user cannot cancel or edit reservations in past
+  - [x] delete should be cancel
+  - [x] user cannot cancel or edit reservations in past
   - [ ] *there should be btn to rate restaurant for past reservations
   - [ ] *"book again" button to book same restaurant again
   - [ ] *link to restaurant page
@@ -331,17 +336,21 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [ ] quite slow page transitions
 - [ ] *missing canonical tags (but it's prototype demo so doesn't matter)
 - [ ] *there should be a "your ratings" page where user can see all ratings they've given
+- [ ] clean up code
+  - [ ] review folder structure adherence to best practices
+  - [ ] order imports following best practices
 
 ## If I had more time I would
 
-- It might be interesting to cache the number of reservations per restaurant (maybe), otherwise for the listing, we're looking at N*M queries, alternatively, use pagination and fetch only for 10 restaurants at a time (same can be done for calculation of average rating), once this is done it would make sense to compute average ratings in advance and store them in the DB in the restaurants table
-- add confirmation modal to delete actions
-- clean up booking flow by adding loading state and display booking response (either error, or full restaurant, or success)
-- show list of available reservation times for each restaurant in listing and detail pages
-- add pages to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
-- make dates consistently work with the current user location
-- use windowing or pagination on search results
-- Client fetching all reservations to display availability is not privacy-friendly, this logic should take place entirely server side and the client should only show aggregate data, for a prototype it's okay through
+- [ ] It might be interesting to cache the number of reservations per restaurant (maybe), otherwise for the listing, we're looking at N*M queries, alternatively, use pagination and fetch only for 10 restaurants at a time (same can be done for calculation of average rating), once this is done it would make sense to compute average ratings in advance and store them in the DB in the restaurants table
+- [ ] add confirmation modal to delete actions
+- [ ] clean up booking flow by adding loading state and display booking response (either error, or full restaurant, or success)
+- [ ] show list of available reservation times for each restaurant in listing and detail pages
+- [ ] add pages for admin to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
+- [ ] make dates consistently work with the current user location (geolocation)
+- [ ] use windowing or pagination on search results
+- [ ] Client fetching all reservations to display availability is not privacy-friendly, this logic should take place entirely server side and the client should only show aggregate data, for a prototype it's okay through
+- [ ] add capability for users to rate restaurants
 
 ## Troubleshooting
 

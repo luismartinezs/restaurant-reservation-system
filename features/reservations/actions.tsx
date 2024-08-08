@@ -1,15 +1,18 @@
-"use server"
+"use server";
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 import { api } from "./api";
 import { KEY } from "./constants";
-import { Id } from "./types";
+import { Id, Insert } from "./types";
 import { z } from "zod";
 import { User } from "@supabase/supabase-js";
 import dayjs from "dayjs";
 import { getRandInt } from "@/common/utils";
+import { Anchor } from "@mantine/core";
+import { ReactNode } from "react";
 
 // needs to return format compatible with supabase, e.g. `2024-07-17 21:09:50+00`
 function parseDate(date: string) {
@@ -27,7 +30,7 @@ function getFormData(formData: FormData) {
 function parseFormData(
   formData: FormData,
   ids: {
-    restaurantId: Id;
+    restaurantId: Insert["restaurant_id"];
     userId: User["id"];
     reservationId?: Id;
   }
@@ -36,14 +39,23 @@ function parseFormData(
   const { restaurantId, userId, reservationId } = ids;
   const isEdit = !!reservationId;
 
-  const payload = {
+  const payload: {
+    start: Insert["start"];
+    people: Insert["people"];
+    restaurant_id: Insert["restaurant_id"];
+    user_id: Insert["user_id"];
+    id?: Id;
+  } = {
     start: parseDate(
       `${dayjs(date).format("YYYY-MM-DD") as string} ${time as string}`
     ),
     people: Number(people),
     restaurant_id: restaurantId,
     user_id: userId,
-    id: isEdit ? reservationId : undefined,
+  };
+
+  if (isEdit) {
+    payload.id = reservationId;
   }
 
   return payload;
@@ -65,12 +77,15 @@ export async function handleDelete(id: Id, redirectPath?: string) {
   return "deleted";
 }
 
-export async function submit(data: {
-  start: string;
-  restaurant_id: number;
-  user_id: string;
-  people: number;
-}, id?: Id) {
+export async function submit(
+  data: {
+    start: string;
+    restaurant_id: number;
+    user_id: string;
+    people: number;
+  },
+  id?: Id
+) {
   const { insert, update } = api();
 
   const submitHandler =
@@ -93,11 +108,15 @@ const schema = z.object({
   user_id: z.string(),
 });
 
-export async function editReservation(payload: {
-  restaurantId: Id;
-  userId: User["id"];
-  reservationId?: Id;
-}, prevState: any, formData: FormData) {
+export async function editReservation(
+  payload: {
+    restaurantId: Id;
+    userId: User["id"];
+    reservationId?: Id;
+  },
+  prevState: any,
+  formData: FormData
+) {
   const data = parseFormData(formData, payload);
 
   const { editBooking } = api();
@@ -108,37 +127,43 @@ export async function editReservation(payload: {
     return {
       key: getRandInt(6),
       errors: validatedFields.error.flatten().fieldErrors,
-    }
+    };
   }
 
   try {
     // @ts-ignore - prevent useless ts error
-    const reservation = await editBooking(data)
+    const reservation = await editBooking(data);
     revalidatePath(`/account/reservations`);
     revalidatePath(`/restaurants`);
     revalidatePath(`/account/reservations/${reservation.id}`);
     return {
       key: getRandInt(6),
-      message: "Booking update successful",
-      type: "success"
-    }
+      message: "Reservation updated successfully!",
+      type: "success",
+    };
   } catch (err) {
     if (err instanceof Error) {
       return {
         key: getRandInt(6),
         errors: {
-          server: [err.message]
-        }
-      }
+          server: [err.message],
+        },
+      };
     }
     return {
       key: getRandInt(6),
       errors: {
-        server:
-          ["An error occurred"]
-      }
-    }
+        server: ["An error occurred"],
+      },
+    };
   }
+}
+
+export interface ActionResponseState {
+  message?: string | JSX.Element | ReactNode | null;
+  type: string;
+  errors?: any;
+  key: number;
 }
 
 export async function createReservation(
@@ -146,8 +171,9 @@ export async function createReservation(
     restaurantId: Id;
     userId: User["id"];
   },
-  prevState: any, formData: FormData
-) {
+  prevState: any,
+  formData: FormData
+): Promise<ActionResponseState> {
   const data = parseFormData(formData, payload);
 
   const { book: doBook } = api();
@@ -158,36 +184,44 @@ export async function createReservation(
     return {
       key: getRandInt(6),
       errors: validatedFields.error.flatten().fieldErrors,
-    }
+      type: "error",
+    };
   }
 
   try {
     // @ts-ignore - prevent useless ts error
-    const reservation = await doBook(data)
+    const reservation = await doBook(data);
     revalidatePath(`/account/reservations`);
     revalidatePath(`/restaurants`);
-    redirect(`/account/reservations/${reservation.id}`);
     return {
       key: getRandInt(6),
-      message: "Booking successful",
-      type: "success"
-    }
+      message: (
+        <div>
+          Reservation successful!{" "}
+          <Anchor component={Link} href="/account/reservations">
+            See your reservations
+          </Anchor>
+        </div>
+      ),
+      type: "success",
+    };
   } catch (err) {
     if (err instanceof Error) {
       return {
         key: getRandInt(6),
         errors: {
-          server: [err.message]
-        }
-      }
+          server: [err.message],
+        },
+        type: "error",
+      };
     }
     return {
       key: getRandInt(6),
       errors: {
-        server:
-          ["An error occurred"]
-      }
-    }
+        server: ["An error occurred"],
+      },
+      type: "error",
+    };
   }
 }
 
@@ -197,7 +231,8 @@ export async function book(
     userId: User["id"];
     reservationId?: Id;
   },
-  prevState: any, formData: FormData
+  prevState: any,
+  formData: FormData
 ) {
   const data = parseFormData(formData, ids);
 
@@ -210,12 +245,12 @@ export async function book(
     return {
       key: getRandInt(6),
       errors: validatedFields.error.flatten().fieldErrors,
-    }
+    };
   }
 
   try {
     // @ts-ignore - prevent useless ts error
-    const reservation = isEdit ? await editBooking(data) : await doBook(data)
+    const reservation = isEdit ? await editBooking(data) : await doBook(data);
     revalidatePath(`/account/reservations`);
     revalidatePath(`/restaurants`);
     if (isEdit) {
@@ -226,23 +261,22 @@ export async function book(
     return {
       key: getRandInt(6),
       message: "Booking successful",
-      type: "success"
-    }
+      type: "success",
+    };
   } catch (err) {
     if (err instanceof Error) {
       return {
         key: getRandInt(6),
         errors: {
-          server: [err.message]
-        }
-      }
+          server: [err.message],
+        },
+      };
     }
     return {
       key: getRandInt(6),
       errors: {
-        server:
-          ["An error occurred"]
-      }
-    }
+        server: ["An error occurred"],
+      },
+    };
   }
 }

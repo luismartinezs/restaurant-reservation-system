@@ -99,7 +99,7 @@ export const EditReservationForm = ({
               e.currentTarget.form?.requestSubmit();
             }}
           >
-            Edit booking
+            Edit reservation
           </SubmitButton>
         </div>
         <FormStateDisplay state={state} key={state.key} />
