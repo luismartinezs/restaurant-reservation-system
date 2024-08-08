@@ -14,6 +14,7 @@ import { SubmitButton } from "@/common/components/SubmitButton";
 import { book } from "../actions";
 import { Update } from "../types";
 import { FormStateDisplay } from "@/common/components/FormStateDisplay";
+import { MAX_DATE_RANGE, MAX_TIME, MIN_TIME } from "../constants";
 
 const initialState = {
   message: "",
@@ -58,7 +59,7 @@ export const BookForm = ({
             required
             name="date"
             minDate={dayjs().toDate()}
-            maxDate={dayjs().add(2, "month").toDate()}
+            maxDate={dayjs().add(MAX_DATE_RANGE, "month").toDate()}
             defaultValue={
               isEdit
                 ? dayjs(initialData?.start).toDate()
@@ -80,8 +81,8 @@ export const BookForm = ({
             defaultValue={
               isEdit ? dayjs(initialData?.start).format("HH:mm") : query.time
             }
-            minTime="13:00"
-            maxTime="22:00"
+            minTime={MIN_TIME}
+            maxTime={MAX_TIME}
           />
           <NumberInput
             w={{

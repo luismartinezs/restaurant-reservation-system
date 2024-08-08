@@ -305,25 +305,25 @@ Pages define what data needs to be shown together and thus fetched together (it 
 
 ## Known bugs / missing features (marked with *)
 
-- when changing cuisine and location simultaneously, query params not correctly setup
-- search bar allows select date / time before today
-- restaurant detail
-  - restaurant time not being updated on btn click
-  - time buttons not sequenced as expected
-  - when user does reservation, they get error always
-  - btn to create booking says "edit booking"
-  - *if user booked this restaurant in the past, there should be option to rate, and if they already rated, they can see their own rating and edit it
-- account/reservations
-  - delete should be cancel
-  - user cannot cancel or edit reservations in past
-  - *there should be btn to rate restaurant for past reservations
-  - *"book again" button to book same restaurant again
-  - *link to restaurant page
-- *missing reservation time in home page cards
-- *lack of pagination in restaurant list
-- quite slow page transitions
-- *missing canonical tags (but it's prototype demo so doesn't matter)
-- *there should be a "your ratings" page where user can see all ratings they've given
+- [x] when changing cuisine and location simultaneously, query params not correctly setup
+- [x] search bar allows select date / time before today
+- [ ] restaurant detail
+  - [ ] restaurant time not being updated on btn click
+  - [ ] time buttons not sequenced as expected
+  - [ ] when user does reservation, they get error always
+  - [ ] btn to create booking says "edit booking"
+  - [ ] *if user booked this restaurant in the past, there should be option to rate, and if they already rated, they can see their own rating and edit it
+- [ ] account/reservations
+  - [ ] delete should be cancel
+  - [ ] user cannot cancel or edit reservations in past
+  - [ ] *there should be btn to rate restaurant for past reservations
+  - [ ] *"book again" button to book same restaurant again
+  - [ ] *link to restaurant page
+- [ ] *missing reservation time in home page cards
+- [ ] *lack of pagination in restaurant list
+- [ ] quite slow page transitions
+- [ ] *missing canonical tags (but it's prototype demo so doesn't matter)
+- [ ] *there should be a "your ratings" page where user can see all ratings they've given
 
 ## If I had more time I would
 
