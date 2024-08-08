@@ -19,5 +19,9 @@ const config: Config = {
     },
   },
   plugins: [],
+  // in principle should disable tailwind base styles so they don't override mantine, but current setup looks okay, so leaving it
+  // corePlugins: {
+  //   preflight: false,
+  // }
 };
 export default config;

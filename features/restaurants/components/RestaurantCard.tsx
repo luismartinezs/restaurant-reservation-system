@@ -46,7 +46,7 @@ export const RestaurantCard = ({
       pt={0}
       radius="md"
       withBorder
-      className="group hover:scale-[1.01] transition-transform duration-300 ease-out has-[.restaurant-link:focus]:!outline has-[:focus]:outline-offset-2 has-[:focus]:!outline-1 has-[:focus]:!outline-blue-500"
+      className="group hover:scale-[1.01] transition-transform duration-300 ease-out has-[.restaurant-link:focus]:!outline has-[:focus]:outline-offset-2 has-[:focus]:!outline-1 has-[:focus]:!outline-[#c2255c]"
     >
       <Link
         href={`/${KEY}/${id}`}

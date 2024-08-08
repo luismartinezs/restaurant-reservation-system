@@ -37,7 +37,7 @@ export const FilterSlicer = ({
           aria-expanded={opened ? "true" : "false"}
           type="button"
           onClick={toggle}
-          className="flex gap-1 px-0 mx-0 justify-start text-sm items-center text-blue-400 hover:underline"
+          className="flex gap-1 px-0 mx-0 justify-start text-sm items-center text-[#ff8787] hover:underline"
         >
           {opened ? (
             <>

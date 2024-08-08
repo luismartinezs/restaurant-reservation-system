@@ -23,7 +23,7 @@ export function FiltersMenu({ filters }: { filters: ReactNode }) {
         <button
           type="button"
           onClick={toggleDrawer}
-          className="flex gap-2 items-center text-blue-400"
+          className="flex gap-2 items-center text-[#ff8787]"
         >
           <CiFilter />
           Filters

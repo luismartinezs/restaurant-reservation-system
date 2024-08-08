@@ -54,7 +54,7 @@ export const ReservationsRestaurantsItem = ({
             {reservation_id}
           </Text>
         </Group>
-        <Badge color="blue" variant="light">
+        <Badge variant="light">
           {dayjs(start).local().format("YY-MM-DD")}
         </Badge>
       </Group>

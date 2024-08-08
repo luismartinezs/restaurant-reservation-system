@@ -18,7 +18,6 @@ export const TimeButton = ({
     <Button
       component={Link}
       variant="light"
-      color="blue"
       size="xs"
       href={`/restaurants/${restaurantId}?time=${dayjs(time).format("HH:mm")}`}
       disabled={disabled}
