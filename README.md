@@ -315,7 +315,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [x] when changing cuisine and location simultaneously, query params not correctly setup
 - [x] search bar allows select date / time before today
 - [ ] restaurant detail
-  - [ ] restaurant time not being updated on btn click
+  - [x] restaurant time not being updated on btn click
   - [ ] time buttons not sequenced as expected
   - [ ] when user does reservation, they get error always
   - [ ] btn to create booking says "edit booking"

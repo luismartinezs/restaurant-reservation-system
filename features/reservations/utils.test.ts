@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { canReserve, getNextTime } from "./utils";
+import { canReserve, getNextTime, yieldTimes } from "./utils";
 import dayjs from "dayjs";
 
 const fixedProps = {
@@ -127,22 +127,27 @@ describe('getNextTime', () => {
     expect(result.format("MM-DD HH:mm")).toBe(expected.format("MM-DD HH:mm"));
   });
 
-  // broken but let's not waste more time
-  it.skip('should return as expected when used iteratively', () => {
-    function* yieldTimes(
-      startTime: dayjs.Dayjs,
-      timeInterval: number,
-      timesCount: number
-    ) {
-      let time = getNextTime(startTime);
-      yield time;
-      for (let i = 0; i < timesCount - 1; i++) {
-        time = getNextTime(time.add(i * timeInterval, "minute"));
-        yield time;
-      }
-    }
+  it('should return next 30 min time for 00 time', () => {
+    const result = getNextTime(dayjs('2023-10-10T13:30'));
+    const expected = dayjs('2023-10-10T14:00')
 
-    const result = Array.from({ length: 5 }, () => yieldTimes(dayjs('2023-10-10T09:45:00'), 30, 5).next().value) as Array<dayjs.Dayjs>;
+    expect(result.format("MM-DD HH:mm")).toBe(expected.format("MM-DD HH:mm"));
+  });
+
+  it('should return next 00 min time for 30 time', () => {
+    const result = getNextTime(dayjs('2023-10-10T15:30:00'));
+    const expected = dayjs('2023-10-10T16:00:00')
+
+    expect(result.format("MM-DD HH:mm")).toBe(expected.format("MM-DD HH:mm"));
+  });
+
+  // broken but let's not waste more time
+  it('should return as expected when used iteratively', () => {
+    const initialTime = dayjs('2023-10-10 09:45:00');
+    const result = [getNextTime(initialTime)]
+    for (let i = 0; i < 4; i++) {
+      result.push(getNextTime(result[i]));
+    }
     const expected = [
       dayjs('2023-10-10T13:00:00'),
       dayjs('2023-10-10T13:30:00'),
@@ -151,6 +156,40 @@ describe('getNextTime', () => {
       dayjs('2023-10-10T15:00:00'),
     ]
 
-    expect(result.map((e) => e.format("MM-DD HH:mm"))).toEqual(expected.map(e => e.format("MM-DD HH:mm")));
+    result.forEach((e, i) => {
+      expect(e).toBeTruthy();
+      expect(expected[i]).toBeTruthy();
+      expect(e.format("MM-DD HH:mm")).toBe(expected[i].format("MM-DD HH:mm"));
+    })
+
+    // expect(result.map((e) => e.format("MM-DD HH:mm"))).toEqual(expected.map(e => e.format("MM-DD HH:mm")));
   });
 });
+
+
+
+describe('yieldTimes', () => {
+  it('should generate times correctly with default time unit', () => {
+    const startTime = dayjs("2023-10-10T12:00");
+    const timeInterval = 30;
+    const timesCount = 3;
+    const generator = yieldTimes({ startTime, timeInterval, timesCount });
+
+    const times = Array.from(generator);
+    expect(times.length).toBe(3);
+    expect(times[0].format()).toBe(dayjs("2023-10-10T13:00").format());
+    expect(times[1].format()).toBe(dayjs("2023-10-10T13:30").format());
+    expect(times[2].format()).toBe(dayjs("2023-10-10T14:00").format());
+  });
+
+  it('should handle zero timesCount gracefully', () => {
+    const startTime = dayjs("2023-10-10T12:00");
+    const timeInterval = 30;
+    const timesCount = 0;
+    const generator = yieldTimes({ startTime, timeInterval, timesCount });
+
+    const times = Array.from(generator);
+    expect(times.length).toBe(0);
+  });
+});
+

@@ -4,22 +4,9 @@ import { Id } from "@/features/restaurants";
 import dayjs from "dayjs";
 import { TimeButton } from "./TimeButton";
 import isBetween from "dayjs/plugin/isBetween";
-import { getNextTime } from "../utils";
+import { getNextTime, yieldTimes } from "../utils";
 
 dayjs.extend(isBetween);
-
-function* yieldTimes(
-  startTime: dayjs.Dayjs,
-  timeInterval: number,
-  timesCount: number
-) {
-  let time = getNextTime(startTime);
-  yield time;
-  for (let i = 0; i < timesCount-1; i++) {
-    time = getNextTime(time.add(i * timeInterval, "minute"));
-    yield time;
-  }
-}
 
 export const AvailableTimes = ({
   restaurantId,
@@ -35,7 +22,13 @@ export const AvailableTimes = ({
   timesCount?: number;
 }) => {
   const nextTime = getNextTime(startTime);
-  const defaultTimes = [...yieldTimes(nextTime, 30, timesCount)];
+  const defaultTimes = [
+    ...yieldTimes({
+      startTime: nextTime,
+      timeInterval: 30,
+      timesCount,
+    }),
+  ];
 
   return (
     <Group mt="md" gap="xs">
