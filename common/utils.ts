@@ -29,3 +29,6 @@ export function roundToNextHalfHour(date: dayjs.Dayjs) {
   return date.minute(0).second(0).millisecond(0).add(1, 'hour').subtract(60 - roundUp, 'minute')
 }
 
+export async function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
