@@ -2,6 +2,7 @@ import dayjs from "dayjs"
 import { Insert, Read } from "./types"
 import { getDates } from "@/features/restaurants"
 import isBetween from "dayjs/plugin/isBetween";
+import { MAX_TIME, MIN_TIME } from "./constants";
 
 dayjs.extend(isBetween)
 
@@ -49,8 +50,8 @@ export function canReserve(reservationAttempt: Insert, existingReservations: Rea
 
 export function getNextTime(currentTime?:dayjs.Dayjs): dayjs.Dayjs {
   currentTime = currentTime ?? dayjs()
-  const startTime = currentTime.hour(13).minute(0).second(0);
-  const endTime = currentTime.hour(22).minute(0).second(0);
+  const startTime = currentTime.hour(+MIN_TIME.split(":")[0]).minute(0).second(0);
+  const endTime = currentTime.hour(+MAX_TIME.split(":")[0]).minute(0).second(0);
 
   if (currentTime.isBefore(startTime)) {
     return startTime;
@@ -65,5 +66,27 @@ export function getNextTime(currentTime?:dayjs.Dayjs): dayjs.Dayjs {
     return currentTime.minute(30).second(0);
   } else {
     return currentTime.add(1, 'hour').minute(0).second(0);
+  }
+}
+
+export function* yieldTimes({
+  startTime,
+  timeInterval,
+  timeUnit = "minute",
+  timesCount,
+}: {
+  startTime: dayjs.Dayjs;
+  timeInterval: number;
+  timeUnit?: dayjs.ManipulateType;
+  timesCount: number;
+}) {
+  if (timesCount === 0) return;
+
+  let time = getNextTime(startTime);
+  yield time;
+  for (let i = 0; i < timesCount - 1; i++) {
+    // subtracting 1 to add a little offset to make sure we do not miss the next time
+    time = getNextTime(time.add(timeInterval - 1, timeUnit));
+    yield time;
   }
 }

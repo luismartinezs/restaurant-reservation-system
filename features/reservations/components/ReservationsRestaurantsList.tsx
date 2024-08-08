@@ -22,7 +22,7 @@ export const ReservationsRestaurantsList = async ({
 
   return (
     <Stack gap="md">
-      {reservationsRestaurants.map((reservation) => (
+      {reservationsRestaurants.sort((a,b) => dayjs(a.start).isBefore(dayjs(b.start)) ? 1 : -1).map((reservation) => (
         <ReservationsRestaurantsItem
           showEdit
           reservationRestaurant={reservation}

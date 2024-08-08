@@ -9,6 +9,7 @@ import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 
 import { useSearchQuery } from "../hooks/useSearchQuery";
 import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
+import { MAX_DATE_RANGE, MAX_PEOPLE, MAX_TIME, MIN_PEOPLE, MIN_TIME } from "@/features/reservations/constants";
 
 export function Search({
   title,
@@ -69,6 +70,8 @@ export function Search({
             defaultValue={dayjs(search.date).toDate()}
             name="date"
             size={size}
+            minDate={dayjs().toDate()}
+            maxDate={dayjs().add(MAX_DATE_RANGE, "month").toDate()}
           />
           <TimeInput
             w={{
@@ -84,6 +87,8 @@ export function Search({
             defaultValue={search.time}
             name="time"
             size={size}
+            minTime={MIN_TIME}
+            maxTime={MAX_TIME}
           />
           <NumberInput
             w={{
@@ -95,12 +100,12 @@ export function Search({
             placeholder="Select number of people"
             leftSection={<CiUser size="1.1rem" />}
             leftSectionPointerEvents="none"
-            min={1}
-            max={8}
             required
             name="people"
             defaultValue={search.people}
             size={size}
+            min={MIN_PEOPLE}
+            max={MAX_PEOPLE}
           />
           <Button
             className="min-w-[150px]"

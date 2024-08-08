@@ -3,7 +3,7 @@ import { api } from "@/features/restaurants/api";
 import { notFound } from "next/navigation";
 import invariant from "tiny-invariant";
 import { Detail, DetailSkeleton } from "./components/detail";
-import { BookForm, BookFormSkeleton } from "@/features/reservations";
+import { BookFormSkeleton } from "@/features/reservations";
 import { Anchor, Container } from "@mantine/core";
 import { getUser } from "@/features/auth/utils";
 import { Suspense } from "react";

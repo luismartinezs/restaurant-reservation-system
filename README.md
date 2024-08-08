@@ -7,6 +7,7 @@
   - [Emulate database](#emulate-database)
   - [Code generation](#code-generation)
   - [Testing](#testing)
+    - [Create auth.json for e2e tests](#create-authjson-for-e2e-tests)
   - [Pre-commit hooks](#pre-commit-hooks)
   - [Deployment pipelines](#deployment-pipelines)
   - [Project requirements](#project-requirements)
@@ -16,7 +17,7 @@
   - [Data groups](#data-groups)
   - [App state](#app-state)
   - [Dev tasks](#dev-tasks)
-  - [Known bugs](#known-bugs)
+  - [Known bugs / missing features (marked with \*)](#known-bugs--missing-features-marked-with-)
   - [If I had more time I would](#if-i-had-more-time-i-would)
   - [Troubleshooting](#troubleshooting)
   - [Timings](#timings)
@@ -70,6 +71,12 @@ There's not database emulation. As this is just a prototype, the same database i
 
 - Run `pnpm vitest` to run unit tests
 - Run `pnpm e2e` to run end-to-end tests (no e2e tests setup currently except for a sanity test)
+
+### Create auth.json for e2e tests
+
+- Serve project locally with `pnpm dev`
+- Run `npx playwright codegen http://localhost:3000 --save-storage=e2e/auth.json`
+- Sign in to the app
 
 ## Pre-commit hooks
 
@@ -298,25 +305,51 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] fix theme popup
   - [x] after logging in, return to page where user was located (or / by default)
 - [ ] Manual testing / search for bugs (do not fix em though)
+- [ ] Ratings
+  - [ ] user can see their ratings /account/ratings
+  - [ ] user can rate a restaurant if they have a reservation in the past for said restaurant
+    - [ ] from the restaurant detail page
+    - [ ] from the /account/reservations page
 - [ ] User can do a reservation
-- [ ] User can add ratings for their own reservations in the past
 - [ ] Supabase: security and RLS
+- [ ] clean up code
+  - [ ] review folder structure adherence to best practices
+  - [ ] order imports following best practices
 - [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
 
-## Known bugs
+## Known bugs / missing features (marked with *)
 
-- when changing cuisine and location simultaneously, query params not correctly setup
+- [x] when changing cuisine and location simultaneously, query params not correctly setup
+- [x] search bar allows select date / time before today
+- [ ] restaurant detail
+  - [x] restaurant time not being updated on btn click
+  - [x] time buttons not sequenced as expected
+  - [x] when user does reservation, they get error always
+  - [x] btn to create booking says "edit booking"
+  - [ ] *if user booked this restaurant in the past, there should be option to rate, and if they already rated, they can see their own rating and edit it
+- [ ] account/reservations
+  - [x] delete should be cancel
+  - [x] user cannot cancel or edit reservations in past
+  - [ ] *there should be btn to rate restaurant for past reservations
+  - [ ] *"book again" button to book same restaurant again
+  - [ ] *link to restaurant page
+- [ ] *missing reservation time in home page cards
+- [ ] *lack of pagination in restaurant list
+- [ ] quite slow page transitions
+- [ ] *missing canonical tags (but it's prototype demo so doesn't matter)
+- [ ] *there should be a "your ratings" page where user can see all ratings they've given
 
 ## If I had more time I would
 
-- It might be interesting to cache the number of reservations per restaurant (maybe), otherwise for the listing, we're looking at N*M queries, alternatively, use pagination and fetch only for 10 restaurants at a time (same can be done for calculation of average rating), once this is done it would make sense to compute average ratings in advance and store them in the DB in the restaurants table
-- add confirmation modal to delete actions
-- clean up booking flow by adding loading state and display booking response (either error, or full restaurant, or success)
-- show list of available reservation times for each restaurant in listing and detail pages
-- add pages to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
-- make dates consistently work with the current user location
-- use windowing or pagination on search results
-- Client fetching all reservations to display availability is not privacy-friendly, this logic should take place entirely server side and the client should only show aggregate data, for a prototype it's okay through
+- [ ] It might be interesting to cache the number of reservations per restaurant (maybe), otherwise for the listing, we're looking at N*M queries, alternatively, use pagination and fetch only for 10 restaurants at a time (same can be done for calculation of average rating), once this is done it would make sense to compute average ratings in advance and store them in the DB in the restaurants table
+- [ ] add confirmation modal to delete actions
+- [ ] clean up booking flow by adding loading state and display booking response (either error, or full restaurant, or success)
+- [ ] show list of available reservation times for each restaurant in listing and detail pages
+- [ ] add pages for admin to manage restaurants and users: add, edit and delete restaurants, and update users. right now this is done manually from the DB
+- [ ] make dates consistently work with the current user location (geolocation)
+- [ ] use windowing or pagination on search results
+- [ ] Client fetching all reservations to display availability is not privacy-friendly, this logic should take place entirely server side and the client should only show aggregate data, for a prototype it's okay through
+- [ ] add capability for users to rate restaurants
 
 ## Troubleshooting
 

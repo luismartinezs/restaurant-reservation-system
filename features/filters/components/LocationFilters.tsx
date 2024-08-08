@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useFilterQuery } from "../hooks/useFilterQuery";
 import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
 import { useState } from "react";
-import { useDebouncedCallback, useDisclosure } from "@mantine/hooks";
+import { useDebouncedCallback } from "@mantine/hooks";
 import { FilterSlicer } from "./FilterSlicer";
 
 export function LocationFilters({
@@ -18,6 +18,7 @@ export function LocationFilters({
   const { update, remove } = useChangeSearchParams();
   const [value, setValue] = useState(filters.location);
 
+  // all this should be handled in the search params itself
   const handleSubmit = useDebouncedCallback(() => {
     if (value.length === 0) {
       const params = remove(["location"]);
