@@ -311,9 +311,9 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [ ] from the /account/reservations page
 - [x] User can do a reservation
 - [x] Supabase: security and RLS
-- [ ] clean up code
-  - [ ] review folder structure adherence to best practices
-  - [ ] order imports following best practices
+- [x] clean up code
+  - [x] review folder structure adherence to best practices
+  - [-] order imports following best practices
 - [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
 
 ## Known bugs / missing features (marked with *)
