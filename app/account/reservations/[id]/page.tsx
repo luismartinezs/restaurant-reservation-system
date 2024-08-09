@@ -1,9 +1,11 @@
 import React from "react";
+import { notFound } from "next/navigation";
+
 import { Container } from "@mantine/core";
 import invariant from "tiny-invariant";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
-import { notFound } from "next/navigation";
+
 import { checkAuth } from "@/features/auth/utils";
 import { api } from "@/features/reservations/server";
 import { ReservationsRestaurantsItem } from "@/features/reservations";

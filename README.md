@@ -25,7 +25,6 @@
   - [References](#references)
   - [Coding practices](#coding-practices)
     - [Folder structure](#folder-structure)
-    - [Imports](#imports)
 
 ## Tech stack
 
@@ -387,15 +386,3 @@ Nothing so far
 
 - Feature based: each feature has its own folder with all related files.
   - Do not be overly strict with this, if moving a piece of code to the features folder makes the code more complicated, or it doesn't seem to make sense, don't do it
-
-### Imports
-
-- Order imports as follows:
-  - React imports
-  - Next.js imports
-  - --- empty line ---
-  - Other external libraries (e.g. Mantine, Supabase)
-  - --- empty line ---
-  - Aliased internal imports
-  - --- empty line ---
-  - Relative imports

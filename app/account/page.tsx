@@ -1,5 +1,6 @@
-import { Account } from "@/features/auth";
 import { Container, Title } from "@mantine/core";
+
+import { Account } from "@/features/auth";
 
 export default function AccountPage() {
   return (

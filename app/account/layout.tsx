@@ -1,6 +1,7 @@
+import { Container, Group } from "@mantine/core";
+
 import { Navbar } from "@/common/components/Navbar";
 import { checkAuth } from "@/features/auth/utils";
-import { Container, Group } from "@mantine/core";
 
 export default async function AccountLayout({
   children,
