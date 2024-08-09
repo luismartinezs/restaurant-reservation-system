@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // import Script from 'next/script'
 import { Inter } from "next/font/google";
+import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
@@ -12,6 +13,11 @@ import { CollapseDesktop } from "@/common/components/CollapseDesktop";
 import { Navbar } from "@/common/components/Navbar";
 import { ScrollToTop } from "@/common/components/ScrollToTop";
 import { cn } from "@/common/utils";
+
+storyblokInit({
+  accessToken: process.env.STORYBLOK_API_TOKEN,
+  use: [apiPlugin],
+});
 
 const inter = Inter({ subsets: ["latin"] });
 

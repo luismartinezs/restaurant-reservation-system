@@ -1,4 +1,6 @@
 import NextLink from "next/link";
+import { getStoryblokApi } from "@storyblok/react/rsc";
+import StoryblokStory from "@storyblok/react/story";
 import { api } from "@/features/restaurants/api";
 import { notFound } from "next/navigation";
 import invariant from "tiny-invariant";
@@ -9,9 +11,26 @@ import { getUser } from "@/features/auth/utils";
 import { Suspense } from "react";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
-import { getCloudinaryImageId } from "@/features/restaurants";
+import { getCloudinaryImageId, RestaurantRead } from "@/features/restaurants";
 import { CreateReservationForm } from "@/features/reservations/components/CreateReservationForm";
 import { AvailableTimes } from "@/features/reservations/components/AvailableTimes";
+
+export async function fetchData(restaurant: RestaurantRead) {
+  let sbParams = { version: "draft" } as const;
+
+  try {
+    const storyblokApi = getStoryblokApi();
+    return storyblokApi.get(
+      `cdn/stories/rico-rico/${restaurant.id}`,
+      sbParams,
+      {
+        cache: "no-store",
+      }
+    );
+  } catch (err) {
+    return { data: null, error: err };
+  }
+}
 
 // issue where is that this page will not be cached
 export default async function Page({ params }: { params: { id: string } }) {
@@ -26,6 +45,17 @@ export default async function Page({ params }: { params: { id: string } }) {
     invariant(!isNaN(numId), "id must be a number");
 
     const restaurant = await api().getRestaurantById(numId);
+
+    try {
+      const sbRes = await fetchData(restaurant);
+      console.log(JSON.stringify(sbRes.data.story, null, 2));
+
+      if (sbRes.data && sbRes.data.story) {
+        return <StoryblokStory story={sbRes.data.story} />;
+      }
+    } catch (err) {
+      console.log(err);
+    }
 
     return (
       <>
@@ -58,10 +88,16 @@ export default async function Page({ params }: { params: { id: string } }) {
             </Suspense>
             <Suspense fallback={<BookFormSkeleton />}>
               {user?.id ? (
-                <CreateReservationForm restaurantId={restaurant.id} userId={user?.id} />
+                <CreateReservationForm
+                  restaurantId={restaurant.id}
+                  userId={user?.id}
+                />
               ) : (
                 <div>
-                  <Anchor component={NextLink} href={`/login?redirect=/restaurants/${id}`}>
+                  <Anchor
+                    component={NextLink}
+                    href={`/login?redirect=/restaurants/${id}`}
+                  >
                     Login / register
                   </Anchor>{" "}
                   to make a reservation
@@ -69,15 +105,30 @@ export default async function Page({ params }: { params: { id: string } }) {
               )}
             </Suspense>
             <Suspense fallback={<div>Loading</div>}>
-              <AvailableTimes restaurantId={restaurant.id} timesCount={5} buttonProps={{
-                size: "md",
-              }} />
+              <AvailableTimes
+                restaurantId={restaurant.id}
+                timesCount={5}
+                buttonProps={{
+                  size: "md",
+                }}
+              />
             </Suspense>
           </div>
         </Container>
       </>
     );
   } catch (err) {
-    return notFound();
+    // Only call notFound() for errors related to fetching the restaurant
+    if (err instanceof Error && err.message.includes("Restaurant not found")) {
+      return notFound();
+    }
+
+    // For other errors, display an error message
+    return (
+      <div>
+        <h1>Error</h1>
+        <p>An error occurred while fetching the restaurant details.</p>
+      </div>
+    );
   }
 }

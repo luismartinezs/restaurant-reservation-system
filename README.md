@@ -2,14 +2,16 @@
 
 - [Restaurant reservation system](#restaurant-reservation-system)
   - [Tech stack](#tech-stack)
-  - [Pre-requisites to run this project](#pre-requisites-to-run-this-project)
-  - [Deploy locally as a dev](#deploy-locally-as-a-dev)
-  - [Emulate database](#emulate-database)
-  - [Code generation](#code-generation)
-  - [Testing](#testing)
-    - [Create auth.json for e2e tests](#create-authjson-for-e2e-tests)
-  - [Pre-commit hooks](#pre-commit-hooks)
-  - [Deployment pipelines](#deployment-pipelines)
+  - [Instructions for developers](#instructions-for-developers)
+    - [Pre-requisites to run this project](#pre-requisites-to-run-this-project)
+    - [Deploy locally as a dev](#deploy-locally-as-a-dev)
+    - [Emulate database](#emulate-database)
+    - [Code generation](#code-generation)
+    - [Testing](#testing)
+      - [Create auth.json for e2e tests](#create-authjson-for-e2e-tests)
+    - [Pre-commit hooks](#pre-commit-hooks)
+    - [Deployment pipelines](#deployment-pipelines)
+    - [Storyblok setup](#storyblok-setup)
   - [Project requirements](#project-requirements)
   - [Questions about business logic](#questions-about-business-logic)
   - [Database structure](#database-structure)
@@ -35,7 +37,9 @@
 - Cloudinary
 - ~~Zustand~~ (app state solution not used, used on query params instead)
 
-## Pre-requisites to run this project
+## Instructions for developers
+
+### Pre-requisites to run this project
 
 You need at least `node 21` and `npm` installed in your computer.
 
@@ -43,7 +47,7 @@ I recommend installing and using `pnpm` too to run the project scripts
 
 I recommmend using `nvm` to manage node versions locally
 
-## Deploy locally as a dev
+### Deploy locally as a dev
 
 ```bash
 # Install the project dependencies
@@ -58,34 +62,49 @@ pnpm dev
 pnpm build && pnpm start
 ```
 
-## Emulate database
+### Emulate database
 
 There's not database emulation. As this is just a prototype, the same database is used locally and in the live environment. In a real site a separate database would be needed for development and testing, and a locally emulated database should be spinned.
 
-## Code generation
+### Code generation
 
 - ~~Run `pnpm plop` to scaffold new components or pages~~ (no code generation used in this project)
 
-## Testing
+### Testing
 
 - Run `pnpm vitest` to run unit tests
 - Run `pnpm e2e` to run end-to-end tests (no e2e tests setup currently except for a sanity test)
 
-### Create auth.json for e2e tests
+#### Create auth.json for e2e tests
 
 - Serve project locally with `pnpm dev`
 - Run `npx playwright codegen http://localhost:3000 --save-storage=e2e/auth.json`
 - Sign in to the app
 
-## Pre-commit hooks
+### Pre-commit hooks
 
 - `pnpm lint` without errors
 - ~~All tests must pass~~ disabling tests because it takes too long to run
 - Commit message must follow `commitlint` specs
 
-## Deployment pipelines
+### Deployment pipelines
 
 - Unit and e2e tests run fore every attempt to push to or merge pull request to main branch (non blocking)
+
+### Storyblok setup
+
+Storyblok allows to create restaurant landing pages using the Storyblok CMS. An editor does not need to code anything, they can create landing pages for existing restaurants from the Storylok UI. Editors should ask the project owner to be added to the Storyblok space.
+
+You will need to add the storyblok api token to the `.env.local` file. Ask the project owner for it.
+
+To see the preview of the landing page in the Storyblok UI when working in localhost, you need to setup a proxy:
+
+- You need to use mkcert to create a certificate: https://github.com/FiloSottile/mkcert
+  - Install mkcert
+  - add localhost to the certificate: `mkcert localhost`
+- Run a proxy server
+  - `pnpm add -g local-ssl-proxy`
+  - `local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem`
 
 ## Project requirements
 
