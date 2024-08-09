@@ -311,7 +311,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [ ] from the restaurant detail page
     - [ ] from the /account/reservations page
 - [x] User can do a reservation
-- [ ] Supabase: security and RLS
+- [x] Supabase: security and RLS
 - [ ] clean up code
   - [ ] review folder structure adherence to best practices
   - [ ] order imports following best practices
