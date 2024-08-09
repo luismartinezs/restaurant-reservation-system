@@ -304,13 +304,13 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [x] README cleanup
   - [x] fix theme popup
   - [x] after logging in, return to page where user was located (or / by default)
-- [ ] Manual testing / search for bugs (do not fix em though)
+- [x] Manual testing / search for bugs (do not fix em though)
 - [ ] Ratings
   - [ ] user can see their ratings /account/ratings
   - [ ] user can rate a restaurant if they have a reservation in the past for said restaurant
     - [ ] from the restaurant detail page
     - [ ] from the /account/reservations page
-- [ ] User can do a reservation
+- [x] User can do a reservation
 - [ ] Supabase: security and RLS
 - [ ] clean up code
   - [ ] review folder structure adherence to best practices
