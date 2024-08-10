@@ -1,0 +1,374 @@
+{
+  "components": [
+    {
+      "name": "CloudinaryImage",
+      "display_name": null,
+      "created_at": "2022-04-20T15:21:26.857Z",
+      "updated_at": "2023-03-07T10:59:15.740Z",
+      "id": 2373843,
+      "schema": {
+        "src": {
+          "type": "text",
+          "pos": 0,
+          "default_value": "",
+          "description": "Cloudinary end path, e.g. galen-crout-fItRJ7AHak8-unsplash_h5yt9m"
+        },
+        "alt": {
+          "type": "text",
+          "pos": 1
+        },
+        "preload": {
+          "type": "boolean",
+          "default_value": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "CloudinaryImage",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "HeroTitle",
+      "display_name": null,
+      "created_at": "2022-04-21T12:24:02.405Z",
+      "updated_at": "2023-03-07T11:06:17.708Z",
+      "id": 2376460,
+      "schema": {
+        "title": {
+          "type": "text",
+          "description": "Defaults to post title"
+        },
+        "showFeaturedImage": {
+          "type": "boolean",
+          "default_value": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "HeroTitle",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "page",
+      "display_name": null,
+      "created_at": "2022-04-18T16:10:51.150Z",
+      "updated_at": "2022-04-18T21:36:41.957Z",
+      "id": 2366403,
+      "schema": {
+        "body": {
+          "type": "bloks"
+        },
+        "tab-1e0e92e3-7963-4468-a345-7ea10f332f86": {
+          "type": "tab",
+          "display_name": "Meta",
+          "keys": [
+            "title",
+            "description",
+            "createdAt",
+            "tags",
+            "socialImage"
+          ],
+          "pos": 0
+        },
+        "title": {
+          "type": "text"
+        },
+        "description": {
+          "type": "text"
+        },
+        "tags": {
+          "type": "text"
+        },
+        "featuredImage": {
+          "type": "text"
+        },
+        "socialImage": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "page",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "post",
+      "display_name": null,
+      "created_at": "2022-04-20T10:58:18.474Z",
+      "updated_at": "2023-03-15T14:25:18.693Z",
+      "id": 2372575,
+      "schema": {
+        "body": {
+          "type": "bloks"
+        },
+        "tab-1e0e92e3-7963-4468-a345-7ea10f332f86": {
+          "type": "tab",
+          "display_name": "Meta",
+          "keys": [
+            "title",
+            "description",
+            "createdAt",
+            "tags",
+            "socialImage"
+          ],
+          "pos": 0
+        },
+        "title": {
+          "type": "text"
+        },
+        "description": {
+          "type": "text"
+        },
+        "tags": {
+          "type": "text"
+        },
+        "featuredImage": {
+          "type": "text",
+          "description": "Example: saito200_one_armored_marine_a_swarm_of_Zerg_in_the_distance_ali_962335a8-f5f9-43ab-b05f-d508f3281889_lrv8a9"
+        },
+        "socialImage": {
+          "type": "text",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "",
+          "description": "Example: https://res.cloudinary.com/dicyllvry/image/upload/v1678297549/luis-martinez/saito200_one_armored_marine_a_swarm_of_Zerg_in_the_distance_ali_962335a8-f5f9-43ab-b05f-d508f3281889_lrv8a9.png"
+        },
+        "postTitle": {
+          "type": "text"
+        },
+        "createdAt": {
+          "type": "text",
+          "description": "Date in yyyy-mm-dd format"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "post",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "restaurant",
+      "display_name": null,
+      "created_at": "2024-08-09T08:43:17.501Z",
+      "updated_at": "2024-08-10T03:56:15.093Z",
+      "id": 6149492,
+      "schema": {
+        "body": {
+          "type": "bloks"
+        },
+        "tab-1e0e92e3-7963-4468-a345-7ea10f332f86": {
+          "type": "tab",
+          "display_name": "Meta",
+          "keys": [
+            "title",
+            "description",
+            "createdAt",
+            "tags",
+            "socialImage"
+          ],
+          "pos": 0
+        },
+        "title": {
+          "type": "text"
+        },
+        "description": {
+          "type": "text"
+        },
+        "tags": {
+          "type": "text"
+        },
+        "socialImage": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "restaurant",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "RichText",
+      "display_name": null,
+      "created_at": "2022-04-18T20:31:59.618Z",
+      "updated_at": "2022-04-18T20:32:55.483Z",
+      "id": 2366696,
+      "schema": {
+        "content": {
+          "type": "richtext",
+          "customize_toolbar": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "RichText",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "SideNote",
+      "display_name": null,
+      "created_at": "2022-04-30T09:21:14.801Z",
+      "updated_at": "2022-09-13T09:45:08.931Z",
+      "id": 2401142,
+      "schema": {
+        "content": {
+          "type": "richtext"
+        },
+        "type": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "note",
+              "name": "note"
+            },
+            {
+              "value": "warning",
+              "name": "warning"
+            }
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "SideNote",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "test",
+      "display_name": null,
+      "created_at": "2024-08-09T05:13:54.247Z",
+      "updated_at": "2024-08-09T05:14:58.787Z",
+      "id": 6148630,
+      "schema": {
+        "test": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "title",
+          "description": "enter some text",
+          "default_value": ""
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "test",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "YoutubeVideo",
+      "display_name": null,
+      "created_at": "2022-04-18T20:31:23.345Z",
+      "updated_at": "2022-04-20T14:00:48.570Z",
+      "id": 2366695,
+      "schema": {
+        "youtubeId": {
+          "type": "text"
+        },
+        "timestamp": {
+          "type": "number",
+          "default_value": "",
+          "description": "Starting point of the video in seconds"
+        },
+        "caption": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "YoutubeVideo",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    }
+  ]
+}

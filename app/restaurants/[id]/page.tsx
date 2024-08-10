@@ -11,22 +11,61 @@ import { getUser } from "@/features/auth/utils";
 import { Suspense } from "react";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
-import { getCloudinaryImageId, RestaurantRead } from "@/features/restaurants";
+import { getCloudinaryImageId, Id } from "@/features/restaurants";
 import { CreateReservationForm } from "@/features/reservations/components/CreateReservationForm";
 import { AvailableTimes } from "@/features/reservations/components/AvailableTimes";
+import { Metadata, ResolvingMetadata } from "next";
 
-export async function fetchData(restaurant: RestaurantRead) {
+type Props = { params: { id: string } };
+
+function validateParams(params: any): params is Props["params"] {
+  return typeof params.id === "string";
+}
+
+function getParamId(params: any): Id {
+  invariant(validateParams(params), "Invalid params");
+
+  const { id } = params;
+
+  const numId = parseInt(id, 10);
+
+  invariant(!isNaN(numId), "id must be a number");
+
+  return numId;
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  try {
+    const sbRes = await fetchData(getParamId(params));
+
+    const { content } = sbRes.data.story;
+
+    if (content) {
+      return {
+        title: content.title,
+        description: content.description,
+        openGraph: { images: [content.socialImage] },
+      };
+    }
+    return {};
+  } catch (err) {
+    console.error(err);
+  }
+
+  return {};
+}
+
+export async function fetchData(restaurantId: Id) {
   let sbParams = { version: "draft" } as const;
 
   try {
     const storyblokApi = getStoryblokApi();
-    return storyblokApi.get(
-      `cdn/stories/rico-rico/${restaurant.id}`,
-      sbParams,
-      {
-        cache: "no-store",
-      }
-    );
+    return storyblokApi.get(`cdn/stories/rico-rico/${restaurantId}`, sbParams, {
+      cache: "no-store",
+    });
   } catch (err) {
     return { data: null, error: err };
   }
@@ -47,14 +86,14 @@ export default async function Page({ params }: { params: { id: string } }) {
     const restaurant = await api().getRestaurantById(numId);
 
     try {
-      const sbRes = await fetchData(restaurant);
-      console.log(JSON.stringify(sbRes.data.story, null, 2));
+      const sbRes = await fetchData(restaurant.id);
+      // console.log(JSON.stringify(sbRes.data.story, null, 2));
 
       if (sbRes.data && sbRes.data.story) {
         return <StoryblokStory story={sbRes.data.story} />;
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
 
     return (
@@ -118,17 +157,6 @@ export default async function Page({ params }: { params: { id: string } }) {
       </>
     );
   } catch (err) {
-    // Only call notFound() for errors related to fetching the restaurant
-    if (err instanceof Error && err.message.includes("Restaurant not found")) {
-      return notFound();
-    }
-
-    // For other errors, display an error message
-    return (
-      <div>
-        <h1>Error</h1>
-        <p>An error occurred while fetching the restaurant details.</p>
-      </div>
-    );
+    return notFound();
   }
 }
