@@ -339,8 +339,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [x] metadata
     - [x] hero with image, 2 versions: full bleed image and image + separate text block (mobile friendly)
     - [x] images widget
-    - [ ] title and paragraph
-    - [ ] normal booking widget
+    - [x] title and paragraph
+    - [x] normal booking widget
     - [ ] persistent booking sidebar (might require alternate page version)
     - [ ] food menu
     - [ ] social media share buttons

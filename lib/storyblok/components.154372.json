@@ -1,6 +1,29 @@
 {
   "components": [
     {
+      "name": "book section",
+      "display_name": null,
+      "created_at": "2024-08-10T14:26:44.753Z",
+      "updated_at": "2024-08-10T14:26:57.126Z",
+      "id": 6153341,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "book section",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
       "name": "CloudinaryImage",
       "display_name": null,
       "created_at": "2022-04-20T15:21:26.857Z",

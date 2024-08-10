@@ -16,24 +16,7 @@ import { CreateReservationForm } from "@/features/reservations/components/Create
 import { AvailableTimes } from "@/features/reservations/components/AvailableTimes";
 import { Metadata, ResolvingMetadata } from "next";
 import { RestaurantStoryblok } from "@/lib/storyblok/component-types-sb";
-
-type Props = { params: { id: string } };
-
-function validateParams(params: any): params is Props["params"] {
-  return typeof params.id === "string";
-}
-
-function getParamId(params: any): Id {
-  invariant(validateParams(params), "Invalid params");
-
-  const { id } = params;
-
-  const numId = parseInt(id, 10);
-
-  invariant(!isNaN(numId), "id must be a number");
-
-  return numId;
-}
+import { getParamId, PageProps } from "./utils";
 
 function getMetadata(content: RestaurantStoryblok): Metadata {
   const { title, description, socialImage } = content;
@@ -45,7 +28,7 @@ function getMetadata(content: RestaurantStoryblok): Metadata {
 }
 
 export async function generateMetadata(
-  { params }: Props,
+  { params }: PageProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   try {
