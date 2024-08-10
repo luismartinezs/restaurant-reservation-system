@@ -10,6 +10,28 @@ export interface CloudinaryImageStoryblok {
   [k: string]: any;
 }
 
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  focus?: string;
+  [k: string]: any;
+}
+
+export interface HeroStoryblok {
+  image?: AssetStoryblok;
+  cloudinaryId?: string;
+  imageUrl?: string;
+  title?: string;
+  subtitle?: string;
+  component: "hero";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface HeroTitleStoryblok {
   title?: string;
   showFeaturedImage?: boolean;
@@ -21,6 +43,7 @@ export interface HeroTitleStoryblok {
 export interface PageStoryblok {
   body?: (
     | CloudinaryImageStoryblok
+    | HeroStoryblok
     | HeroTitleStoryblok
     | PageStoryblok
     | PostStoryblok
@@ -43,6 +66,7 @@ export interface PageStoryblok {
 export interface PostStoryblok {
   body?: (
     | CloudinaryImageStoryblok
+    | HeroStoryblok
     | HeroTitleStoryblok
     | PageStoryblok
     | PostStoryblok
@@ -67,6 +91,7 @@ export interface PostStoryblok {
 export interface RestaurantStoryblok {
   body?: (
     | CloudinaryImageStoryblok
+    | HeroStoryblok
     | HeroTitleStoryblok
     | PageStoryblok
     | PostStoryblok
@@ -78,7 +103,6 @@ export interface RestaurantStoryblok {
   )[];
   title?: string;
   description?: string;
-  tags?: string;
   socialImage?: string;
   component: "restaurant";
   _uid: string;

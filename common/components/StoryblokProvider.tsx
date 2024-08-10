@@ -3,10 +3,12 @@ import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 
 import { Restaurant } from "@/common/blocks/Restaurant";
 import { Test } from "@/common/blocks/Test";
+import { Hero } from "@/common/blocks/Hero";
 
 const components = {
   restaurant: Restaurant,
   test: Test,
+  hero: Hero
 };
 
 storyblokInit({

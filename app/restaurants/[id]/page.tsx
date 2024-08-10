@@ -15,6 +15,7 @@ import { getCloudinaryImageId, Id } from "@/features/restaurants";
 import { CreateReservationForm } from "@/features/reservations/components/CreateReservationForm";
 import { AvailableTimes } from "@/features/reservations/components/AvailableTimes";
 import { Metadata, ResolvingMetadata } from "next";
+import { RestaurantStoryblok } from "@/lib/storyblok/component-types-sb";
 
 type Props = { params: { id: string } };
 
@@ -34,6 +35,15 @@ function getParamId(params: any): Id {
   return numId;
 }
 
+function getMetadata(content: RestaurantStoryblok): Metadata {
+  const { title, description, socialImage } = content;
+  const metadata: Metadata = {};
+  if (title) metadata.title = title;
+  if (description) metadata.description = description;
+  if (socialImage) metadata.openGraph = { images: [socialImage] };
+  return metadata;
+}
+
 export async function generateMetadata(
   { params }: Props,
   parent: ResolvingMetadata
@@ -41,14 +51,10 @@ export async function generateMetadata(
   try {
     const sbRes = await fetchData(getParamId(params));
 
-    const { content } = sbRes.data.story;
+    const content: RestaurantStoryblok = sbRes.data.story.content;
 
     if (content) {
-      return {
-        title: content.title,
-        description: content.description,
-        openGraph: { images: [content.socialImage] },
-      };
+      return getMetadata(content);
     }
     return {};
   } catch (err) {
