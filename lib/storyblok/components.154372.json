@@ -167,6 +167,39 @@
       "component_group_name": "ricorico"
     },
     {
+      "name": "image gallery",
+      "display_name": null,
+      "created_at": "2024-08-10T12:17:08.254Z",
+      "updated_at": "2024-08-10T12:18:42.118Z",
+      "id": 6153232,
+      "schema": {
+        "images": {
+          "type": "bloks",
+          "pos": 0,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "image gallery",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
       "name": "logo",
       "display_name": null,
       "created_at": "2024-08-10T06:53:15.218Z",

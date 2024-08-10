@@ -49,6 +49,13 @@ export interface ImageStoryblok {
   [k: string]: any;
 }
 
+export interface ImageGalleryStoryblok {
+  images?: ImageStoryblok[];
+  component: "image gallery";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface LogoStoryblok {
   image?: AssetStoryblok;
   cloudinaryId?: string;
@@ -64,6 +71,7 @@ export interface PageStoryblok {
     | HeroStoryblok
     | HeroTitleStoryblok
     | ImageStoryblok
+    | ImageGalleryStoryblok
     | LogoStoryblok
     | PageStoryblok
     | PostStoryblok
@@ -90,6 +98,7 @@ export interface PostStoryblok {
     | HeroStoryblok
     | HeroTitleStoryblok
     | ImageStoryblok
+    | ImageGalleryStoryblok
     | LogoStoryblok
     | PageStoryblok
     | PostStoryblok
@@ -118,6 +127,7 @@ export interface RestaurantStoryblok {
     | HeroStoryblok
     | HeroTitleStoryblok
     | ImageStoryblok
+    | ImageGalleryStoryblok
     | LogoStoryblok
     | PageStoryblok
     | PostStoryblok

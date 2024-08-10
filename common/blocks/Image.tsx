@@ -3,6 +3,7 @@ import React from "react";
 import { CloudinaryImage } from "../components/CloudinaryImage";
 import { Image as MImage } from "@mantine/core";
 import NextImage from "next/image";
+import { cn } from "../utils";
 
 function NoImage() {
   return (
@@ -10,7 +11,13 @@ function NoImage() {
   );
 }
 
-export const Image = ({ blok }: { blok?: ImageStoryblok }) => {
+export const Image = ({
+  blok,
+  className,
+}: {
+  blok?: ImageStoryblok;
+  className?: string;
+}) => {
   const _width = blok?.width ? Number(blok.width) : 1920;
   const _height = blok?.height ? Number(blok.height) : 400;
   if (!blok) {
@@ -24,13 +31,15 @@ export const Image = ({ blok }: { blok?: ImageStoryblok }) => {
     return "none";
   })();
 
+  const classes = cn('object-cover max-w-fit min-w-[100%] h-full', className)
+
   const getImage = () => {
     switch (imageType) {
       case "cloudinary":
         return (
           <CloudinaryImage
             imgId={`${cloudinaryId as string}.png`}
-            className="object-cover max-w-fit min-w-[100%] h-full"
+            className={classes}
             width={_width}
             height={_height}
             alt=""
@@ -42,7 +51,7 @@ export const Image = ({ blok }: { blok?: ImageStoryblok }) => {
             component={NextImage}
             src={image?.filename as string}
             alt={image?.alt ?? ""}
-            className="object-cover max-w-fit min-w-[100%] h-full"
+            className={classes}
             width={_width}
             height={_height}
           />
@@ -53,7 +62,7 @@ export const Image = ({ blok }: { blok?: ImageStoryblok }) => {
             component={NextImage}
             src={url as string}
             alt=""
-            className="object-cover max-w-fit min-w-[100%] h-full"
+            className={classes}
             width={_width}
             height={_height}
           />
