@@ -4,7 +4,7 @@ import { RestaurantStoryblok } from "@/lib/storyblok/component-types-sb";
 
 export const Restaurant = ({ blok }: { blok: RestaurantStoryblok }) => {
   return (
-    <div {...storyblokEditable(blok)}>
+    <div {...storyblokEditable(blok)} className="-mt-8">
       {blok.body?.map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
       ))}

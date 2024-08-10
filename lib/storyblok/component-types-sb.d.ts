@@ -10,21 +10,8 @@ export interface CloudinaryImageStoryblok {
   [k: string]: any;
 }
 
-export interface AssetStoryblok {
-  alt?: string;
-  copyright?: string;
-  id: number;
-  filename: string;
-  name: string;
-  title?: string;
-  focus?: string;
-  [k: string]: any;
-}
-
 export interface HeroStoryblok {
-  image?: AssetStoryblok;
-  cloudinaryId?: string;
-  imageUrl?: string;
+  image?: ImageStoryblok[];
   title?: string;
   subtitle?: string;
   component: "hero";
@@ -40,16 +27,50 @@ export interface HeroTitleStoryblok {
   [k: string]: any;
 }
 
+export interface AssetStoryblok {
+  alt?: string;
+  copyright?: string;
+  id: number;
+  filename: string;
+  name: string;
+  title?: string;
+  focus?: string;
+  [k: string]: any;
+}
+
+export interface ImageStoryblok {
+  image?: AssetStoryblok;
+  cloudinaryId?: string;
+  url?: string;
+  width?: string;
+  height?: string;
+  component: "image";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface LogoStoryblok {
+  image?: AssetStoryblok;
+  cloudinaryId?: string;
+  url?: string;
+  component: "logo";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
   body?: (
     | CloudinaryImageStoryblok
     | HeroStoryblok
     | HeroTitleStoryblok
+    | ImageStoryblok
+    | LogoStoryblok
     | PageStoryblok
     | PostStoryblok
     | RestaurantStoryblok
     | RichTextStoryblok
     | SideNoteStoryblok
+    | SplitHeroStoryblok
     | TestStoryblok
     | YoutubeVideoStoryblok
   )[];
@@ -68,11 +89,14 @@ export interface PostStoryblok {
     | CloudinaryImageStoryblok
     | HeroStoryblok
     | HeroTitleStoryblok
+    | ImageStoryblok
+    | LogoStoryblok
     | PageStoryblok
     | PostStoryblok
     | RestaurantStoryblok
     | RichTextStoryblok
     | SideNoteStoryblok
+    | SplitHeroStoryblok
     | TestStoryblok
     | YoutubeVideoStoryblok
   )[];
@@ -93,11 +117,14 @@ export interface RestaurantStoryblok {
     | CloudinaryImageStoryblok
     | HeroStoryblok
     | HeroTitleStoryblok
+    | ImageStoryblok
+    | LogoStoryblok
     | PageStoryblok
     | PostStoryblok
     | RestaurantStoryblok
     | RichTextStoryblok
     | SideNoteStoryblok
+    | SplitHeroStoryblok
     | TestStoryblok
     | YoutubeVideoStoryblok
   )[];
@@ -129,6 +156,16 @@ export interface SideNoteStoryblok {
   content?: RichtextStoryblok;
   type?: "" | "note" | "warning";
   component: "SideNote";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface SplitHeroStoryblok {
+  title?: string;
+  textContent?: string;
+  logo?: LogoStoryblok[];
+  image?: ImageStoryblok[];
+  component: "split hero";
   _uid: string;
   [k: string]: any;
 }

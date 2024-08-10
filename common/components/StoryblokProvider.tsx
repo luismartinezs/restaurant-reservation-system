@@ -4,11 +4,13 @@ import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 import { Restaurant } from "@/common/blocks/Restaurant";
 import { Test } from "@/common/blocks/Test";
 import { Hero } from "@/common/blocks/Hero";
+import { SplitHero } from "../blocks/SplitHero";
 
 const components = {
   restaurant: Restaurant,
   test: Test,
-  hero: Hero
+  hero: Hero,
+  'split hero': SplitHero,
 };
 
 storyblokInit({

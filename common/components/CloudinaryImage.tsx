@@ -41,6 +41,9 @@ export function CloudinaryImage({
     return fallback ?? null;
   }
 
+  console.log(imageSrc);
+
+
   return (
     <CldImage
       src={imageSrc}

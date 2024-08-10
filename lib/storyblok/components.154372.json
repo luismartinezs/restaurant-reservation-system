@@ -41,29 +41,22 @@
       "name": "hero",
       "display_name": null,
       "created_at": "2024-08-10T05:46:24.756Z",
-      "updated_at": "2024-08-10T06:06:15.226Z",
+      "updated_at": "2024-08-10T07:01:18.946Z",
       "id": 6152927,
       "schema": {
         "image": {
-          "type": "asset",
+          "type": "bloks",
           "pos": 0,
           "filetypes": [
             "images"
           ],
-          "description": "Image of size 1920px * 400px",
-          "asset_folder_id": 622427
-        },
-        "cloudinaryId": {
-          "type": "text",
-          "pos": 1,
-          "description": "Cloudinary Id for image of size 1920px * 400px"
-        },
-        "imageUrl": {
-          "type": "text",
-          "pos": 2,
-          "description": "URL to image of size 1920px * 400px",
-          "tooltip": false,
-          "regex": ""
+          "description": "Image of size at least 1920px * 400px",
+          "asset_folder_id": 622427,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image"
+          ]
         },
         "title": {
           "type": "text",
@@ -120,6 +113,98 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null
+    },
+    {
+      "name": "image",
+      "display_name": null,
+      "created_at": "2024-08-10T06:58:08.293Z",
+      "updated_at": "2024-08-10T07:18:53.298Z",
+      "id": 6152936,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "description": "Image of size at least 1920px * 400px"
+        },
+        "cloudinaryId": {
+          "type": "text",
+          "pos": 1,
+          "description": "Cloudinary Id for image of size at least 1920px * 400px\n\nCloudinary path needs to be under v1722583212/restaurant-reservation-system/, example: restaurants/heros/12_Le-Gourmet_interior_hero_1920_0001"
+        },
+        "url": {
+          "type": "text",
+          "pos": 2,
+          "description": "URL for image of size at least 1920px * 400px"
+        },
+        "width": {
+          "type": "number",
+          "pos": 3,
+          "default_value": "1920"
+        },
+        "height": {
+          "type": "number",
+          "pos": 4,
+          "default_value": "400"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "image",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "logo",
+      "display_name": null,
+      "created_at": "2024-08-10T06:53:15.218Z",
+      "updated_at": "2024-08-10T06:54:15.947Z",
+      "id": 6152933,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": 622427
+        },
+        "cloudinaryId": {
+          "type": "text",
+          "pos": 1
+        },
+        "url": {
+          "type": "text",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "logo",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
     },
     {
       "name": "page",
@@ -354,6 +439,56 @@
       "internal_tags_list": [],
       "internal_tag_ids": [],
       "content_type_asset_preview": null
+    },
+    {
+      "name": "split hero",
+      "display_name": null,
+      "created_at": "2024-08-10T06:36:35.732Z",
+      "updated_at": "2024-08-10T07:02:35.199Z",
+      "id": 6152932,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "textContent": {
+          "type": "text",
+          "pos": 1
+        },
+        "logo": {
+          "type": "bloks",
+          "pos": 2,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "logo"
+          ]
+        },
+        "image": {
+          "type": "bloks",
+          "pos": 3,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "split hero",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
     },
     {
       "name": "test",
