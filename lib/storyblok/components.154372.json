@@ -555,6 +555,80 @@
       "component_group_name": "ricorico"
     },
     {
+      "name": "text section",
+      "display_name": null,
+      "created_at": "2024-08-10T13:49:31.923Z",
+      "updated_at": "2024-08-10T14:20:53.508Z",
+      "id": 6153274,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "textContent": {
+          "type": "richtext",
+          "pos": 1,
+          "customize_toolbar": true,
+          "toolbar": [
+            "ai-complete",
+            "ai-shorten",
+            "ai-extend",
+            "ai-rephrase",
+            "ai-summarize",
+            "ai-simplify",
+            "ai-tone",
+            "ai-emoji",
+            "ai-translate",
+            "ai-tldr",
+            "ai-spelling",
+            "bold",
+            "list",
+            "inlinecode",
+            "code",
+            "copy",
+            "cut",
+            "emoji",
+            "italic",
+            "link",
+            "anchor",
+            "olist",
+            "paragraph",
+            "paste-action",
+            "paste",
+            "quote",
+            "strike",
+            "subscript",
+            "superscript",
+            "underline",
+            "redo",
+            "undo"
+          ],
+          "style_options": [
+            {
+              "_uid": "3f431cc1-674d-4531-ad28-dc0a1cbb3bdb",
+              "name": "",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "text section",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
       "name": "YoutubeVideo",
       "display_name": null,
       "created_at": "2022-04-18T20:31:23.345Z",

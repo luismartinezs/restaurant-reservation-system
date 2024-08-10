@@ -338,7 +338,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [ ] all detail pages look similar, this is good reference: https://www.opentable.co.th/r/riva-del-fiume-at-the-four-seasons-hotel-bangkok-at-chao-phraya-river-sathon
     - [x] metadata
     - [x] hero with image, 2 versions: full bleed image and image + separate text block (mobile friendly)
-    - [ ] images widget
+    - [x] images widget
     - [ ] title and paragraph
     - [ ] normal booking widget
     - [ ] persistent booking sidebar (might require alternate page version)

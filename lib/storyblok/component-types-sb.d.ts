@@ -80,6 +80,7 @@ export interface PageStoryblok {
     | SideNoteStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
+    | TextSectionStoryblok
     | YoutubeVideoStoryblok
   )[];
   title?: string;
@@ -107,6 +108,7 @@ export interface PostStoryblok {
     | SideNoteStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
+    | TextSectionStoryblok
     | YoutubeVideoStoryblok
   )[];
   title?: string;
@@ -136,6 +138,7 @@ export interface RestaurantStoryblok {
     | SideNoteStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
+    | TextSectionStoryblok
     | YoutubeVideoStoryblok
   )[];
   title?: string;
@@ -183,6 +186,14 @@ export interface SplitHeroStoryblok {
 export interface TestStoryblok {
   test?: string;
   component: "test";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TextSectionStoryblok {
+  title?: string;
+  textContent?: RichtextStoryblok;
+  component: "text section";
   _uid: string;
   [k: string]: any;
 }

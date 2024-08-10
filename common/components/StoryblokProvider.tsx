@@ -6,6 +6,7 @@ import { Test } from "@/common/blocks/Test";
 import { Hero } from "@/common/blocks/Hero";
 import { SplitHero } from "@/common/blocks/SplitHero";
 import {ImageGallery} from "@/common/blocks/ImageGallery";
+import { TextSection } from "../blocks/TextSection";
 
 const components = {
   restaurant: Restaurant,
@@ -13,6 +14,7 @@ const components = {
   hero: Hero,
   'split hero': SplitHero,
   'image gallery': ImageGallery,
+  'text section': TextSection
 };
 
 storyblokInit({
