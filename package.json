@@ -13,7 +13,8 @@
     "lint": "next lint",
     "prepare": "husky",
     "sanity": "echo 'Sanity check'",
-    "s:gentypes": "npx supabase gen types --lang typescript --project-id tnoiejxfeosoxlfiptws > ./lib/supabase/database.types.ts"
+    "s:gentypes": "npx supabase gen types --lang typescript --project-id tnoiejxfeosoxlfiptws > ./lib/supabase/database.types.ts",
+    "sb:proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem"
   },
   "dependencies": {
     "@mantine/carousel": "^7.11.2",
