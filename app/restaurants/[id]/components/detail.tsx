@@ -1,4 +1,4 @@
-import { Display as RatingDisplay } from "@/features/ratings";
+import { RatingDisplay as RatingDisplay } from "@/features/ratings";
 import { RestaurantRead } from "@/features/restaurants";
 import { Group, Skeleton } from "@mantine/core";
 import { api as ratingsApi } from "@/features/ratings/server";

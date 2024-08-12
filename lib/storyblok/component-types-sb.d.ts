@@ -187,6 +187,9 @@ export interface SplitHeroStoryblok {
   textContent?: string;
   logo?: LogoStoryblok[];
   image?: ImageStoryblok[];
+  showRating?: boolean;
+  showCuisineType?: boolean;
+  tags?: string;
   component: "split hero";
   _uid: string;
   [k: string]: any;

@@ -1,6 +1,6 @@
 import NextLink from "next/link";
-import { getStoryblokApi } from "@storyblok/react/rsc";
-import StoryblokStory from "@storyblok/react/story";
+import { getStoryblokApi, StoryblokComponent } from "@storyblok/react/rsc";
+// import StoryblokStory from "@storyblok/react/story";
 import { api } from "@/features/restaurants/api";
 import { notFound } from "next/navigation";
 import invariant from "tiny-invariant";
@@ -76,10 +76,18 @@ export default async function Page({ params }: { params: { id: string } }) {
 
     try {
       const sbRes = await fetchData(restaurant.id);
-      // console.log(JSON.stringify(sbRes.data.story, null, 2));
+      // console.log(JSON.stringify(sbRes.data.story.content, null, 2));
 
       if (sbRes.data && sbRes.data.story) {
-        return <StoryblokStory story={sbRes.data.story} />;
+        return (
+          <StoryblokComponent
+            blok={sbRes.data.story.content}
+            context={{
+              userId: user?.id,
+              restaurant,
+            }}
+          />
+        );
       }
     } catch (err) {
       console.error(err);

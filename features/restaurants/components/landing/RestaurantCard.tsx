@@ -8,7 +8,7 @@ import {
   Overlay,
   Image,
 } from "@mantine/core";
-import { Display } from "@/features/ratings";
+import { RatingDisplay } from "@/features/ratings";
 import Link from "next/link";
 import { KEY } from "../../constants";
 import { RestaurantRead } from "../../types";
@@ -75,14 +75,9 @@ export const RestaurantCard = ({
         <Text fw={500}>{name}</Text>
         {isRated ? (
           <div className="flex gap-2">
-            <Display rating={rating} ratingCount={ratingCount} />
-            <Badge color="pink" variant="light">
-              <div className="flex gap-1 items-center">
-                <Text c="red" size="sm">
-                  {rating}/5
-                </Text>
-              </div>
-            </Badge>
+            <RatingDisplay rating={rating} ratingCount={ratingCount}
+              showNumber
+            />
           </div>
         ) : (
           <Text size="sm" c="dimmed">

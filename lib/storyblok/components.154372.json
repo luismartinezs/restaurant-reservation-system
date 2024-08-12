@@ -500,7 +500,7 @@
       "name": "split hero",
       "display_name": null,
       "created_at": "2024-08-10T06:36:35.732Z",
-      "updated_at": "2024-08-10T07:02:35.199Z",
+      "updated_at": "2024-08-11T08:30:31.686Z",
       "id": 6152932,
       "schema": {
         "title": {
@@ -528,6 +528,19 @@
           "component_whitelist": [
             "image"
           ]
+        },
+        "showRating": {
+          "type": "boolean",
+          "pos": 4
+        },
+        "showCuisineType": {
+          "type": "boolean",
+          "pos": 5
+        },
+        "tags": {
+          "type": "text",
+          "pos": 6,
+          "description": "Comma-separated list of tags, e.g. Good For Special Occasions, Romantic, Great For Outdoor Dining"
         }
       },
       "image": null,
