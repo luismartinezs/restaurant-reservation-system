@@ -47,7 +47,7 @@ export async function generateMetadata(
   return {};
 }
 
-export async function fetchData(restaurantId: Id) {
+async function fetchData(restaurantId: Id) {
   let sbParams = { version: "draft" } as const;
 
   try {
