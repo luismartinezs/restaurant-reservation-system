@@ -385,11 +385,37 @@
       "name": "restaurant",
       "display_name": null,
       "created_at": "2024-08-09T08:43:17.501Z",
-      "updated_at": "2024-08-10T05:45:04.015Z",
+      "updated_at": "2024-08-12T13:04:13.052Z",
       "id": 6149492,
       "schema": {
+        "layout": {
+          "type": "option",
+          "pos": 0,
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "d2386637-e64e-4f4c-bd0f-d4897c9e1be3",
+              "name": "simple",
+              "value": "simple"
+            },
+            {
+              "_uid": "a8012580-0607-4992-b6f2-f7755e2ea06f",
+              "value": "with-sidebar",
+              "name": "with sidebar"
+            }
+          ],
+          "default_value": "simple",
+          "required": true
+        },
+        "hero": {
+          "type": "bloks",
+          "pos": 1,
+          "description": "Select the blocks that will show up before the page layout"
+        },
         "body": {
-          "type": "bloks"
+          "type": "bloks",
+          "pos": 2,
+          "description": "Select the blocks that will show up within the main area of the layout"
         },
         "tab-1e0e92e3-7963-4468-a345-7ea10f332f86": {
           "type": "tab",
@@ -400,17 +426,25 @@
             "createdAt",
             "socialImage"
           ],
-          "pos": 0
+          "pos": 3
         },
         "title": {
-          "type": "text"
+          "type": "text",
+          "pos": 4
         },
         "description": {
-          "type": "text"
+          "type": "text",
+          "pos": 5
         },
         "socialImage": {
           "type": "text",
-          "description": "Use high-quality images with dimensions of at least 1,200 x 630 pixels, while keeping the file size under 8 MB"
+          "description": "Use high-quality images with dimensions of at least 1,200 x 630 pixels, while keeping the file size under 8 MB",
+          "pos": 6
+        },
+        "aside": {
+          "type": "bloks",
+          "pos": 7,
+          "description": "Select the blocks that will show up within the sidebar (only with the layout with sidebar)"
         }
       },
       "image": null,

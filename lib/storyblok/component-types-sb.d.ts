@@ -132,6 +132,25 @@ export interface PostStoryblok {
 }
 
 export interface RestaurantStoryblok {
+  layout: "" | "simple" | "with-sidebar";
+  hero?: (
+    | BookSectionStoryblok
+    | CloudinaryImageStoryblok
+    | HeroStoryblok
+    | HeroTitleStoryblok
+    | ImageStoryblok
+    | ImageGalleryStoryblok
+    | LogoStoryblok
+    | PageStoryblok
+    | PostStoryblok
+    | RestaurantStoryblok
+    | RichTextStoryblok
+    | SideNoteStoryblok
+    | SplitHeroStoryblok
+    | TestStoryblok
+    | TextSectionStoryblok
+    | YoutubeVideoStoryblok
+  )[];
   body?: (
     | BookSectionStoryblok
     | CloudinaryImageStoryblok
@@ -153,6 +172,24 @@ export interface RestaurantStoryblok {
   title?: string;
   description?: string;
   socialImage?: string;
+  aside?: (
+    | BookSectionStoryblok
+    | CloudinaryImageStoryblok
+    | HeroStoryblok
+    | HeroTitleStoryblok
+    | ImageStoryblok
+    | ImageGalleryStoryblok
+    | LogoStoryblok
+    | PageStoryblok
+    | PostStoryblok
+    | RestaurantStoryblok
+    | RichTextStoryblok
+    | SideNoteStoryblok
+    | SplitHeroStoryblok
+    | TestStoryblok
+    | TextSectionStoryblok
+    | YoutubeVideoStoryblok
+  )[];
   component: "restaurant";
   _uid: string;
   [k: string]: any;

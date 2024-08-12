@@ -1,6 +1,8 @@
 // content type block
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
 import { RestaurantStoryblok } from "@/lib/storyblok/component-types-sb";
+import { PageWithSidebar } from "../layouts/PageWithSidebar";
+import { ComponentProps, ReactNode } from "react";
 
 export const Restaurant = ({
   blok,
@@ -8,11 +10,31 @@ export const Restaurant = ({
 }: {
   blok: RestaurantStoryblok;
 }) => {
+  const { layout, body, hero } = blok;
+  const hasSidebar = layout === "with-sidebar";
+
+  const LayoutComponent = hasSidebar
+    ? PageWithSidebar
+    : ({ children }: { children: ReactNode }) => <>{children}</>;
+  // lazy way of making typescript happy
+  const layoutProps = (
+    hasSidebar ? { sidebar: blok.aside, ...rest } : rest
+  ) as ComponentProps<typeof LayoutComponent>;
+
   return (
     <div {...storyblokEditable(blok)} className="-mt-8">
-      {blok.body?.map((nestedBlok) => (
+      {hero?.map((nestedBlok) => (
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} {...rest} />
       ))}
+      <LayoutComponent {...layoutProps}>
+        {body?.map((nestedBlok) => (
+          <StoryblokComponent
+            blok={nestedBlok}
+            key={nestedBlok._uid}
+            {...rest}
+          />
+        ))}
+      </LayoutComponent>
     </div>
   );
 };
