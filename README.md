@@ -343,7 +343,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [x] normal booking widget
     - [x] persistent booking sidebar (might require alternate page version)
     - [x] food menu
-    - [ ] social media share buttons
+    - [x] social media share buttons
     - [ ] promotions section
     - [ ] info widget with name, rating, pricing, cuisine, number of reservations, location
     - [ ] contact and location section

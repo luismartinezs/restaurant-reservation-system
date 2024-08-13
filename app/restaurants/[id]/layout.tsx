@@ -9,6 +9,7 @@ import { ImageGallery } from "@/common/blocks/ImageGallery";
 import { TextSection } from "@/common/blocks/TextSection";
 import { BookSection } from "@/common/blocks/BookSection";
 import { Menu } from "@/common/blocks/Menu";
+import { SocialShare } from "@/common/blocks/SocialShare";
 
 const components = {
   restaurant: Restaurant,
@@ -19,6 +20,7 @@ const components = {
   "text section": TextSection,
   "book section": BookSection,
   menu: Menu,
+  "social share": SocialShare
 };
 
 storyblokInit({

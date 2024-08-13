@@ -113,6 +113,7 @@ export interface PageStoryblok {
     | RestaurantStoryblok
     | RichTextStoryblok
     | SideNoteStoryblok
+    | SocialShareStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
     | TextSectionStoryblok
@@ -145,6 +146,7 @@ export interface PostStoryblok {
     | RestaurantStoryblok
     | RichTextStoryblok
     | SideNoteStoryblok
+    | SocialShareStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
     | TextSectionStoryblok
@@ -234,6 +236,15 @@ export interface SideNoteStoryblok {
   content?: RichtextStoryblok;
   type?: "" | "note" | "warning";
   component: "SideNote";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface SocialShareStoryblok {
+  x?: boolean;
+  facebook?: boolean;
+  linkedin?: boolean;
+  component: "social share";
   _uid: string;
   [k: string]: any;
 }
