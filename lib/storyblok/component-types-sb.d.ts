@@ -71,6 +71,31 @@ export interface LogoStoryblok {
   [k: string]: any;
 }
 
+export interface MenuStoryblok {
+  sections?: MenuSectionStoryblok[];
+  component: "menu";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface MenuItemStoryblok {
+  name: string;
+  price: string;
+  description?: string;
+  component: "menu item";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface MenuSectionStoryblok {
+  title?: string;
+  subtitle?: string;
+  items?: MenuItemStoryblok[];
+  component: "menu section";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
   body?: (
     | BookSectionStoryblok
@@ -80,6 +105,9 @@ export interface PageStoryblok {
     | ImageStoryblok
     | ImageGalleryStoryblok
     | LogoStoryblok
+    | MenuStoryblok
+    | MenuItemStoryblok
+    | MenuSectionStoryblok
     | PageStoryblok
     | PostStoryblok
     | RestaurantStoryblok
@@ -109,6 +137,9 @@ export interface PostStoryblok {
     | ImageStoryblok
     | ImageGalleryStoryblok
     | LogoStoryblok
+    | MenuStoryblok
+    | MenuItemStoryblok
+    | MenuSectionStoryblok
     | PageStoryblok
     | PostStoryblok
     | RestaurantStoryblok
@@ -135,60 +166,48 @@ export interface RestaurantStoryblok {
   layout: "" | "simple" | "with-sidebar";
   hero?: (
     | BookSectionStoryblok
-    | CloudinaryImageStoryblok
     | HeroStoryblok
-    | HeroTitleStoryblok
     | ImageStoryblok
     | ImageGalleryStoryblok
     | LogoStoryblok
-    | PageStoryblok
-    | PostStoryblok
+    | MenuStoryblok
+    | MenuItemStoryblok
+    | MenuSectionStoryblok
     | RestaurantStoryblok
-    | RichTextStoryblok
-    | SideNoteStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
     | TextSectionStoryblok
-    | YoutubeVideoStoryblok
   )[];
   body?: (
     | BookSectionStoryblok
-    | CloudinaryImageStoryblok
     | HeroStoryblok
-    | HeroTitleStoryblok
     | ImageStoryblok
     | ImageGalleryStoryblok
     | LogoStoryblok
-    | PageStoryblok
-    | PostStoryblok
+    | MenuStoryblok
+    | MenuItemStoryblok
+    | MenuSectionStoryblok
     | RestaurantStoryblok
-    | RichTextStoryblok
-    | SideNoteStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
     | TextSectionStoryblok
-    | YoutubeVideoStoryblok
   )[];
   title?: string;
   description?: string;
   socialImage?: string;
   aside?: (
     | BookSectionStoryblok
-    | CloudinaryImageStoryblok
     | HeroStoryblok
-    | HeroTitleStoryblok
     | ImageStoryblok
     | ImageGalleryStoryblok
     | LogoStoryblok
-    | PageStoryblok
-    | PostStoryblok
+    | MenuStoryblok
+    | MenuItemStoryblok
+    | MenuSectionStoryblok
     | RestaurantStoryblok
-    | RichTextStoryblok
-    | SideNoteStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
     | TextSectionStoryblok
-    | YoutubeVideoStoryblok
   )[];
   component: "restaurant";
   _uid: string;

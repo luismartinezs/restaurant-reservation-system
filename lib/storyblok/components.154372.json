@@ -263,6 +263,123 @@
       "component_group_name": "ricorico"
     },
     {
+      "name": "menu",
+      "display_name": null,
+      "created_at": "2024-08-13T02:26:05.672Z",
+      "updated_at": "2024-08-13T02:41:56.618Z",
+      "id": 6161176,
+      "schema": {
+        "sections": {
+          "type": "bloks",
+          "pos": 0,
+          "minimum": 1,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "menu section"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "menu",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "menu item",
+      "display_name": null,
+      "created_at": "2024-08-13T02:49:01.040Z",
+      "updated_at": "2024-08-13T02:50:53.856Z",
+      "id": 6161179,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0,
+          "description": "E.g. Shishito No Suage Wafujio",
+          "required": true
+        },
+        "price": {
+          "type": "text",
+          "pos": 1,
+          "required": true,
+          "description": "E.g. $14.00"
+        },
+        "description": {
+          "type": "text",
+          "pos": 2,
+          "description": "E.g. grilled shishito peppers with yuzu sesame dip",
+          "max_length": 80
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "menu item",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "menu section",
+      "display_name": null,
+      "created_at": "2024-08-13T02:38:36.624Z",
+      "updated_at": "2024-08-13T02:49:14.680Z",
+      "id": 6161178,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 1
+        },
+        "items": {
+          "type": "bloks",
+          "pos": 2,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "menu item"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "menu section",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
       "name": "page",
       "display_name": null,
       "created_at": "2022-04-18T16:10:51.150Z",
@@ -385,7 +502,7 @@
       "name": "restaurant",
       "display_name": null,
       "created_at": "2024-08-09T08:43:17.501Z",
-      "updated_at": "2024-08-12T13:04:13.052Z",
+      "updated_at": "2024-08-13T02:29:04.123Z",
       "id": 6149492,
       "schema": {
         "layout": {
@@ -410,12 +527,24 @@
         "hero": {
           "type": "bloks",
           "pos": 1,
-          "description": "Select the blocks that will show up before the page layout"
+          "description": "Select the blocks that will show up before the page layout",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "component_group_whitelist": [
+            "a7c4558f-2fee-4391-904b-1362da4c7926"
+          ]
         },
         "body": {
           "type": "bloks",
           "pos": 2,
-          "description": "Select the blocks that will show up within the main area of the layout"
+          "description": "Select the blocks that will show up within the main area of the layout",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "component_group_whitelist": [
+            "a7c4558f-2fee-4391-904b-1362da4c7926"
+          ]
         },
         "tab-1e0e92e3-7963-4468-a345-7ea10f332f86": {
           "type": "tab",
@@ -444,7 +573,13 @@
         "aside": {
           "type": "bloks",
           "pos": 7,
-          "description": "Select the blocks that will show up within the sidebar (only with the layout with sidebar)"
+          "description": "Select the blocks that will show up within the sidebar (only with the layout with sidebar)",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "component_group_whitelist": [
+            "a7c4558f-2fee-4391-904b-1362da4c7926"
+          ]
         }
       },
       "image": null,

@@ -335,20 +335,20 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [-] order imports following best practices
 - [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
   - [ ] blocks
-    - [ ] all detail pages look similar, this is good reference: https://www.opentable.co.th/r/riva-del-fiume-at-the-four-seasons-hotel-bangkok-at-chao-phraya-river-sathon
+    - [ ] all detail pages look similar, this is good reference: https://www.opentable.co.th/zuma-japanese-restaurant-ny
     - [x] metadata
     - [x] hero with image, 2 versions: full bleed image and image + separate text block (mobile friendly)
     - [x] images widget
     - [x] title and paragraph
     - [x] normal booking widget
-    - [ ] persistent booking sidebar (might require alternate page version)
-    - [ ] food menu
+    - [x] persistent booking sidebar (might require alternate page version)
+    - [x] food menu
     - [ ] social media share buttons
     - [ ] promotions section
     - [ ] info widget with name, rating, pricing, cuisine, number of reservations, location
     - [ ] contact and location section
     - [ ] map + info section like this one: https://eatigo.com/th/chiang-mai/en/r/favola-italian-restaurant-chiang-mai-marriott-2286
-    - [ ] secondary menu with custom links like this: https://www.opentable.co.th/r/riva-del-fiume-at-the-four-seasons-hotel-bangkok-at-chao-phraya-river-sathon
+    - [ ] secondary menu with custom links like this: https://www.opentable.co.th/zuma-japanese-restaurant-ny
 
 ## Known bugs / missing features (marked with *)
 

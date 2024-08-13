@@ -8,6 +8,7 @@ import { SplitHero } from "@/common/blocks/SplitHero";
 import { ImageGallery } from "@/common/blocks/ImageGallery";
 import { TextSection } from "@/common/blocks/TextSection";
 import { BookSection } from "@/common/blocks/BookSection";
+import { Menu } from "@/common/blocks/Menu";
 
 const components = {
   restaurant: Restaurant,
@@ -17,12 +18,13 @@ const components = {
   "image gallery": ImageGallery,
   "text section": TextSection,
   "book section": BookSection,
+  menu: Menu,
 };
 
 storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_API_TOKEN,
   use: [apiPlugin],
-  components
+  components,
 });
 
 export default function Layout({ children }: { children: React.ReactNode }) {
