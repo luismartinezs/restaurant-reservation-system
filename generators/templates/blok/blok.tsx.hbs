@@ -5,7 +5,7 @@ import { BlokWrapper } from "@/common/components/BlokWrapper";
 export const {{ pascalCase name }} = ({ blok, ...rest }: { blok: {{ pascalCase name }}Storyblok }) => {
   return (
     <BlokWrapper blok={blok}>
-      <SectionContainer>
+      <SectionContainer {...rest}>
         {{ name }}
       </SectionContainer>
     </BlokWrapper>
