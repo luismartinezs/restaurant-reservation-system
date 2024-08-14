@@ -15,14 +15,12 @@ import { cn } from "@/common/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const defaultUrl = process.env.SITE_URL
-  ? `https://${process.env.SITE_URL}`
-  : "http://localhost:3000";
+const defaultUrl = `https://${process.env.SITE_URL ?? "localhost:3000"}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Restaurant Reservation System",
-  description: "A restaurant reservation system",
+  title: "Rico Rico",
+  description: "Book a table at your favorite restaurant",
 };
 
 export default function RootLayout({
@@ -33,11 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <ColorSchemeScript
-          defaultColorScheme="dark"
-        />
+        <ColorSchemeScript defaultColorScheme="dark" />
       </head>
-      <body className={cn(inter.className, "overflow-x-hidden overflow-y-visible")}>
+      <body
+        className={cn(inter.className, "overflow-x-hidden overflow-y-visible")}
+      >
         <MantineProvider defaultColorScheme="dark" theme={theme}>
           <CollapseDesktop navbar={<Navbar showAuthButton />}>
             <div className="relative isolate mb-32">{children}</div>

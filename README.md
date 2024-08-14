@@ -387,6 +387,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [ ] Highlight active link in secondary navigation
 - [ ] Make sticky Book Widget show all the way to the bottom of the page
 - [ ] Properly integrate mantine colors in tailwind in the tailwind config
+- [ ] Improve SEO by adding canonical tags and page specific meta tags
+- [ ] Audit performance and web accessibility (WCAG)
 
 ## Troubleshooting
 
