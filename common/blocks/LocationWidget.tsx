@@ -22,6 +22,7 @@ export const LocationWidget = ({
         >
           <Link
             href={blok.googleMapsLink}
+            target="_blank"
             className="peer restaurant-link focus:outline-none"
           >
             <div className="flex flex-col sm:flex-row lg:flex-col gap-4 items-start">
@@ -29,7 +30,7 @@ export const LocationWidget = ({
                 <Image blok={blok.mapThumbnail[0]} />
               </div>
               <div className="flex gap-2 items-center w-full sm:w-1/3 lg:w-full">
-                <Text c="primary">
+                <Text c="pink">
                   <IoIosPin size={30} />
                 </Text>
                 <Text

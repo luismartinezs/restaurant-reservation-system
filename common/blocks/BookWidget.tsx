@@ -29,33 +29,31 @@ export const BookWidget = ({
       className={cn(blok.sticky && "z-10 lg:sticky lg:top-[65px]")}
     >
       <SectionContainer {...rest}>
-        {
-          // if user is not logged in
-          loading ? (
-            <div className="flex w-full justify-center items-center">
-              <Loader />
-            </div>
-          ) : error ? (
-            <p>{error}</p>
-          ) : !user ? (
-            <div className="prose-xl prose-invert">
-              <Anchor
-                size="xl"
-                component={NextLink}
-                href={`/login?redirect=/restaurants/${id}`}
-              >
-                Login / register
-              </Anchor>{" "}
-              to make a reservation
-            </div>
-          ) : (
-            <div>
-              <Card shadow="sm" withBorder>
-                <CreateReservationWidget restaurantId={id} userId={user?.id} />
-              </Card>
-            </div>
-          )
-        }
+        <Card shadow="sm" withBorder>
+          {
+            // if user is not logged in
+            loading ? (
+              <div className="flex w-full justify-center items-center">
+                <Loader />
+              </div>
+            ) : error ? (
+              <p>{error}</p>
+            ) : !user ? (
+              <div className="prose-xl prose-invert">
+                <Anchor
+                  size="xl"
+                  component={NextLink}
+                  href={`/login?redirect=/restaurants/${id}`}
+                >
+                  Login / register
+                </Anchor>{" "}
+                to make a reservation
+              </div>
+            ) : (
+              <CreateReservationWidget restaurantId={id} userId={user?.id} />
+            )
+          }
+        </Card>
       </SectionContainer>
     </BlokWrapper>
   );

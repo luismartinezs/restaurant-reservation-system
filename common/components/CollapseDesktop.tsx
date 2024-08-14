@@ -14,7 +14,7 @@ export function CollapseDesktop({
   children: React.ReactNode;
 }) {
   const [opened, { toggle }] = useDisclosure();
-  const ref = useEventListener('click', toggle);
+  const ref = useEventListener("click", toggle);
 
   return (
     <AppShell
@@ -51,9 +51,12 @@ export function CollapseDesktop({
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="md">
-        <Flex component="ul" direction="column" gap={12} ref={ref}>
-          {navbar}
-        </Flex>
+        {/* conditionally render to prevent keyboard focus on desktop */}
+        {opened ? (
+          <Flex component="ul" direction="column" gap={12} ref={ref}>
+            {navbar}
+          </Flex>
+        ) : null}
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
       <AppShell.Footer h={60} p="md" style={{ marginTop: "2rem" }}>
