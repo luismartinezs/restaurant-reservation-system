@@ -1,0 +1,115 @@
+{
+  "presets": [
+    {
+      "id": 2252690,
+      "name": "placeholder",
+      "preset": {
+        "_uid": "4e00f899-6b69-4a6a-a29c-92208f1020b3",
+        "items": [
+          {
+            "_uid": "b34b4500-eb8e-499c-811f-f35c9bda32e7",
+            "name": "Edamame",
+            "price": "$10.00",
+            "component": "menu item",
+            "description": "steamed soybeans with sea salt"
+          },
+          {
+            "_uid": "289d47f1-4f76-4e55-a17c-c3296703402e",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "1cb76c96-305c-413f-abf7-1aa18b59f84f",
+            "name": "Ika No Kari Kari Age",
+            "price": "$20.00",
+            "component": "menu item",
+            "description": "crispy fried calamari with serrano pepper and lime"
+          },
+          {
+            "_uid": "09e669cf-aff4-4fdc-a29c-cef35afb55d0",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "003a2f75-2a0a-417c-aca0-e14712975e44",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "7504b3a9-6b50-498d-9ce9-41017ddae101",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "16c84c8b-aca1-4169-86ef-41bca0ebf7e3",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "9f39b9c5-06a1-4783-80b7-3bd2b42f5367",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "ac3a2f03-03b8-4cd9-a3fe-4e8918cc2b32",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "2052f58f-41b4-416a-a2ae-2bbc7bfad42f",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "8300917b-ffb3-4dea-9078-db2e7c2dc31f",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "fb397cef-cf02-489d-8a63-42f462f9f364",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          },
+          {
+            "_uid": "c5f63556-132c-483b-a6f4-43ae45857f33",
+            "name": "Shishito No Suage Wafujio",
+            "price": "$14.00",
+            "component": "menu item",
+            "description": "grilled shishito peppers with yuzu sesame dip"
+          }
+        ],
+        "title": "Featured Items",
+        "subtitle": "served weekdays 11:30am – 2:30pm",
+        "component": "menu section"
+      },
+      "component_id": 6161178,
+      "space_id": 154372,
+      "created_at": "2024-08-13T03:36:33.707Z",
+      "updated_at": "2024-08-13T03:36:33.707Z",
+      "image": "",
+      "color": "",
+      "icon": "",
+      "description": "Menu section prefilled with placeholder content"
+    }
+  ]
+}

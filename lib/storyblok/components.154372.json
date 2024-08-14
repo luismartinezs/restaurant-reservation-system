@@ -1,0 +1,1030 @@
+{
+  "components": [
+    {
+      "name": "book section",
+      "display_name": null,
+      "created_at": "2024-08-10T14:26:44.753Z",
+      "updated_at": "2024-08-14T04:51:54.695Z",
+      "id": 6153341,
+      "schema": {
+        "navTitle": {
+          "type": "text",
+          "pos": 0,
+          "description": "Defines label for nav. Leave empty to omit from nav",
+          "max_length": 15
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "book section",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "Book Widget",
+      "display_name": null,
+      "created_at": "2024-08-14T07:32:30.671Z",
+      "updated_at": "2024-08-14T07:32:55.103Z",
+      "id": 6166375,
+      "schema": {
+        "sticky": {
+          "type": "boolean",
+          "pos": 0,
+          "default_value": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Book Widget",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "CloudinaryImage",
+      "display_name": null,
+      "created_at": "2022-04-20T15:21:26.857Z",
+      "updated_at": "2023-03-07T10:59:15.740Z",
+      "id": 2373843,
+      "schema": {
+        "src": {
+          "type": "text",
+          "pos": 0,
+          "default_value": "",
+          "description": "Cloudinary end path, e.g. galen-crout-fItRJ7AHak8-unsplash_h5yt9m"
+        },
+        "alt": {
+          "type": "text",
+          "pos": 1
+        },
+        "preload": {
+          "type": "boolean",
+          "default_value": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "CloudinaryImage",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "hero",
+      "display_name": null,
+      "created_at": "2024-08-10T05:46:24.756Z",
+      "updated_at": "2024-08-10T07:01:18.946Z",
+      "id": 6152927,
+      "schema": {
+        "image": {
+          "type": "bloks",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "description": "Image of size at least 1920px * 400px",
+          "asset_folder_id": 622427,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image"
+          ]
+        },
+        "title": {
+          "type": "text",
+          "pos": 3
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "hero",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "HeroTitle",
+      "display_name": null,
+      "created_at": "2022-04-21T12:24:02.405Z",
+      "updated_at": "2023-03-07T11:06:17.708Z",
+      "id": 2376460,
+      "schema": {
+        "title": {
+          "type": "text",
+          "description": "Defaults to post title"
+        },
+        "showFeaturedImage": {
+          "type": "boolean",
+          "default_value": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "HeroTitle",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "image",
+      "display_name": null,
+      "created_at": "2024-08-10T06:58:08.293Z",
+      "updated_at": "2024-08-10T07:18:53.298Z",
+      "id": 6152936,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "description": "Image of size at least 1920px * 400px"
+        },
+        "cloudinaryId": {
+          "type": "text",
+          "pos": 1,
+          "description": "Cloudinary Id for image of size at least 1920px * 400px\n\nCloudinary path needs to be under v1722583212/restaurant-reservation-system/, example: restaurants/heros/12_Le-Gourmet_interior_hero_1920_0001"
+        },
+        "url": {
+          "type": "text",
+          "pos": 2,
+          "description": "URL for image of size at least 1920px * 400px"
+        },
+        "width": {
+          "type": "number",
+          "pos": 3,
+          "default_value": "1920"
+        },
+        "height": {
+          "type": "number",
+          "pos": 4,
+          "default_value": "400"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "image",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "image gallery",
+      "display_name": null,
+      "created_at": "2024-08-10T12:17:08.254Z",
+      "updated_at": "2024-08-14T04:55:32.267Z",
+      "id": 6153232,
+      "schema": {
+        "navTitle": {
+          "type": "text",
+          "pos": 0,
+          "description": "Defines label for nav. Leave empty to omit from nav",
+          "max_length": 15
+        },
+        "images": {
+          "type": "bloks",
+          "pos": 0,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "image gallery",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "location widget",
+      "display_name": null,
+      "created_at": "2024-08-14T08:58:41.262Z",
+      "updated_at": "2024-08-14T09:00:37.169Z",
+      "id": 6166673,
+      "schema": {
+        "mapThumbnail": {
+          "type": "bloks",
+          "pos": 0,
+          "minimum": 1,
+          "maximum": 1,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image"
+          ],
+          "component_group_whitelist": [],
+          "required": true
+        },
+        "address": {
+          "type": "text",
+          "pos": 1,
+          "description": "e.g. 261 Madison Avenue, New York, NY 10017",
+          "required": true
+        },
+        "googleMapsLink": {
+          "type": "text",
+          "pos": 2,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "location widget",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "logo",
+      "display_name": null,
+      "created_at": "2024-08-10T06:53:15.218Z",
+      "updated_at": "2024-08-10T06:54:15.947Z",
+      "id": 6152933,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "asset_folder_id": 622427
+        },
+        "cloudinaryId": {
+          "type": "text",
+          "pos": 1
+        },
+        "url": {
+          "type": "text",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "logo",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "menu",
+      "display_name": null,
+      "created_at": "2024-08-13T02:26:05.672Z",
+      "updated_at": "2024-08-14T04:55:33.509Z",
+      "id": 6161176,
+      "schema": {
+        "navTitle": {
+          "type": "text",
+          "pos": 0,
+          "description": "Defines label for nav. Leave empty to omit from nav",
+          "max_length": 15
+        },
+        "sections": {
+          "type": "bloks",
+          "pos": 0,
+          "minimum": 1,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "menu section"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "menu",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "menu item",
+      "display_name": null,
+      "created_at": "2024-08-13T02:49:01.040Z",
+      "updated_at": "2024-08-13T03:33:13.717Z",
+      "id": 6161179,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0,
+          "description": "E.g. Shishito No Suage Wafujio",
+          "required": true,
+          "default_value": "Shishito No Suage Wafujio"
+        },
+        "price": {
+          "type": "text",
+          "pos": 1,
+          "required": true,
+          "description": "E.g. $14.00",
+          "default_value": "$14.00"
+        },
+        "description": {
+          "type": "text",
+          "pos": 2,
+          "description": "E.g. grilled shishito peppers with yuzu sesame dip",
+          "max_length": 80,
+          "default_value": "grilled shishito peppers with yuzu sesame dip"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "menu item",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "menu section",
+      "display_name": null,
+      "created_at": "2024-08-13T02:38:36.624Z",
+      "updated_at": "2024-08-13T02:49:14.680Z",
+      "id": 6161178,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 1
+        },
+        "items": {
+          "type": "bloks",
+          "pos": 2,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "menu item"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 2252690,
+          "name": "placeholder",
+          "component_id": 6161178,
+          "image": "",
+          "icon": "",
+          "color": "",
+          "description": "Menu section prefilled with placeholder content"
+        }
+      ],
+      "preset_id": null,
+      "real_name": "menu section",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "page",
+      "display_name": null,
+      "created_at": "2022-04-18T16:10:51.150Z",
+      "updated_at": "2022-04-18T21:36:41.957Z",
+      "id": 2366403,
+      "schema": {
+        "body": {
+          "type": "bloks"
+        },
+        "tab-1e0e92e3-7963-4468-a345-7ea10f332f86": {
+          "type": "tab",
+          "display_name": "Meta",
+          "keys": [
+            "title",
+            "description",
+            "createdAt",
+            "tags",
+            "socialImage"
+          ],
+          "pos": 0
+        },
+        "title": {
+          "type": "text"
+        },
+        "description": {
+          "type": "text"
+        },
+        "tags": {
+          "type": "text"
+        },
+        "featuredImage": {
+          "type": "text"
+        },
+        "socialImage": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "page",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "post",
+      "display_name": null,
+      "created_at": "2022-04-20T10:58:18.474Z",
+      "updated_at": "2023-03-15T14:25:18.693Z",
+      "id": 2372575,
+      "schema": {
+        "body": {
+          "type": "bloks"
+        },
+        "tab-1e0e92e3-7963-4468-a345-7ea10f332f86": {
+          "type": "tab",
+          "display_name": "Meta",
+          "keys": [
+            "title",
+            "description",
+            "createdAt",
+            "tags",
+            "socialImage"
+          ],
+          "pos": 0
+        },
+        "title": {
+          "type": "text"
+        },
+        "description": {
+          "type": "text"
+        },
+        "tags": {
+          "type": "text"
+        },
+        "featuredImage": {
+          "type": "text",
+          "description": "Example: saito200_one_armored_marine_a_swarm_of_Zerg_in_the_distance_ali_962335a8-f5f9-43ab-b05f-d508f3281889_lrv8a9"
+        },
+        "socialImage": {
+          "type": "text",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "",
+          "description": "Example: https://res.cloudinary.com/dicyllvry/image/upload/v1678297549/luis-martinez/saito200_one_armored_marine_a_swarm_of_Zerg_in_the_distance_ali_962335a8-f5f9-43ab-b05f-d508f3281889_lrv8a9.png"
+        },
+        "postTitle": {
+          "type": "text"
+        },
+        "createdAt": {
+          "type": "text",
+          "description": "Date in yyyy-mm-dd format"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "post",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "restaurant",
+      "display_name": null,
+      "created_at": "2024-08-09T08:43:17.501Z",
+      "updated_at": "2024-08-14T03:36:06.682Z",
+      "id": 6149492,
+      "schema": {
+        "layout": {
+          "type": "option",
+          "pos": 0,
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "d2386637-e64e-4f4c-bd0f-d4897c9e1be3",
+              "name": "simple",
+              "value": "simple"
+            },
+            {
+              "_uid": "a8012580-0607-4992-b6f2-f7755e2ea06f",
+              "value": "with-sidebar",
+              "name": "with sidebar"
+            }
+          ],
+          "default_value": "simple",
+          "required": true
+        },
+        "showNav": {
+          "type": "boolean",
+          "pos": 1,
+          "description": "Show secondary navigation for main content",
+          "default_value": true
+        },
+        "hero": {
+          "type": "bloks",
+          "pos": 2,
+          "description": "Select the blocks that will show up before the page layout",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "component_group_whitelist": [
+            "a7c4558f-2fee-4391-904b-1362da4c7926"
+          ]
+        },
+        "body": {
+          "type": "bloks",
+          "pos": 3,
+          "description": "Select the blocks that will show up within the main area of the layout",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "component_group_whitelist": [
+            "a7c4558f-2fee-4391-904b-1362da4c7926"
+          ]
+        },
+        "aside": {
+          "type": "bloks",
+          "pos": 4,
+          "description": "Select the blocks that will show up within the sidebar (only with the layout with sidebar)",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "component_group_whitelist": [
+            "a7c4558f-2fee-4391-904b-1362da4c7926"
+          ]
+        },
+        "tab-1e0e92e3-7963-4468-a345-7ea10f332f86": {
+          "type": "tab",
+          "display_name": "Meta",
+          "keys": [
+            "title",
+            "description",
+            "createdAt",
+            "socialImage"
+          ],
+          "pos": 5
+        },
+        "title": {
+          "type": "text",
+          "pos": 6
+        },
+        "description": {
+          "type": "text",
+          "pos": 7
+        },
+        "socialImage": {
+          "type": "text",
+          "description": "Use high-quality images with dimensions of at least 1,200 x 630 pixels, while keeping the file size under 8 MB",
+          "pos": 8
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "restaurant",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "RichText",
+      "display_name": null,
+      "created_at": "2022-04-18T20:31:59.618Z",
+      "updated_at": "2022-04-18T20:32:55.483Z",
+      "id": 2366696,
+      "schema": {
+        "content": {
+          "type": "richtext",
+          "customize_toolbar": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "RichText",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "SideNote",
+      "display_name": null,
+      "created_at": "2022-04-30T09:21:14.801Z",
+      "updated_at": "2022-09-13T09:45:08.931Z",
+      "id": 2401142,
+      "schema": {
+        "content": {
+          "type": "richtext"
+        },
+        "type": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "note",
+              "name": "note"
+            },
+            {
+              "value": "warning",
+              "name": "warning"
+            }
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "SideNote",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "social share",
+      "display_name": null,
+      "created_at": "2024-08-13T04:22:36.146Z",
+      "updated_at": "2024-08-13T04:23:59.183Z",
+      "id": 6161290,
+      "schema": {
+        "x": {
+          "type": "boolean",
+          "pos": 0,
+          "default_value": true
+        },
+        "facebook": {
+          "type": "boolean",
+          "pos": 1,
+          "default_value": true
+        },
+        "linkedin": {
+          "type": "boolean",
+          "pos": 2,
+          "default_value": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "social share",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "split hero",
+      "display_name": null,
+      "created_at": "2024-08-10T06:36:35.732Z",
+      "updated_at": "2024-08-11T08:30:31.686Z",
+      "id": 6152932,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "textContent": {
+          "type": "text",
+          "pos": 1
+        },
+        "logo": {
+          "type": "bloks",
+          "pos": 2,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "logo"
+          ]
+        },
+        "image": {
+          "type": "bloks",
+          "pos": 3,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image"
+          ]
+        },
+        "showRating": {
+          "type": "boolean",
+          "pos": 4
+        },
+        "showCuisineType": {
+          "type": "boolean",
+          "pos": 5
+        },
+        "tags": {
+          "type": "text",
+          "pos": 6,
+          "description": "Comma-separated list of tags, e.g. Good For Special Occasions, Romantic, Great For Outdoor Dining"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "split hero",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "test",
+      "display_name": null,
+      "created_at": "2024-08-09T05:13:54.247Z",
+      "updated_at": "2024-08-09T05:14:58.787Z",
+      "id": 6148630,
+      "schema": {
+        "test": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "title",
+          "description": "enter some text",
+          "default_value": ""
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "test",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "text section",
+      "display_name": null,
+      "created_at": "2024-08-10T13:49:31.923Z",
+      "updated_at": "2024-08-14T03:37:34.116Z",
+      "id": 6153274,
+      "schema": {
+        "navTitle": {
+          "type": "text",
+          "pos": 0,
+          "description": "Defines label for nav. Leave empty to omit from nav",
+          "max_length": 15
+        },
+        "title": {
+          "type": "text",
+          "pos": 1
+        },
+        "textContent": {
+          "type": "richtext",
+          "pos": 2,
+          "customize_toolbar": true,
+          "toolbar": [
+            "ai-complete",
+            "ai-shorten",
+            "ai-extend",
+            "ai-rephrase",
+            "ai-summarize",
+            "ai-simplify",
+            "ai-tone",
+            "ai-emoji",
+            "ai-translate",
+            "ai-tldr",
+            "ai-spelling",
+            "bold",
+            "list",
+            "inlinecode",
+            "code",
+            "copy",
+            "cut",
+            "emoji",
+            "italic",
+            "link",
+            "anchor",
+            "olist",
+            "paragraph",
+            "paste-action",
+            "paste",
+            "quote",
+            "strike",
+            "subscript",
+            "superscript",
+            "underline",
+            "redo",
+            "undo"
+          ],
+          "style_options": [
+            {
+              "_uid": "3f431cc1-674d-4531-ad28-dc0a1cbb3bdb",
+              "name": "",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "text section",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
+      "name": "YoutubeVideo",
+      "display_name": null,
+      "created_at": "2022-04-18T20:31:23.345Z",
+      "updated_at": "2022-04-20T14:00:48.570Z",
+      "id": 2366695,
+      "schema": {
+        "youtubeId": {
+          "type": "text"
+        },
+        "timestamp": {
+          "type": "number",
+          "default_value": "",
+          "description": "Starting point of the video in seconds"
+        },
+        "caption": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "YoutubeVideo",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    }
+  ]
+}

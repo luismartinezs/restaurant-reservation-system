@@ -1,2 +1,2 @@
 export * from "./types";
-export * from './components/Display'
+export * from './components/RatingDisplay'

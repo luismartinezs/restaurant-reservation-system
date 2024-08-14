@@ -1,0 +1,13 @@
+import { {{ pascalCase name }}Storyblok } from "@/lib/storyblok/component-types-sb";
+import { SectionContainer } from "@/common/components/SectionContainer";
+import { BlokWrapper } from "@/common/components/BlokWrapper";
+
+export const {{ pascalCase name }} = ({ blok, ...rest }: { blok: {{ pascalCase name }}Storyblok }) => {
+  return (
+    <BlokWrapper blok={blok}>
+      <SectionContainer {...rest}>
+        {{ name }}
+      </SectionContainer>
+    </BlokWrapper>
+  );
+};

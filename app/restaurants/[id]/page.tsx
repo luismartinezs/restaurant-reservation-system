@@ -1,4 +1,6 @@
 import NextLink from "next/link";
+import { getStoryblokApi, StoryblokComponent } from "@storyblok/react/rsc";
+// import StoryblokStory from "@storyblok/react/story";
 import { api } from "@/features/restaurants/api";
 import { notFound } from "next/navigation";
 import invariant from "tiny-invariant";
@@ -6,12 +8,59 @@ import { Detail, DetailSkeleton } from "./components/detail";
 import { BookFormSkeleton } from "@/features/reservations";
 import { Anchor, Container } from "@mantine/core";
 import { getUser } from "@/features/auth/utils";
-import { Suspense } from "react";
+import { cache, Suspense } from "react";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
-import { getCloudinaryImageId } from "@/features/restaurants";
+import { getCloudinaryImageId, Id } from "@/features/restaurants";
 import { CreateReservationForm } from "@/features/reservations/components/CreateReservationForm";
 import { AvailableTimes } from "@/features/reservations/components/AvailableTimes";
+import { Metadata, ResolvingMetadata } from "next";
+import { RestaurantStoryblok } from "@/lib/storyblok/component-types-sb";
+import { getParamId, PageProps } from "./utils";
+
+function getMetadata(content: RestaurantStoryblok): Metadata {
+  const { title, description, socialImage } = content;
+  const metadata: Metadata = {};
+  if (title) metadata.title = title;
+  if (description) metadata.description = description;
+  if (socialImage) metadata.openGraph = { images: [socialImage] };
+  return metadata;
+}
+
+export async function generateMetadata(
+  { params }: PageProps,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  try {
+    const sbRes = await fetchData(getParamId(params));
+
+    const content: RestaurantStoryblok = sbRes.data.story.content;
+
+    if (content) {
+      return getMetadata(content);
+    }
+    return {};
+  } catch (err) {
+    console.error(err);
+  }
+
+  return {};
+}
+
+const cachedFetchData = cache(fetchData);
+
+async function fetchData(restaurantId: Id) {
+  let sbParams = { version: "draft" } as const;
+
+  try {
+    const storyblokApi = getStoryblokApi();
+    return storyblokApi.get(`cdn/stories/rico-rico/${restaurantId}`, sbParams, {
+      // cache: "no-store",
+    });
+  } catch (err) {
+    return { data: null, error: err };
+  }
+}
 
 // issue where is that this page will not be cached
 export default async function Page({ params }: { params: { id: string } }) {
@@ -26,6 +75,25 @@ export default async function Page({ params }: { params: { id: string } }) {
     invariant(!isNaN(numId), "id must be a number");
 
     const restaurant = await api().getRestaurantById(numId);
+
+    try {
+      const sbRes = await cachedFetchData(restaurant.id);
+      // console.log(JSON.stringify(sbRes.data.story.content, null, 2));
+
+      if (sbRes.data && sbRes.data.story) {
+        return (
+          <StoryblokComponent
+            blok={sbRes.data.story.content}
+            context={{
+              userId: user?.id,
+              restaurant,
+            }}
+          />
+        );
+      }
+    } catch (err) {
+      console.error(err);
+    }
 
     return (
       <>
@@ -58,10 +126,16 @@ export default async function Page({ params }: { params: { id: string } }) {
             </Suspense>
             <Suspense fallback={<BookFormSkeleton />}>
               {user?.id ? (
-                <CreateReservationForm restaurantId={restaurant.id} userId={user?.id} />
+                <CreateReservationForm
+                  restaurantId={restaurant.id}
+                  userId={user?.id}
+                />
               ) : (
                 <div>
-                  <Anchor component={NextLink} href={`/login?redirect=/restaurants/${id}`}>
+                  <Anchor
+                    component={NextLink}
+                    href={`/login?redirect=/restaurants/${id}`}
+                  >
                     Login / register
                   </Anchor>{" "}
                   to make a reservation
@@ -69,9 +143,13 @@ export default async function Page({ params }: { params: { id: string } }) {
               )}
             </Suspense>
             <Suspense fallback={<div>Loading</div>}>
-              <AvailableTimes restaurantId={restaurant.id} timesCount={5} buttonProps={{
-                size: "md",
-              }} />
+              <AvailableTimes
+                restaurantId={restaurant.id}
+                timesCount={5}
+                buttonProps={{
+                  size: "md",
+                }}
+              />
             </Suspense>
           </div>
         </Container>

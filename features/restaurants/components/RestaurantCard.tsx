@@ -11,13 +11,12 @@ import {
   Skeleton,
   Overlay,
   CardSection,
-  Button,
 } from "@mantine/core";
 
 import { RestaurantRead } from "../types";
 import Link from "next/link";
 import { KEY, MIN_SEATS_DISPLAY } from "../constants";
-import { Display } from "@/features/ratings";
+import { RatingDisplay } from "@/features/ratings";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
 import { slugify } from "@/common/utils";
 import { AvailableTimes } from "@/features/reservations/components/AvailableTimes";
@@ -88,7 +87,7 @@ export const RestaurantCard = ({
         </Badge>
       </Group> */}
 
-        <Display rating={rating} ratingCount={ratingCount} showCount />
+        <RatingDisplay rating={rating} ratingCount={ratingCount} showCount />
 
         <Text size="sm" c="dimmed" mt="sm">
           {[cuisine_type, location].join(" • ")}

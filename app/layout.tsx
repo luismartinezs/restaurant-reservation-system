@@ -37,7 +37,7 @@ export default function RootLayout({
           defaultColorScheme="dark"
         />
       </head>
-      <body className={cn(inter.className, "overflow-x-hidden")}>
+      <body className={cn(inter.className, "overflow-x-hidden overflow-y-visible")}>
         <MantineProvider defaultColorScheme="dark" theme={theme}>
           <CollapseDesktop navbar={<Navbar showAuthButton />}>
             <div className="relative isolate mb-32">{children}</div>

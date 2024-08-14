@@ -23,7 +23,7 @@ export function CloudinaryImage({
   fallbackUrl?: string;
 } & Omit<CldImageProps, "alt" | "src">) {
   const [imageExists, setImageExists] = useState<boolean | null>(null);
-  const imageSrc = `${BASE_PATH}/${folderPath}/${imgId}`;
+  const imageSrc = `${BASE_PATH}/${folderPath ? `${folderPath}/` : ""}${imgId}`;
 
   if (imageExists === false) {
     if (fallbackUrl) {
@@ -33,13 +33,16 @@ export function CloudinaryImage({
           src={fallbackUrl}
           alt=""
           className={className}
-          width={160}
-          height={160}
+          width={transformations.width ?? 160}
+          height={transformations.height ?? 160}
         />
       );
     }
     return fallback ?? null;
   }
+
+  // console.log(imageSrc);
+
 
   return (
     <CldImage
