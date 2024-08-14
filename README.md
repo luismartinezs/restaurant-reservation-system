@@ -345,7 +345,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [x] food menu
     - [x] social media share buttons
     - [-] promotions section
-    - [ ] secondary menu with custom links like this: https://www.opentable.co.th/zuma-japanese-restaurant-ny
+    - [x] secondary menu with custom links like this: https://www.opentable.co.th/zuma-japanese-restaurant-ny
     - [ ] sidebar persistent booking widget
     - [ ] sidebar info widget with name, rating, pricing, cuisine, number of reservations, location
     - [ ] sidebar contact and location widget
@@ -384,6 +384,8 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [ ] use windowing or pagination on search results
 - [ ] Client fetching all reservations to display availability is not privacy-friendly, this logic should take place entirely server side and the client should only show aggregate data, for a prototype it's okay through
 - [ ] add capability for users to rate restaurants
+- [ ] Highlight active link in secondary navigation
+- [ ] Make sticky Book Widget show all the way to the bottom of the page
 
 ## Troubleshooting
 

@@ -31,6 +31,34 @@
       "component_group_name": "ricorico"
     },
     {
+      "name": "Book Widget",
+      "display_name": null,
+      "created_at": "2024-08-14T07:32:30.671Z",
+      "updated_at": "2024-08-14T07:32:55.103Z",
+      "id": 6166375,
+      "schema": {
+        "sticky": {
+          "type": "boolean",
+          "pos": 0,
+          "default_value": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Book Widget",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
       "name": "CloudinaryImage",
       "display_name": null,
       "created_at": "2022-04-20T15:21:26.857Z",

@@ -31,13 +31,15 @@ export const Restaurant = ({
         <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} {...rest} />
       ))}
       <LayoutComponent {...layoutProps}>
-        {body?.map((nestedBlok) => (
-          <StoryblokComponent
-            blok={nestedBlok}
-            key={nestedBlok._uid}
-            {...rest}
-          />
-        ))}
+        <div className="mt-16">
+          {body?.map((nestedBlok) => (
+            <StoryblokComponent
+              blok={nestedBlok}
+              key={nestedBlok._uid}
+              {...rest}
+            />
+          ))}
+        </div>
       </LayoutComponent>
       <ScrollHandler />
     </div>

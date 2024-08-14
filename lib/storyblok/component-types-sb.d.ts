@@ -8,6 +8,13 @@ export interface BookSectionStoryblok {
   [k: string]: any;
 }
 
+export interface BookWidgetStoryblok {
+  sticky?: boolean;
+  component: "Book Widget";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CloudinaryImageStoryblok {
   src?: string;
   alt?: string;
@@ -102,6 +109,7 @@ export interface MenuSectionStoryblok {
 export interface PageStoryblok {
   body?: (
     | BookSectionStoryblok
+    | BookWidgetStoryblok
     | CloudinaryImageStoryblok
     | HeroStoryblok
     | HeroTitleStoryblok
@@ -135,6 +143,7 @@ export interface PageStoryblok {
 export interface PostStoryblok {
   body?: (
     | BookSectionStoryblok
+    | BookWidgetStoryblok
     | CloudinaryImageStoryblok
     | HeroStoryblok
     | HeroTitleStoryblok

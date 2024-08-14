@@ -2,6 +2,7 @@ import { RestaurantStoryblok } from "@/lib/storyblok/component-types-sb";
 import { Container } from "@mantine/core";
 import { StoryblokComponent } from "@storyblok/react/rsc";
 import { LayoutProps } from "./types";
+import { cn } from "../utils";
 
 export const PageWithSidebar = ({
   children,
@@ -18,7 +19,7 @@ export const PageWithSidebar = ({
           {nav}
           {children}
         </div>
-        <aside className="lg:w-1/3 order-1 lg:order-2">
+        <aside className={cn("lg:w-1/3 order-1 lg:order-2", nav ? 'mt-0' : 'mt-16')}>
           {sidebar?.map((nestedBlok) => (
             <StoryblokComponent
               blok={nestedBlok}

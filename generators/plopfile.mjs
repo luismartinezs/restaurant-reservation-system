@@ -24,7 +24,7 @@ export default function plopGenerator(plop) {
         type: "append",
         path: "../app/restaurants/[id]/layout.tsx",
         pattern: /(\/\/ 8ce379f0 append blok components here)/gi,
-        template: `  "{{kebabCase name}}": {{pascalCase name}},`,
+        template: `  "{{name}}": {{pascalCase name}},`,
       },
     ],
   });

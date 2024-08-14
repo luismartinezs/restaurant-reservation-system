@@ -8,7 +8,7 @@ import { Detail, DetailSkeleton } from "./components/detail";
 import { BookFormSkeleton } from "@/features/reservations";
 import { Anchor, Container } from "@mantine/core";
 import { getUser } from "@/features/auth/utils";
-import { Suspense } from "react";
+import { cache, Suspense } from "react";
 import { FullBleedHero } from "@/common/components/FullBleedHero";
 import { CloudinaryImage } from "@/common/components/CloudinaryImage";
 import { getCloudinaryImageId, Id } from "@/features/restaurants";
@@ -47,6 +47,8 @@ export async function generateMetadata(
   return {};
 }
 
+const cachedFetchData = cache(fetchData);
+
 async function fetchData(restaurantId: Id) {
   let sbParams = { version: "draft" } as const;
 
@@ -75,7 +77,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     const restaurant = await api().getRestaurantById(numId);
 
     try {
-      const sbRes = await fetchData(restaurant.id);
+      const sbRes = await cachedFetchData(restaurant.id);
       // console.log(JSON.stringify(sbRes.data.story.content, null, 2));
 
       if (sbRes.data && sbRes.data.story) {
