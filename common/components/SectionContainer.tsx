@@ -13,7 +13,7 @@ export const SectionContainer = ({
 }) => {
   return (
     // <Container>
-    <div className={cn(isSidebar ? "my-5" : "my-16", className)}>
+    <div className={cn(isSidebar ? "my-8 md:my-5" : "my-8", className)}>
       {children}
     </div>
     // </Container>

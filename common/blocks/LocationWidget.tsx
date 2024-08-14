@@ -24,13 +24,18 @@ export const LocationWidget = ({
             href={blok.googleMapsLink}
             className="peer restaurant-link focus:outline-none"
           >
-            <div className="flex flex-col gap-4">
-              <Image blok={blok.mapThumbnail[0]} />
-              <div className="flex gap-2 items-center">
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-4 items-start">
+              <div className="w-full sm:w-2/3 lg:w-full overflow-hidden rounded">
+                <Image blok={blok.mapThumbnail[0]} />
+              </div>
+              <div className="flex gap-2 items-center w-full sm:w-1/3 lg:w-full">
                 <Text c="primary">
                   <IoIosPin size={30} />
                 </Text>
-                <Text size="sm" className="group-hover:underline group-hover:text-primary">
+                <Text
+                  size="sm"
+                  className="group-hover:underline group-hover:text-primary"
+                >
                   {blok.address}
                 </Text>
               </div>
