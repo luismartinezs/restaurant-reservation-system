@@ -2,7 +2,7 @@
 
 import { FaXTwitter, FaFacebook } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "../utils";
 
 const propsMap = {
@@ -37,9 +37,16 @@ const propsMap = {
 
 export const ShareButton = ({ name }: { name: keyof typeof propsMap }) => {
   const { baseUrl, icon: Icon, label, className } = propsMap[name];
+  const [href, setHref] = useState("");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    setHref(`${baseUrl}${window.location.href}`);
+  })
+
   return (
     <a
-      href={`${baseUrl}${window.location.href}`}
+      href={href}
       aria-label={label}
       target="_blank"
       className="text-white group focus:outline-none"

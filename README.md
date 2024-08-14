@@ -346,7 +346,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [x] social media share buttons
     - [-] promotions section
     - [x] secondary menu with custom links like this: https://www.opentable.co.th/zuma-japanese-restaurant-ny
-    - [ ] sidebar persistent booking widget
+    - [x] sidebar persistent booking widget
     - [ ] sidebar info widget with name, rating, pricing, cuisine, number of reservations, location
     - [ ] sidebar contact and location widget
     - [ ] FAQ section
