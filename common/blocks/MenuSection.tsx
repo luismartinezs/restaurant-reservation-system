@@ -6,7 +6,7 @@ import { MenuItem } from "./MenuItem";
 
 export const MenuSection = ({ blok }: { blok: MenuSectionStoryblok }) => {
   return (
-    <div {...storyblokEditable(blok)} className="flex flex-col gap-6 border-t border-gray-700 py-6">
+    <div {...storyblokEditable(blok)} className="flex flex-col gap-6 border-t border-stone-700 py-6">
       <Title order={3} fw={500} size={18}>
         {blok.title}
       </Title>

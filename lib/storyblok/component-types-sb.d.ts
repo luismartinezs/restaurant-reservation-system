@@ -2,6 +2,7 @@
 // DO NOT MODIFY THIS FILE BY HAND.
 import type { ISbStoryData } from "storyblok";
 export interface BookSectionStoryblok {
+  navTitle?: string;
   component: "book section";
   _uid: string;
   [k: string]: any;
@@ -56,6 +57,7 @@ export interface ImageStoryblok {
 }
 
 export interface ImageGalleryStoryblok {
+  navTitle?: string;
   images?: ImageStoryblok[];
   component: "image gallery";
   _uid: string;
@@ -72,6 +74,7 @@ export interface LogoStoryblok {
 }
 
 export interface MenuStoryblok {
+  navTitle?: string;
   sections?: MenuSectionStoryblok[];
   component: "menu";
   _uid: string;
@@ -166,6 +169,7 @@ export interface PostStoryblok {
 
 export interface RestaurantStoryblok {
   layout: "" | "simple" | "with-sidebar";
+  showNav?: boolean;
   hero?: (
     | BookSectionStoryblok
     | HeroStoryblok
@@ -176,6 +180,7 @@ export interface RestaurantStoryblok {
     | MenuItemStoryblok
     | MenuSectionStoryblok
     | RestaurantStoryblok
+    | SocialShareStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
     | TextSectionStoryblok
@@ -190,13 +195,11 @@ export interface RestaurantStoryblok {
     | MenuItemStoryblok
     | MenuSectionStoryblok
     | RestaurantStoryblok
+    | SocialShareStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
     | TextSectionStoryblok
   )[];
-  title?: string;
-  description?: string;
-  socialImage?: string;
   aside?: (
     | BookSectionStoryblok
     | HeroStoryblok
@@ -207,10 +210,14 @@ export interface RestaurantStoryblok {
     | MenuItemStoryblok
     | MenuSectionStoryblok
     | RestaurantStoryblok
+    | SocialShareStoryblok
     | SplitHeroStoryblok
     | TestStoryblok
     | TextSectionStoryblok
   )[];
+  title?: string;
+  description?: string;
+  socialImage?: string;
   component: "restaurant";
   _uid: string;
   [k: string]: any;
@@ -270,6 +277,7 @@ export interface TestStoryblok {
 }
 
 export interface TextSectionStoryblok {
+  navTitle?: string;
   title?: string;
   textContent?: RichtextStoryblok;
   component: "text section";

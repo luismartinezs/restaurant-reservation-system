@@ -4,9 +4,16 @@
       "name": "book section",
       "display_name": null,
       "created_at": "2024-08-10T14:26:44.753Z",
-      "updated_at": "2024-08-10T14:26:57.126Z",
+      "updated_at": "2024-08-14T04:51:54.695Z",
       "id": 6153341,
-      "schema": {},
+      "schema": {
+        "navTitle": {
+          "type": "text",
+          "pos": 0,
+          "description": "Defines label for nav. Leave empty to omit from nav",
+          "max_length": 15
+        }
+      },
       "image": null,
       "preview_field": null,
       "is_root": false,
@@ -193,9 +200,15 @@
       "name": "image gallery",
       "display_name": null,
       "created_at": "2024-08-10T12:17:08.254Z",
-      "updated_at": "2024-08-10T12:18:42.118Z",
+      "updated_at": "2024-08-14T04:55:32.267Z",
       "id": 6153232,
       "schema": {
+        "navTitle": {
+          "type": "text",
+          "pos": 0,
+          "description": "Defines label for nav. Leave empty to omit from nav",
+          "max_length": 15
+        },
         "images": {
           "type": "bloks",
           "pos": 0,
@@ -266,9 +279,15 @@
       "name": "menu",
       "display_name": null,
       "created_at": "2024-08-13T02:26:05.672Z",
-      "updated_at": "2024-08-13T02:41:56.618Z",
+      "updated_at": "2024-08-14T04:55:33.509Z",
       "id": 6161176,
       "schema": {
+        "navTitle": {
+          "type": "text",
+          "pos": 0,
+          "description": "Defines label for nav. Leave empty to omit from nav",
+          "max_length": 15
+        },
         "sections": {
           "type": "bloks",
           "pos": 0,
@@ -515,7 +534,7 @@
       "name": "restaurant",
       "display_name": null,
       "created_at": "2024-08-09T08:43:17.501Z",
-      "updated_at": "2024-08-13T02:29:04.123Z",
+      "updated_at": "2024-08-14T03:36:06.682Z",
       "id": 6149492,
       "schema": {
         "layout": {
@@ -537,9 +556,15 @@
           "default_value": "simple",
           "required": true
         },
+        "showNav": {
+          "type": "boolean",
+          "pos": 1,
+          "description": "Show secondary navigation for main content",
+          "default_value": true
+        },
         "hero": {
           "type": "bloks",
-          "pos": 1,
+          "pos": 2,
           "description": "Select the blocks that will show up before the page layout",
           "restrict_type": "groups",
           "restrict_components": true,
@@ -550,8 +575,19 @@
         },
         "body": {
           "type": "bloks",
-          "pos": 2,
+          "pos": 3,
           "description": "Select the blocks that will show up within the main area of the layout",
+          "restrict_type": "groups",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "component_group_whitelist": [
+            "a7c4558f-2fee-4391-904b-1362da4c7926"
+          ]
+        },
+        "aside": {
+          "type": "bloks",
+          "pos": 4,
+          "description": "Select the blocks that will show up within the sidebar (only with the layout with sidebar)",
           "restrict_type": "groups",
           "restrict_components": true,
           "component_whitelist": [],
@@ -568,31 +604,20 @@
             "createdAt",
             "socialImage"
           ],
-          "pos": 3
+          "pos": 5
         },
         "title": {
           "type": "text",
-          "pos": 4
+          "pos": 6
         },
         "description": {
           "type": "text",
-          "pos": 5
+          "pos": 7
         },
         "socialImage": {
           "type": "text",
           "description": "Use high-quality images with dimensions of at least 1,200 x 630 pixels, while keeping the file size under 8 MB",
-          "pos": 6
-        },
-        "aside": {
-          "type": "bloks",
-          "pos": 7,
-          "description": "Select the blocks that will show up within the sidebar (only with the layout with sidebar)",
-          "restrict_type": "groups",
-          "restrict_components": true,
-          "component_whitelist": [],
-          "component_group_whitelist": [
-            "a7c4558f-2fee-4391-904b-1362da4c7926"
-          ]
+          "pos": 8
         }
       },
       "image": null,
@@ -709,12 +734,13 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "social share",
-      "component_group_uuid": null,
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
       "color": null,
       "icon": null,
       "internal_tags_list": [],
       "internal_tag_ids": [],
-      "content_type_asset_preview": null
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
     },
     {
       "name": "split hero",
@@ -814,16 +840,22 @@
       "name": "text section",
       "display_name": null,
       "created_at": "2024-08-10T13:49:31.923Z",
-      "updated_at": "2024-08-10T14:20:53.508Z",
+      "updated_at": "2024-08-14T03:37:34.116Z",
       "id": 6153274,
       "schema": {
+        "navTitle": {
+          "type": "text",
+          "pos": 0,
+          "description": "Defines label for nav. Leave empty to omit from nav",
+          "max_length": 15
+        },
         "title": {
           "type": "text",
-          "pos": 0
+          "pos": 1
         },
         "textContent": {
           "type": "richtext",
-          "pos": 1,
+          "pos": 2,
           "customize_toolbar": true,
           "toolbar": [
             "ai-complete",

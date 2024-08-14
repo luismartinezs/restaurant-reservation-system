@@ -1,10 +1,11 @@
 import { Container } from "@mantine/core";
-import React, { ReactNode } from "react";
+import { LayoutProps } from "./types";
 
-export const SimplePage = ({ children }: { children: ReactNode }) => {
+export const SimplePage = ({ children, nav }: LayoutProps) => {
   return (
     <Container size="lg">
-      <article>
+      <article className="">
+        {nav}
         {children}
       </article>
     </Container>

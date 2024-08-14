@@ -17,8 +17,10 @@
     "sb:proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
     "sb:login": "storyblok login",
     "sb:pull-components": "storyblok pull-components --space 154372 --path ./lib/storyblok/",
+    "sb:push-components": "storyblok push-components ./lib/storyblok/components.154372.json --space 154372 --presets-source ./lib/storyblok/presets.154372.json",
     "sb:generate-types": "storyblok generate-typescript-typedefs --sourceFilePaths ./lib/storyblok/components.154372.json --destinationFilePath ./lib/storyblok/component-types-sb.d.ts",
-    "sb:pull-types": "pnpm sb:pull-components && pnpm sb:generate-types"
+    "sb:pull-types": "pnpm sb:pull-components && pnpm sb:generate-types",
+    "plop": "plop  --plopfile ./generators/plopfile.mjs"
   },
   "dependencies": {
     "@mantine/carousel": "^7.12.0",
@@ -59,6 +61,7 @@
     "eslint-config-next": "14.2.5",
     "husky": "^9.1.4",
     "jsdom": "^24.1.1",
+    "plop": "^4.0.1",
     "postcss": "^8.4.41",
     "postcss-preset-mantine": "^1.17.0",
     "postcss-simple-vars": "^7.0.1",

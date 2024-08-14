@@ -9,6 +9,7 @@ import { CreateReservationForm } from "@/features/reservations/components/Create
 import { useUser } from "@/features/auth/hooks";
 import { Anchor, Loader } from "@mantine/core";
 import NextLink from "next/link";
+import { BlokWrapper } from "../components/BlokWrapper";
 
 export const BookSection = ({ blok }: { blok: BookSectionStoryblok }) => {
   const params = useParams<{ id: string }>();
@@ -18,30 +19,32 @@ export const BookSection = ({ blok }: { blok: BookSectionStoryblok }) => {
   const { user, loading, error } = useUser();
 
   return (
-    <SectionContainer>
-      {
-        // if user is not logged in
-        loading ? (
-          <div className="flex w-full justify-center items-center">
-            <Loader />
-          </div>
-        ) : error ? (
-          <p>{error}</p>
-        ) : !user ? (
-          <div className="prose-xl prose-invert">
-            <Anchor
-              size="xl"
-              component={NextLink}
-              href={`/login?redirect=/restaurants/${id}`}
-            >
-              Login / register
-            </Anchor>{" "}
-            to make a reservation
-          </div>
-        ) : (
-          <CreateReservationForm restaurantId={id} userId={user?.id} />
-        )
-      }
-    </SectionContainer>
+    <BlokWrapper blok={blok}>
+      <SectionContainer>
+        {
+          // if user is not logged in
+          loading ? (
+            <div className="flex w-full justify-center items-center">
+              <Loader />
+            </div>
+          ) : error ? (
+            <p>{error}</p>
+          ) : !user ? (
+            <div className="prose-xl prose-invert">
+              <Anchor
+                size="xl"
+                component={NextLink}
+                href={`/login?redirect=/restaurants/${id}`}
+              >
+                Login / register
+              </Anchor>{" "}
+              to make a reservation
+            </div>
+          ) : (
+            <CreateReservationForm restaurantId={id} userId={user?.id} />
+          )
+        }
+      </SectionContainer>
+    </BlokWrapper>
   );
 };

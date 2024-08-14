@@ -1,14 +1,14 @@
 import { MenuStoryblok } from "@/lib/storyblok/component-types-sb";
-import { storyblokEditable } from "@storyblok/react/rsc";
 import React from "react";
 import { MenuSection } from "./MenuSection";
 import { SectionTitle } from "../components/SectionTitle";
 import { SectionContainer } from "../components/SectionContainer";
 import { MenuToggle } from "../components/MenuToggle";
+import { BlokWrapper } from "../components/BlokWrapper";
 
 export const Menu = ({ blok }: { blok: MenuStoryblok }) => {
   return (
-    <div {...storyblokEditable(blok)}>
+    <BlokWrapper blok={blok}>
       <SectionContainer>
         <MenuToggle>
           <SectionTitle mb={16}>Menu</SectionTitle>
@@ -17,6 +17,6 @@ export const Menu = ({ blok }: { blok: MenuStoryblok }) => {
           })}
         </MenuToggle>
       </SectionContainer>
-    </div>
+    </BlokWrapper>
   );
 };

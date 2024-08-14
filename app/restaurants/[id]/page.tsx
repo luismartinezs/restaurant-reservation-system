@@ -53,7 +53,7 @@ async function fetchData(restaurantId: Id) {
   try {
     const storyblokApi = getStoryblokApi();
     return storyblokApi.get(`cdn/stories/rico-rico/${restaurantId}`, sbParams, {
-      cache: "no-store",
+      // cache: "no-store",
     });
   } catch (err) {
     return { data: null, error: err };

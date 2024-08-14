@@ -13,6 +13,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        background: "#242424",
         x: { DEFAULT: colors.black, 400: colors.stone[900] },
         facebook: { DEFAULT: '#4267B2', 600: '#35528E' },
         linkedin: { DEFAULT: '#0077B5', 600: '#005C8E' },

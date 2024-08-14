@@ -36,3 +36,7 @@ export async function sleep(ms: number) {
 export function calcAvg(values: Array<number>) {
   return values.reduce((acc, curr) => acc + curr, 0) / values.length
 }
+
+export function getStoryblokNavId<T extends { _uid: string; navTitle?: string }>({ _uid, navTitle }: T) {
+  return navTitle ? slugify(navTitle) : _uid
+}
