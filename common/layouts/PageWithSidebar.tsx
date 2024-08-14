@@ -1,6 +1,6 @@
 import { RestaurantStoryblok } from "@/lib/storyblok/component-types-sb";
 import { Container } from "@mantine/core";
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
+import { StoryblokComponent } from "@storyblok/react/rsc";
 import React, { ReactNode } from "react";
 
 export const PageWithSidebar = ({
@@ -13,7 +13,7 @@ export const PageWithSidebar = ({
 }) => {
   return (
     <Container size="lg">
-      <article className="flex flex-col md:flex-row items-start justify-start">
+      <article className="flex flex-col md:flex-row items-start justify-start gap-6">
         <div className="md:w-2/3 order-2 md:order-1">{children}</div>
         <aside className="md:w-1/3 order-1 md:order-2">
           {sidebar?.map((nestedBlok) => (

@@ -1,4 +1,4 @@
-import { Container } from "@mantine/core";
+// import { Container } from "@mantine/core";
 import React from "react";
 import { cn } from "../utils";
 
@@ -10,8 +10,8 @@ export const SectionContainer = ({
   className?: string;
 }) => {
   return (
-    <Container>
+    // <Container>
       <div className={cn("my-16", className)}>{children}</div>
-    </Container>
+    // </Container>
   );
 };

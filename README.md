@@ -344,11 +344,12 @@ Pages define what data needs to be shown together and thus fetched together (it 
     - [x] persistent booking sidebar (might require alternate page version)
     - [x] food menu
     - [x] social media share buttons
-    - [ ] promotions section
-    - [ ] info widget with name, rating, pricing, cuisine, number of reservations, location
-    - [ ] contact and location section
-    - [ ] map + info section like this one: https://eatigo.com/th/chiang-mai/en/r/favola-italian-restaurant-chiang-mai-marriott-2286
+    - [-] promotions section
     - [ ] secondary menu with custom links like this: https://www.opentable.co.th/zuma-japanese-restaurant-ny
+    - [ ] sidebar persistent booking widget
+    - [ ] sidebar info widget with name, rating, pricing, cuisine, number of reservations, location
+    - [ ] sidebar contact and location widget
+    - [ ] FAQ section
 
 ## Known bugs / missing features (marked with *)
 

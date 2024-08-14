@@ -3,6 +3,7 @@ import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc";
 import { RestaurantStoryblok } from "@/lib/storyblok/component-types-sb";
 import { PageWithSidebar } from "../layouts/PageWithSidebar";
 import { ComponentProps, ReactNode } from "react";
+import { SimplePage } from "../layouts/SimplePage";
 
 export const Restaurant = ({
   blok,
@@ -15,7 +16,7 @@ export const Restaurant = ({
 
   const LayoutComponent = hasSidebar
     ? PageWithSidebar
-    : ({ children }: { children: ReactNode }) => <>{children}</>;
+    : SimplePage
   // lazy way of making typescript happy
   const layoutProps = (
     hasSidebar ? { sidebar: blok.aside, ...rest } : rest
