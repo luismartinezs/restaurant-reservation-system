@@ -26,7 +26,7 @@ export const BookWidget = ({
   return (
     <BlokWrapper
       blok={blok}
-      className={cn(blok.sticky && "z-10 sticky top-[65px]")}
+      className={cn(blok.sticky && "z-10 lg:sticky lg:top-[65px]")}
     >
       <SectionContainer {...rest}>
         {

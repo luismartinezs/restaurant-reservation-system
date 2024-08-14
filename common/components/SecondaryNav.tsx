@@ -13,7 +13,7 @@ export const SecondaryNav = ({
   return (
     <nav
       aria-label="secondary"
-      className="z-10 sticky top-[59px] bg-background py-5 border-b border-stone-600"
+      className="bg-background py-5 border-b border-stone-600"
     >
       <ul className="flex gap-6">
         {bloks?.map((blok) => (
