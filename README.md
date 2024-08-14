@@ -12,6 +12,7 @@
     - [Pre-commit hooks](#pre-commit-hooks)
     - [Deployment pipelines](#deployment-pipelines)
     - [Storyblok setup](#storyblok-setup)
+    - [Setup Google Auth](#setup-google-auth)
   - [Project requirements](#project-requirements)
   - [Questions about business logic](#questions-about-business-logic)
   - [Database structure](#database-structure)
@@ -105,6 +106,10 @@ To see the preview of the landing page in the Storyblok UI when working in local
 - Run a proxy server
   - `pnpm add -g local-ssl-proxy`
   - `local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem`
+
+### Setup Google Auth
+
+- Follow this: https://supabase.com/docs/guides/auth/social-login/auth-google?queryGroups=environment&environment=server&queryGroups=platform&platform=web
 
 ## Project requirements
 
