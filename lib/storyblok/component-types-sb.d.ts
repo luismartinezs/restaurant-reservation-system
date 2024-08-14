@@ -71,6 +71,15 @@ export interface ImageGalleryStoryblok {
   [k: string]: any;
 }
 
+export interface LocationWidgetStoryblok {
+  mapThumbnail: ImageStoryblok[];
+  address: string;
+  googleMapsLink: string;
+  component: "location widget";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface LogoStoryblok {
   image?: AssetStoryblok;
   cloudinaryId?: string;
@@ -115,6 +124,7 @@ export interface PageStoryblok {
     | HeroTitleStoryblok
     | ImageStoryblok
     | ImageGalleryStoryblok
+    | LocationWidgetStoryblok
     | LogoStoryblok
     | MenuStoryblok
     | MenuItemStoryblok
@@ -149,6 +159,7 @@ export interface PostStoryblok {
     | HeroTitleStoryblok
     | ImageStoryblok
     | ImageGalleryStoryblok
+    | LocationWidgetStoryblok
     | LogoStoryblok
     | MenuStoryblok
     | MenuItemStoryblok
@@ -184,6 +195,7 @@ export interface RestaurantStoryblok {
     | HeroStoryblok
     | ImageStoryblok
     | ImageGalleryStoryblok
+    | LocationWidgetStoryblok
     | LogoStoryblok
     | MenuStoryblok
     | MenuItemStoryblok
@@ -199,6 +211,7 @@ export interface RestaurantStoryblok {
     | HeroStoryblok
     | ImageStoryblok
     | ImageGalleryStoryblok
+    | LocationWidgetStoryblok
     | LogoStoryblok
     | MenuStoryblok
     | MenuItemStoryblok
@@ -214,6 +227,7 @@ export interface RestaurantStoryblok {
     | HeroStoryblok
     | ImageStoryblok
     | ImageGalleryStoryblok
+    | LocationWidgetStoryblok
     | LogoStoryblok
     | MenuStoryblok
     | MenuItemStoryblok

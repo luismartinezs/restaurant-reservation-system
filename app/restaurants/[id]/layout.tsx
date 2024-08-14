@@ -10,6 +10,7 @@ import { BookSection } from "@/common/blocks/BookSection";
 import { Menu } from "@/common/blocks/Menu";
 import { SocialShare } from "@/common/blocks/SocialShare";
 // c16e1d9a append blok imports here
+import { LocationWidget } from '@/common/blocks/LocationWidget';
 import { BookWidget } from '@/common/blocks/BookWidget';
 import { Test } from '@/common/blocks/Test';
 
@@ -23,6 +24,7 @@ const components = {
   menu: Menu,
   "social share": SocialShare,
   // 8ce379f0 append blok components here
+  "location widget": LocationWidget,
   "Book Widget": BookWidget,
   "test": Test,
 };

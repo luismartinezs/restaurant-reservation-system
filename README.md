@@ -386,6 +386,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
 - [ ] add capability for users to rate restaurants
 - [ ] Highlight active link in secondary navigation
 - [ ] Make sticky Book Widget show all the way to the bottom of the page
+- [ ] Properly integrate mantine colors in tailwind in the tailwind config
 
 ## Troubleshooting
 

@@ -24,6 +24,7 @@ export const PageWithSidebar = ({
             <StoryblokComponent
               blok={nestedBlok}
               key={nestedBlok._uid}
+              isSidebar
               {...rest}
             />
           ))}

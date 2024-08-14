@@ -11,7 +11,12 @@ import NextLink from "next/link";
 import { CreateReservationWidget } from "@/features/reservations/components/CreateReservationWidget";
 import { cn } from "../utils";
 
-export const BookWidget = ({ blok }: { blok: BookWidgetStoryblok }) => {
+export const BookWidget = ({
+  blok,
+  ...rest
+}: {
+  blok: BookWidgetStoryblok;
+}) => {
   const params = useParams<{ id: string }>();
 
   const id = getParamId(params);
@@ -19,8 +24,11 @@ export const BookWidget = ({ blok }: { blok: BookWidgetStoryblok }) => {
   const { user, loading, error } = useUser();
 
   return (
-    <BlokWrapper blok={blok} className={cn(blok.sticky && "z-10 sticky top-[65px]")}>
-      <SectionContainer>
+    <BlokWrapper
+      blok={blok}
+      className={cn(blok.sticky && "z-10 sticky top-[65px]")}
+    >
+      <SectionContainer {...rest}>
         {
           // if user is not logged in
           loading ? (
@@ -41,11 +49,11 @@ export const BookWidget = ({ blok }: { blok: BookWidgetStoryblok }) => {
               to make a reservation
             </div>
           ) : (
-           <div>
-             <Card shadow="sm" withBorder>
-               <CreateReservationWidget restaurantId={id} userId={user?.id} />
-             </Card>
-           </div>
+            <div>
+              <Card shadow="sm" withBorder>
+                <CreateReservationWidget restaurantId={id} userId={user?.id} />
+              </Card>
+            </div>
           )
         }
       </SectionContainer>

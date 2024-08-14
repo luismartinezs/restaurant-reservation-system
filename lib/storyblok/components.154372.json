@@ -264,6 +264,54 @@
       "component_group_name": "ricorico"
     },
     {
+      "name": "location widget",
+      "display_name": null,
+      "created_at": "2024-08-14T08:58:41.262Z",
+      "updated_at": "2024-08-14T09:00:37.169Z",
+      "id": 6166673,
+      "schema": {
+        "mapThumbnail": {
+          "type": "bloks",
+          "pos": 0,
+          "minimum": 1,
+          "maximum": 1,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "image"
+          ],
+          "component_group_whitelist": [],
+          "required": true
+        },
+        "address": {
+          "type": "text",
+          "pos": 1,
+          "description": "e.g. 261 Madison Avenue, New York, NY 10017",
+          "required": true
+        },
+        "googleMapsLink": {
+          "type": "text",
+          "pos": 2,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "location widget",
+      "component_group_uuid": "a7c4558f-2fee-4391-904b-1362da4c7926",
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "component_group_name": "ricorico"
+    },
+    {
       "name": "logo",
       "display_name": null,
       "created_at": "2024-08-10T06:53:15.218Z",

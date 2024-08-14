@@ -11,7 +11,6 @@ import {
   Skeleton,
   Overlay,
   CardSection,
-  Button,
 } from "@mantine/core";
 
 import { RestaurantRead } from "../types";

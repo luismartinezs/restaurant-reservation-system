@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors"
+import { theme } from "./app/theme";
 
 const config: Config = {
   content: [
@@ -13,7 +14,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#242424",
+        background: "#242424", // dirty hack to have access to the mantine color
+        primary: '#f06595', // dirty hack to have access to the mantine color
         x: { DEFAULT: colors.black, 400: colors.stone[900] },
         facebook: { DEFAULT: '#4267B2', 600: '#35528E' },
         linkedin: { DEFAULT: '#0077B5', 600: '#005C8E' },

@@ -5,13 +5,17 @@ import { cn } from "../utils";
 export const SectionContainer = ({
   children,
   className,
+  isSidebar,
 }: {
   children: React.ReactNode;
   className?: string;
+  isSidebar?: boolean;
 }) => {
   return (
     // <Container>
-      <div className={cn("my-16", className)}>{children}</div>
+    <div className={cn(isSidebar ? "my-5" : "my-16", className)}>
+      {children}
+    </div>
     // </Container>
   );
 };
