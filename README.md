@@ -335,7 +335,7 @@ Pages define what data needs to be shown together and thus fetched together (it 
   - [-] order imports following best practices
 - [ ] setup storyblok CMS to create restaurants landings (this is another one week project)
   - [ ] blocks
-    - [ ] all detail pages look similar, this is good reference: https://www.opentable.co.th/zuma-japanese-restaurant-ny
+    - [x] all detail pages look similar, this is good reference: https://www.opentable.co.th/zuma-japanese-restaurant-ny
     - [x] metadata
     - [x] hero with image, 2 versions: full bleed image and image + separate text block (mobile friendly)
     - [x] images widget
