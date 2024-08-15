@@ -5,6 +5,7 @@ import NextLink from "next/link";
 import { Anchor, AppShell, Burger, Flex, Group, Text } from "@mantine/core";
 import { useDisclosure, useEventListener } from "@mantine/hooks";
 import { CloudinaryImage } from "./CloudinaryImage";
+import { FaGithub } from "react-icons/fa";
 
 export function CollapseDesktop({
   navbar,
@@ -60,9 +61,19 @@ export function CollapseDesktop({
       </AppShell.Navbar>
       <AppShell.Main>{children}</AppShell.Main>
       <AppShell.Footer h={60} p="md" style={{ marginTop: "2rem" }}>
-        <Text size="sm" className="text-center">
-          © 2024 RicoRico. All rights reserved.
-        </Text>
+        <div className="flex gap-2 justify-center">
+          <Text size="sm" className="text-center">
+            © 2024 RicoRico. All rights reserved.
+          </Text>
+          <a
+            href="https://github.com/luismartinezs/restaurant-reservation-system"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="sr-only">View on Github</span>
+            <FaGithub size={20} />
+          </a>
+        </div>
       </AppShell.Footer>
     </AppShell>
   );

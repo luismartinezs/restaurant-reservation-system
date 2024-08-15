@@ -14,7 +14,7 @@ const RestaurantListingPage = () => {
         // subtitle="Discover delicious spots and save with deals"
         className="-mt-[18px]"
         content={
-          <div className="px-8 py-6 bg-gradient-to-br from-stone-700 via-stone-800 to-stone-900 flex flex-col gap-4 items-center">
+          <div className="px-8 py-6 bg-gradient-to-br from-stone-700 via-stone-800 to-stone-900 flex flex-col gap-4 items-center rounded">
             <div className="flex items-center">
               <h1 className="text-2xl md:text-3xl text-white font-bold">
                 Find your table for any occasion
