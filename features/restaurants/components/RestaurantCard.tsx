@@ -45,7 +45,7 @@ export const RestaurantCard = ({
       pt={0}
       radius="md"
       withBorder
-      className="group hover:scale-[1.01] transition-transform duration-300 ease-out has-[.restaurant-link:focus]:!outline has-[:focus]:outline-offset-2 has-[:focus]:!outline-1 has-[:focus]:!outline-[#c2255c]"
+      className="group hover:scale-[1.01] transition-transform duration-300 ease-out has-[.restaurant-link:focus]:!outline has-[:focus]:outline-offset-2 has-[:focus]:!outline-1 has-[:focus]:!outline-primary"
     >
       <Link
         href={`/${KEY}/${id}`}
@@ -108,7 +108,7 @@ export const RestaurantCard = ({
 
       <Overlay
         color="#fff"
-        className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out pointer-events-none peer-focus:opacity-20"
+        className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out pointer-events-none"
       />
 
       {showAvailableTimes && <AvailableTimes restaurantId={id} />}

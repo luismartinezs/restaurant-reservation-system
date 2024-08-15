@@ -37,54 +37,59 @@ export const RestaurantCard = ({
       radius="md"
       withBorder
       h="100%"
-      component={Link}
-      href={`/${KEY}/${id}`}
-      className="group hover:scale-[1.01] transition-transform duration-300 ease-out"
+      className="group hover:scale-[1.01] transition-transform duration-300 ease-out has-[.restaurant-link:focus]:!outline has-[:focus]:outline-offset-2 has-[:focus]:!outline-1 has-[:focus]:!outline-primary"
     >
-      <CardSection className="">
-        <Overlay
-          color="#fff"
-          className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
-        />
-        <CloudinaryImage
-          folderPath="restaurants/thumbnails"
-          fallback={
-            <Image
-              component={NextImage}
-              src={`https://placehold.co/512x512/242424/FFF.png?text=${name.replace(
-                /\W/,
-                "+"
-              )}`}
-              className="h-full w-full"
-              alt=""
-              width={160}
-              height={160}
-            />
-          }
-          imgId={_image}
-          height={160}
-          width={160}
-          alt={name}
-          crop="fill"
-          gravity="center"
-          className="h-full w-full"
-        />
-      </CardSection>
+      <Link
+        href={`/${KEY}/${id}`}
+        className="peer restaurant-link focus:outline-none"
+      >
+        <CardSection className="">
+          <CloudinaryImage
+            folderPath="restaurants/thumbnails"
+            fallback={
+              <Image
+                component={NextImage}
+                src={`https://placehold.co/512x512/242424/FFF.png?text=${name.replace(
+                  /\W/,
+                  "+"
+                )}`}
+                className="h-full w-full"
+                alt=""
+                width={160}
+                height={160}
+              />
+            }
+            imgId={_image}
+            height={160}
+            width={160}
+            alt={name}
+            crop="fill"
+            gravity="center"
+            className="h-full w-full"
+          />
+        </CardSection>
 
-      <Stack justify="space-between" mt="md">
-        <Text fw={500}>{name}</Text>
-        {isRated ? (
-          <div className="flex gap-2">
-            <RatingDisplay rating={rating} ratingCount={ratingCount}
-              showNumber
-            />
-          </div>
-        ) : (
-          <Text size="sm" c="dimmed">
-            No ratings yet
-          </Text>
-        )}
-      </Stack>
+        <Stack justify="space-between" mt="md">
+          <Text fw={500}>{name}</Text>
+          {isRated ? (
+            <div className="flex gap-2">
+              <RatingDisplay
+                rating={rating}
+                ratingCount={ratingCount}
+                showNumber
+              />
+            </div>
+          ) : (
+            <Text size="sm" c="dimmed">
+              No ratings yet
+            </Text>
+          )}
+        </Stack>
+      </Link>
+      <Overlay
+        color="#fff"
+        className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out pointer-events-none"
+      />
     </Card>
   );
 };

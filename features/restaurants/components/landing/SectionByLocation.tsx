@@ -6,7 +6,7 @@ import {
   Text,
   Group,
   Overlay,
-  Image
+  Image,
 } from "@mantine/core";
 import { api } from "../../api";
 import { getLocationsAndCount } from "../../utils";
@@ -34,41 +34,44 @@ export const SectionByLocation = async () => {
             shadow="sm"
             radius="md"
             withBorder
-            component={Link}
-            href={`/${KEY}?location=${location}`}
-            className="group hover:scale-[1.01] transition-transform duration-300 ease-out"
+            className="group hover:scale-[1.01] transition-transform duration-300 ease-out has-[.restaurant-link:focus]:!outline has-[:focus]:outline-offset-2 has-[:focus]:!outline-1 has-[:focus]:!outline-primary"
           >
-            <CardSection>
-              <Overlay
-                color="#fff"
-                className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out"
-              />
-              <CloudinaryImage
-                folderPath="locations"
-                imgId={`${slugify(location)}.png`}
-                fallback={
-                  <Image
-                    component={NextImage}
-                    src={`https://placehold.co/512x512/242424/FFF.png?text=${location}`}
-                    className="h-full w-full"
-                    alt=""
-                    width={160}
-                    height={160}
-                  />
-                }
-                height={160}
-                width={160}
-                alt={location}
-                crop="fill"
-                gravity="center"
-                className="h-full w-full"
-              />
-            </CardSection>
-            <Group justify="space-between" mt="md">
-              <Text fw={700} size="xl" className="text-center">
-                {location}
-              </Text>
-            </Group>
+            <Link
+              href={`/${KEY}?location=${location}`}
+              className="peer restaurant-link focus:outline-none"
+            >
+              <CardSection>
+                <CloudinaryImage
+                  folderPath="locations"
+                  imgId={`${slugify(location)}.png`}
+                  fallback={
+                    <Image
+                      component={NextImage}
+                      src={`https://placehold.co/512x512/242424/FFF.png?text=${location}`}
+                      className="h-full w-full"
+                      alt=""
+                      width={160}
+                      height={160}
+                    />
+                  }
+                  height={160}
+                  width={160}
+                  alt={location}
+                  crop="fill"
+                  gravity="center"
+                  className="h-full w-full"
+                />
+              </CardSection>
+              <Group justify="space-between" mt="md">
+                <Text fw={700} size="xl" className="text-center">
+                  {location}
+                </Text>
+              </Group>
+            </Link>
+            <Overlay
+              color="#fff"
+              className="opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-out pointer-events-none"
+            />
           </Card>
         ))}
       </SimpleGrid>
