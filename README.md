@@ -28,6 +28,7 @@
   - [References](#references)
   - [Coding practices](#coding-practices)
     - [Folder structure](#folder-structure)
+  - [Timings](#timings-1)
 
 ## Tech stack
 
@@ -431,3 +432,48 @@ Nothing so far
 
 - Feature based: each feature has its own folder with all related files.
   - Do not be overly strict with this, if moving a piece of code to the features folder makes the code more complicated, or it doesn't seem to make sense, don't do it
+
+## Timings
+
+| Item                                                                                             | Minutes | Hours |
+| ------------------------------------------------------------------------------------------------ | ------- | ----- |
+| TOTAL                                                                                            | 4640    | 77.3  |
+| Requirement gathering and questions                                                              | 36      | 0.6   |
+| Database structure and planning                                                                  | 10      | 0.2   |
+| Planning development plan (listing and ordering tasks)                                           | 23      | 0.4   |
+| Scaffold tech stack                                                                              | 190     | 3.2   |
+| Setup README                                                                                     | 20      | 0.3   |
+| Init DB tables                                                                                   | 75      | 1.3   |
+| Login flow                                                                                       | 16      | 0.3   |
+| Restaurants scaffold                                                                             | 268     | 4.5   |
+| Reservations scaffold                                                                            | 180     | 3.0   |
+| Ratings scaffold                                                                                 | 20      | 0.3   |
+| Users scaffold                                                                                   | 45      | 0.8   |
+| Gather design / layout references                                                                | 30      | 0.5   |
+| Restaurants listing page                                                                         | 40      | 0.7   |
+| Search functionality                                                                             | 240     | 4.0   |
+| Filters                                                                                          | 220     | 3.7   |
+| Debugging / studying next                                                                        | 240     | 4.0   |
+| Playtest Next.js / refactor codebase                                                             | 320     | 5.3   |
+| Style and responsive filters                                                                     | 50      | 0.8   |
+| Restaurant detail + reservation widget                                                           | 180     | 3.0   |
+| Fix build errors                                                                                 | 16      | 0.3   |
+| Reservation tests                                                                                | 20      | 0.3   |
+| Setup form validation and errors                                                                 | 168     | 2.8   |
+| List pending tasks                                                                               | 10      | 0.2   |
+| Setting fallback loading states                                                                  | 25      | 0.4   |
+| Init DB with plenty data for reservations + ratings so more realistic use case can be visualized | 50      | 0.8   |
+| Landing                                                                                          | 170     | 2.8   |
+| Testing setup                                                                                    | 32      | 0.5   |
+| Images                                                                                           | 371     | 6.2   |
+| Clean up login flow and add Google auth                                                          | 60      | 1.0   |
+| Icing the cake (small tweaks, adjustments, bug fixes)                                            | 252     | 4.2   |
+| Big fixing                                                                                       | 255     | 4.3   |
+| Supabase RLS + cleanup                                                                           | 60      | 1.0   |
+| Storyblok setup                                                                                  | 48      | 0.8   |
+| Storyblok block creation (hero + split hero)                                                     | 240     | 4.0   |
+| Image gallery                                                                                    | 120     | 2.0   |
+| Text and book sections                                                                           | 90      | 1.5   |
+| Storyblok Next.js debugging                                                                      | 240     | 4.0   |
+| Aside layout                                                                                     | 30      | 0.5   |
+| Secondary nav                                                                                    | 180     | 3.0   |
