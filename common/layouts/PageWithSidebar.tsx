@@ -21,7 +21,7 @@ export const PageWithSidebar = ({
           {children}
         </div>
         <aside
-          className={cn("lg:w-1/3 order-1 lg:order-2", nav ? "mt-0" : "mt-16")}
+          className={cn("lg:w-1/3 order-1 lg:order-2 self-stretch", nav ? "mt-0" : "mt-16")}
         >
           {sidebar?.map((nestedBlok) => (
             <StoryblokComponent
