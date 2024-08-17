@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-// import Script from 'next/script'
+import Script from "next/script";
 import { Inter } from "next/font/google";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
@@ -43,6 +43,13 @@ export default function RootLayout({
           <ScrollToTop />
         </MantineProvider>
         {/* <Script src="https://accounts.google.com/gsi/client" async /> */}
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="d036308e-e9c2-4d50-86b8-908670805a69"
+          />
+        )}
       </body>
     </html>
   );
