@@ -16,19 +16,27 @@ export const ToggleModal = ({
 }) => {
   const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
   const [opened, { toggle, close }] = useDisclosure(false);
-  const customModalProps = isMobile ? {
-    fullScreen: true
-  } : {
-    size: '70%'
-  }
+  const customModalProps = isMobile
+    ? {
+        fullScreen: true,
+      }
+    : {
+        size: "70%",
+      };
 
   return (
     <>
-      <UnstyledButton onClick={toggle}>
+      <button
+        onClick={toggle}
+        className="bg-background p-0 m-0 focus:outline-none focus:border-primary focus:border-2"
+      >
         {toggler}
-      </UnstyledButton>
-
-      <Modal opened={opened} onClose={close} {...{...customModalProps, ...modalProps}}>
+      </button>
+      <Modal
+        opened={opened}
+        onClose={close}
+        {...{ ...customModalProps, ...modalProps }}
+      >
         {content}
       </Modal>
     </>
