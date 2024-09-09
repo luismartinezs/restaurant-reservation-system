@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import { Text, Alert } from "@mantine/core";
 import {
   IoInformationCircle,

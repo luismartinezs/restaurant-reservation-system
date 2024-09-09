@@ -41,7 +41,7 @@ export const EditReservationForm = ({
 
   return (
     <div>
-      <Title order={2} mb="md">
+      <Title order={1} mb="md" size="h2" mt="lg">
         {"Change your reservation"}
       </Title>
       <form action={formAction} className="flex flex-col gap-4">

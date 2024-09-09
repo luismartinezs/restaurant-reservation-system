@@ -7,3 +7,10 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* this doesn't really work with Mantine hook useWindowScroll */
+@media (prefers-reduced-motion) {
+  html {
+    scroll-behavior: auto;
+  }
+}

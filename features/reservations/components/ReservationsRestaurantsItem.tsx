@@ -52,9 +52,6 @@ export const ReservationsRestaurantsItem = ({
           <Text size="lg" fw={500}>
             {restaurant_name}
           </Text>
-          <Text size="xs" c="gray.7">
-            {reservation_id}
-          </Text>
         </Group>
         <Badge variant="light">{dayjs(start).local().format("YY-MM-DD")}</Badge>
       </Group>
