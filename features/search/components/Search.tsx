@@ -2,21 +2,46 @@
 
 import { useRouter } from "next/navigation";
 
-import { Box, Button, Flex, MantineSize, NumberInput, Skeleton, Title } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Flex,
+  MantineSize,
+  NumberInput,
+  Skeleton,
+  Title,
+} from "@mantine/core";
 import { DatePickerInput, TimeInput } from "@mantine/dates";
 import dayjs from "dayjs";
 import { CiCalendar, CiClock1, CiUser } from "react-icons/ci";
 
 import { useSearchQuery } from "../hooks/useSearchQuery";
 import { useChangeSearchParams } from "@/common/hooks/useChangeSearchParams";
-import { MAX_DATE_RANGE, MAX_PEOPLE, MAX_TIME, MIN_PEOPLE, MIN_TIME } from "@/features/reservations/constants";
+import {
+  MAX_DATE_RANGE,
+  MAX_PEOPLE,
+  MAX_TIME,
+  MIN_PEOPLE,
+  MIN_TIME,
+} from "@/features/reservations/constants";
+import { cn } from "@/common/utils";
+
+const searchButtonSizeClass = {
+  xs: "h-[34px]",
+  sm: "h-[36px]",
+  md: "h-[42px]",
+  lg: "h-[48px]",
+  xl: "h-[54px]",
+};
 
 export function Search({
   title,
-  size = 'sm',
+  size = "sm",
+  isMagicButton,
 }: {
   title?: string;
   size?: MantineSize;
+  isMagicButton?: boolean;
 }) {
   const search = useSearchQuery();
   const router = useRouter();
@@ -107,18 +132,28 @@ export function Search({
             min={MIN_PEOPLE}
             max={MAX_PEOPLE}
           />
-          <Button
-            className="min-w-[150px]"
-            w={{
-              base: "100%",
-              md: "auto",
-            }}
-            type="submit"
-            formAction={submit}
-            size={size}
-          >
-            Let&apos;s go
-          </Button>
+          {isMagicButton ? (
+            <button
+              className={cn(
+                "w-full md:w-auto text-white",
+                searchButtonSizeClass[size],
+                isMagicButton && "magic-button"
+              )}
+              type="submit"
+              formAction={submit}
+            >
+              Let&apos;s go
+            </button>
+          ) : (
+            <Button
+              type="submit"
+              formAction={submit}
+              size={size}
+              className="min-w-[150px]"
+            >
+              Let&apos;s go
+            </Button>
+          )}
         </Flex>
       </form>
     </Box>

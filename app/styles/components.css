@@ -1,0 +1,43 @@
+.magic-button {
+  background: linear-gradient(
+    -45deg,
+    var(--mantine-color-pink-3),
+    var(--mantine-color-pink-6),
+    var(--mantine-color-pink-8),
+    var(--mantine-color-grape-6),
+    var(--mantine-color-grape-8),
+    var(--mantine-color-pink-3)
+  );
+  background-size: 600% 600%;
+  animation: gradientScroll 10s ease infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 0 18px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  min-width: 150px;
+}
+
+.magic-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.magic-button:focus-visible {
+  outline: 2px solid var(--mantine-primary-color-filled);
+  outline-offset: calc(0.125rem * var(--mantine-scale));
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+@keyframes gradientScroll {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

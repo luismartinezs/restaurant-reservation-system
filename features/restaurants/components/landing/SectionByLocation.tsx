@@ -35,6 +35,7 @@ export const SectionByLocation = async () => {
             radius="md"
             withBorder
             className="group hover:scale-[1.01] transition-transform duration-300 ease-out has-[.restaurant-link:focus]:!outline has-[:focus]:outline-offset-2 has-[:focus]:!outline-1 has-[:focus]:!outline-primary"
+            bg="dark.8"
           >
             <Link
               href={`/${KEY}?location=${location}`}
