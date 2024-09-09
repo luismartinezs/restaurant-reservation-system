@@ -48,7 +48,7 @@ const RestaurantListingPage = () => {
 
           <Container>
             <Stack>
-              <Title>About RicoRico</Title>
+              <Title order={2}>About RicoRico</Title>
               <Text>
                 Welcome to RicoRico, your ultimate destination for seamless
                 dining experiences. Our premier platform connects diners with

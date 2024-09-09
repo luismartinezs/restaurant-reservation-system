@@ -70,7 +70,7 @@ export const RestaurantCard = ({
             }
             height={160}
             width={160}
-            alt={name}
+            alt=""
             crop="fill"
             gravity="center"
             className="h-full w-full"
@@ -89,7 +89,7 @@ export const RestaurantCard = ({
 
         <RatingDisplay rating={rating} ratingCount={ratingCount} showCount />
 
-        <Text size="sm" c="dimmed" mt="sm">
+        <Text size="sm" mt="sm">
           {[cuisine_type, location].join(" • ")}
         </Text>
 

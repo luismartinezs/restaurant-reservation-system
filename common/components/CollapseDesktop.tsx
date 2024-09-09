@@ -29,7 +29,13 @@ export function CollapseDesktop({
     >
       <AppShell.Header>
         <Group h="100%" px="lg">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            hiddenFrom="sm"
+            size="sm"
+            aria-label="Toggle navigation"
+          />
           <Group justify="space-between" style={{ flex: 1 }}>
             <Anchor component={NextLink} href="/" underline="never" c="white">
               <Group gap={4}>

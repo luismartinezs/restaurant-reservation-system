@@ -35,7 +35,7 @@ export function RatingDisplay({
         </Badge>
       )}
       {showCount && (
-        <Text size="sm" c="dimmed">
+        <Text size="sm">
           {`${ratingCount} ${ratingCount === 1 ? "rating" : "ratings"}`}
         </Text>
       )}

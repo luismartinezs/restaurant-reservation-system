@@ -56,7 +56,7 @@ export const SectionByLocation = async () => {
                   }
                   height={160}
                   width={160}
-                  alt={location}
+                  alt=""
                   crop="fill"
                   gravity="center"
                   className="h-full w-full"

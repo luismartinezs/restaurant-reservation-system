@@ -2,7 +2,6 @@ import NextImage from "next/image";
 import {
   Text,
   Card,
-  Badge,
   CardSection,
   Stack,
   Overlay,
@@ -62,7 +61,7 @@ export const RestaurantCard = ({
             imgId={_image}
             height={160}
             width={160}
-            alt={name}
+            alt=""
             crop="fill"
             gravity="center"
             className="h-full w-full"

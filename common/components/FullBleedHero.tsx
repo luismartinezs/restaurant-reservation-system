@@ -27,18 +27,18 @@ export function FullBleedHero({
           content
         ) : (
           <>
-            {title && (
+            {title ? (
               <div className="flex items-center">
                 <h1 className="text-3xl md:text-5xl text-white font-bold">
                   {title}
                 </h1>
               </div>
-            )}
-            {subtitle ?? (
-              <p className="mt-4 font-semibold text-md md:text-xl text-white">
+            ) : null}
+            {subtitle ? (
+              <p className="mt-2 font-semibold text-xl md:text-2xl text-white">
                 {subtitle}
               </p>
-            )}
+            ) : null}
             {widget}
           </>
         )}
