@@ -8,6 +8,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
+  runtime: 'experimental-edge',
   matcher: [
     /*
      * Match all request paths except:
